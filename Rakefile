@@ -1,3 +1,3 @@
 task :default do
-	puts "Hello, world!"
+	puts "Rake says hello!"
 end
