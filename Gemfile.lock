@@ -1,10 +1,12 @@
 GEM
   specs:
+    rake (0.9.6)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  rake
 
 BUNDLED WITH
    1.13.3
