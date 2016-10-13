@@ -1,2 +1,3 @@
-install:
-	- bundle install
+language: ruby
+rvm:
+	- 2.2
