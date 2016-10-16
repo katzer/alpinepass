@@ -3,7 +3,7 @@ def gem_config(conf)
 
   # be sure to include this gem (the cli app)
   conf.gem File.expand_path(File.dirname(__FILE__))
-  conf.gem :mgem => 'mruby-optparse'
+  #conf.gem :mgem => 'mruby-optparse'
 end
 
 MRuby::Build.new do |conf|
@@ -16,6 +16,7 @@ MRuby::Build.new do |conf|
   gem_config(conf)
 end
 
+=begin
 MRuby::Build.new('x86_64-pc-linux-gnu') do |conf|
   toolchain :gcc
 
@@ -31,6 +32,7 @@ MRuby::CrossBuild.new('i686-pc-linux-gnu') do |conf|
 
   gem_config(conf)
 end
+=end
 
 MRuby::CrossBuild.new('x86_64-apple-darwin14') do |conf|
   toolchain :clang
@@ -47,6 +49,7 @@ MRuby::CrossBuild.new('x86_64-apple-darwin14') do |conf|
   gem_config(conf)
 end
 
+=begin
 MRuby::CrossBuild.new('i386-apple-darwin14') do |conf|
   toolchain :clang
 
@@ -93,3 +96,4 @@ MRuby::CrossBuild.new('i686-w64-mingw32') do |conf|
 
   gem_config(conf)
 end
+=end
