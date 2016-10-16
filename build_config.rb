@@ -3,6 +3,7 @@ def gem_config(conf)
 
   # be sure to include this gem (the cli app)
   conf.gem File.expand_path(File.dirname(__FILE__))
+  conf.gem :mgem => 'mruby-optparse'
 end
 
 MRuby::Build.new do |conf|
