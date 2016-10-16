@@ -1,6 +1,6 @@
 def __main__(argv)
   if argv[1] == "version"
-    puts "v#{Aplinepass::VERSION}"
+    puts "v#{Alpinepass::VERSION}"
   else
     puts "Hello World"
   end

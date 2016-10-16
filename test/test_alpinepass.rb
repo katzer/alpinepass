@@ -1,4 +1,4 @@
-class TestAplinepass < MTest::Unit::TestCase
+class TestAlpinepass < MTest::Unit::TestCase
   def test_main
     assert_nil __main__([])
   end
