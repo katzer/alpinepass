@@ -1,1 +1,0 @@
-puts 'alpinepass says hello!'
