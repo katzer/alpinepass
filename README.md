@@ -6,5 +6,4 @@ A tool for managing system environments.
 
 ## Development setup
 
-* install [mruby-cli](https://github.com/hone/mruby-cli)
-* install [Docker](https://github.com/hone/mruby-cli)
+* install [Go](https://golang.org/)
