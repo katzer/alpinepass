@@ -16,6 +16,10 @@ func readFile() string {
 	return string(data)
 }
 
+func parse(data string) {
+
+}
+
 func filter() {
 
 }

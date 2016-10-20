@@ -1,6 +1,8 @@
 # alpinepass
 
 [![Build Status](https://travis-ci.org/appPlant/alpinepass.svg?branch=master)](https://travis-ci.org/appPlant/alpinepass)
+[![Code Climate](https://codeclimate.com/github/appPlant/alpinepass/badges/gpa.svg)](https://codeclimate.com/github/appPlant/alpinepass)
+[![Test Coverage](https://codeclimate.com/github/appPlant/alpinepass/badges/coverage.svg)](https://codeclimate.com/github/appPlant/alpinepass/coverage)
 
 A tool for managing system environments.
 
