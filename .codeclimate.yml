@@ -1,6 +1,8 @@
 engines:
   golint:
     enabled: true
+	config:
+      min_confidence: 0.8
 
 ratings:
   paths:
