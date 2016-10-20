@@ -1,4 +1,6 @@
 engines:
+  gofmt:
+    enabled: true
   golint:
     enabled: true
 	config:
