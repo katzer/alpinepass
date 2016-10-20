@@ -7,7 +7,8 @@ A tool for managing system environments.
 ## Development setup
 
 * install [Go](https://golang.org/)
-* clone the repository into you `$GOPATH`
+* set your `$GOPATH`
+* clone the repository into `{$GOPATH}/src/github.com/appPlant/alpinepass`
 * `cd` into the repository
 * run `go get -v`
 * run alpinepass with `go run alpinepass.go`
