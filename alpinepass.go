@@ -8,8 +8,8 @@ import (
 )
 
 func readFile() string {
-	fmt.Printf("Readin input.yaml!\n")
-	data, err := ioutil.ReadFile("input.yaml")
+	fmt.Printf("Readin input.yml!\n")
+	data, err := ioutil.ReadFile("input.yml")
 	if err != nil {
 		panic(err)
 	}
@@ -28,11 +28,16 @@ func convert() {
 
 }
 
-func writeFile() {
-
+func writeFile(data string) {
+	err := ioutil.WriteFile("output.yml", []byte(data), 0644)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func main() {
 	data := readFile()
 	fmt.Print(data)
+
+	writeFile(data)
 }
