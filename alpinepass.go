@@ -10,9 +10,7 @@ import (
 func readFile() string {
 	fmt.Printf("Readin input.yml!\n")
 	data, err := ioutil.ReadFile("input.yml")
-	if err != nil {
-		panic(err)
-	}
+	checkError(err)
 	return string(data)
 }
 
@@ -30,6 +28,10 @@ func convert() {
 
 func writeFile(data string) {
 	err := ioutil.WriteFile("output.yml", []byte(data), 0644)
+	checkError(err)
+}
+
+func checkError(err error) {
 	if err != nil {
 		panic(err)
 	}
