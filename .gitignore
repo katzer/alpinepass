@@ -51,3 +51,4 @@ build-iPhoneSimulator/
 
 ## Specific to alpinepass
 /mruby/
+output.yml
