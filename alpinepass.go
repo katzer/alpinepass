@@ -8,7 +8,7 @@ import (
 )
 
 func readFile() string {
-	fmt.Printf("Readin input.yml!\n")
+	fmt.Println("Reading input.yml!")
 	data, err := ioutil.ReadFile("input.yml")
 	checkError(err)
 	return string(data)
