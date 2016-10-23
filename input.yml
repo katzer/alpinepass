@@ -1,5 +1,5 @@
 refs: refTest
-#  PROD App: &prod_app
+  PROD App &prod_app
 #    title: PROD App
 #    type: &server server
 #    env: &prod prod
@@ -7,7 +7,7 @@ refs: refTest
 #    title: INT App
 #    type: *server
 #    env: &int int
-defs: defTest
+#defs: defTest
 #  - <<: *prod_app
 #    location: &Nepal X001
 #    user: prodUserX001

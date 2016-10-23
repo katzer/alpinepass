@@ -8,10 +8,22 @@ import (
 	"github.com/go-yaml/yaml"
 )
 
+type Reference struct {
+	SystemType string
+}
+
 // YamlData holds aplinepass' work data
 type YamlData struct {
-	Refs string
-	Defs string
+	/*
+		Refs struct {
+			//map[string][]string
+			ProdApp string
+			IntApp  string
+		}
+	*/
+	//Refs map[string]interface{}
+	Systems map[string]interface{}
+	//Defs    string
 }
 
 func readFile() string {
