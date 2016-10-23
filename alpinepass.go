@@ -4,8 +4,15 @@ import (
 	//"flag"
 	"fmt"
 	"io/ioutil"
-	//"github.com/go-yaml/yaml"
+
+	"github.com/go-yaml/yaml"
 )
+
+// YamlData holds aplinepass' work data
+type YamlData struct {
+	Refs string
+	Defs string
+}
 
 func readFile() string {
 	fmt.Println("Reading input.yml!")
@@ -40,6 +47,13 @@ func checkError(err error) {
 func main() {
 	data := readFile()
 	fmt.Print(data)
+
+	yamlData := YamlData{}
+
+	err := yaml.Unmarshal([]byte(data), &yamlData)
+	checkError(err)
+
+	fmt.Println(yamlData)
 
 	writeFile(data)
 }
