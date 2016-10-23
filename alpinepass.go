@@ -1,4 +1,4 @@
-package alpinepass
+package main
 
 import (
 	//"flag"
