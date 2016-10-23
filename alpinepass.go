@@ -22,7 +22,7 @@ type YamlData struct {
 		}
 	*/
 	//Refs map[string]interface{}
-	Systems map[string]interface{}
+	SystemTypes map[string]interface{}
 	//Defs    string
 }
 
@@ -64,8 +64,11 @@ func main() {
 
 	err := yaml.Unmarshal([]byte(data), &yamlData)
 	checkError(err)
-
 	fmt.Println(yamlData)
+
+	data2, err := yaml.Marshal(&yamlData)
+	checkError(err)
+	fmt.Println(string(data2))
 
 	writeFile(data)
 }
