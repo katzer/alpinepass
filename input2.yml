@@ -3,4 +3,6 @@ refs:
     title: "PROD App"
   IntApp: &int_app
     title: "INT App"
-defs: ~
+defs:
+  - <<: *prod_app
+    location: Nepas

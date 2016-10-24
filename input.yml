@@ -1,15 +1,15 @@
 refs:
   ProdApp: &prod_app
-#    title: PROD App
+    title: "PROD App"
 #    type: &server server
 #    env: &prod prod
   IntApp: &int_app
-#    title: INT App
+    title: "INT App"
 #    type: *server
 #    env: &int int
-#defs: defTest
-#  - <<: *prod_app
-#    location: &Nepal X001
+defs:
+  - <<: *prod_app
+    location: X001 #&Nepal
 #    user: prodUserX001
 #    password: prod_pw
 #    url: production.X001
