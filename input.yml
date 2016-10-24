@@ -1,28 +1,28 @@
 refs:
   ProdApp: &prod_app
     title: "PROD App"
-#    type: &server server
-#    env: &prod prod
+    type: &server server
+    env: &prod prod
   IntApp: &int_app
     title: "INT App"
-#    type: *server
-#    env: &int int
+    type: *server
+    env: &int int
 defs:
   - <<: *prod_app
-    location: X001 #&Nepal
-#    user: prodUserX001
-#    password: prod_pw
-#    url: production.X001
-#    notes: host:prod01vm.X001
-#    tags:
-#    - Ubuntu Intrepid Ibex
-#    - Indiana Jones
-#  - <<: *int_app
-#    location: *Nepal
-#    user: intUserX001
-#    password: int_pw
-#    url: integration.X001
-#    notes: host:int01vm.X001
-#    tags:
-#    - Ubuntu Intrepid Ibex
-#    - Indiana Jones
+    location: &Nepal X001
+    user: prodUserX001
+    password: prod_pw
+    url: production.X001
+    notes: host:prod01vm.X001
+    tags:
+      - Ubuntu Intrepid Ibex
+      - Indiana Jones
+  - <<: *int_app
+    location: *Nepal
+    user: intUserX001
+    password: int_pw
+    url: integration.X001
+    notes: host:int01vm.X001
+    tags:
+    - Ubuntu Intrepid Ibex
+    - Indiana Jones
