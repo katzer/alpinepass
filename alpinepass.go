@@ -64,7 +64,8 @@ func main() {
 
 	err := yaml.Unmarshal([]byte(data), &yamlData)
 	checkError(err)
-	fmt.Println(yamlData)
+	//fmt.Println(yamlData)
+	fmt.Printf("%+v\n", yamlData)
 
 	data2, err := yaml.Marshal(&yamlData)
 	checkError(err)
