@@ -9,26 +9,15 @@ import (
 )
 
 type Reference struct {
-	//SystemType string
-	//items map[string]string
 }
 
 type Definition struct {
-	user string
 }
 
 // YamlData holds aplinepass' work data
 type YamlData struct {
-	/*
-		Refs struct {
-			//map[string][]string
-			ProdApp string
-			IntApp  string
-		}
-	*/
-	//Refs map[string]interface{}
-	//SystemTypes map[string]interface{}
-	//Defs    string
+	//map[string][]string
+	//map[string]interface{}
 	Refs map[string]Reference
 	Defs []map[string]string
 }
