@@ -14,15 +14,15 @@ defs:
     password: prod_pw
     url: production.X001
     notes: host:prod01vm.X001
-    tags:
-      - Ubuntu Intrepid Ibex
-      - Indiana Jones
+#    tags:
+#      - Ubuntu Intrepid Ibex
+#      - Indiana Jones
   - <<: *int_app
     location: *Nepal
     user: intUserX001
     password: int_pw
     url: integration.X001
     notes: host:int01vm.X001
-    tags:
-    - Ubuntu Intrepid Ibex
-    - Indiana Jones
+#    tags:
+#    - Ubuntu Intrepid Ibex
+#    - Indiana Jones

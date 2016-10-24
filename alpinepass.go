@@ -10,7 +10,7 @@ import (
 
 type Reference struct {
 	//SystemType string
-	env string
+	//items map[string]string
 }
 
 type Definition struct {
@@ -30,7 +30,7 @@ type YamlData struct {
 	//SystemTypes map[string]interface{}
 	//Defs    string
 	Refs map[string]Reference
-	Defs []Definition
+	Defs []map[string]string
 }
 
 func readFile() string {
