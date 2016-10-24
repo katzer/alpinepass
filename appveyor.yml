@@ -1,9 +1,9 @@
 version: '0.0.0.{build}'
 
-clone_folder: c:\GoeDev\src\github.com\appplant\alpinepass
+clone_folder: c:\GoDev\src\github.com\appplant\alpinepass
 
 environment:
-  GOPATH: c:\DoDev
+  GOPATH: c:\GoDev
 
 install:
   - go get
