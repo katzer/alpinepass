@@ -7,3 +7,6 @@ environment:
 
 install:
   - go get
+
+build_script:
+  - go test
