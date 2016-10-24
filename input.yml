@@ -1,9 +1,9 @@
-refs: refTest
-  PROD App &prod_app
+refs:
+  ProdApp: &prod_app
 #    title: PROD App
 #    type: &server server
 #    env: &prod prod
-#  INT App: &int_app
+  IntApp: &int_app
 #    title: INT App
 #    type: *server
 #    env: &int int
