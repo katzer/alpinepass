@@ -1,8 +1,0 @@
-refs:
-  ProdApp: &prod_app
-    title: "PROD App"
-  IntApp: &int_app
-    title: "INT App"
-defs:
-  - <<: *prod_app
-    location: Nepas
