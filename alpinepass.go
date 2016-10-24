@@ -9,7 +9,12 @@ import (
 )
 
 type Reference struct {
-	SystemType string
+	//SystemType string
+	env string
+}
+
+type Definition struct {
+	user string
 }
 
 // YamlData holds aplinepass' work data
@@ -22,8 +27,10 @@ type YamlData struct {
 		}
 	*/
 	//Refs map[string]interface{}
-	SystemTypes map[string]interface{}
+	//SystemTypes map[string]interface{}
 	//Defs    string
+	Refs map[string]Reference
+	Defs []Definition
 }
 
 func readFile() string {
