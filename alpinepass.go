@@ -2,6 +2,7 @@ package main
 
 import (
 	//"flag"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 
@@ -20,6 +21,14 @@ type YamlData struct {
 	//map[string]interface{}
 	Refs map[string]Reference
 	Defs []map[string]string
+}
+
+type Config struct {
+	configs []ConfigItem
+}
+
+type ConfigItem struct {
+	Password string
 }
 
 func readFile() string {
@@ -62,12 +71,17 @@ func main() {
 	checkError(err2)
 	fmt.Println(yamlData)
 	fmt.Printf("%+v\n", yamlData)
+
+	data2, err := yaml.Marshal(&yamlData)
+	checkError(err)
+	fmt.Println(string(data2))
+
+	writeFile(data)
+
+	conf := &ConfigItem{
+		Password: "1"}
+	confJSON, _ := json.Marshal(conf)
+	fmt.Println(string(confJSON))
 	/*
-
-		data2, err := yaml.Marshal(&yamlData)
-		checkError(err)
-		fmt.Println(string(data2))
-
-		writeFile(data)
-	*/
+	 */
 }
