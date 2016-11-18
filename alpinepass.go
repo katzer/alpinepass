@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/go-yaml/yaml"
+	"github.com/ghodss/yaml"
 )
 
 type Reference struct {
@@ -58,14 +58,16 @@ func main() {
 
 	yamlData := YamlData{}
 
-	err := yaml.Unmarshal([]byte(data), &yamlData)
-	checkError(err)
-	//fmt.Println(yamlData)
+	err2 := yaml.Unmarshal([]byte(data), &yamlData)
+	checkError(err2)
+	fmt.Println(yamlData)
 	fmt.Printf("%+v\n", yamlData)
+	/*
 
-	data2, err := yaml.Marshal(&yamlData)
-	checkError(err)
-	fmt.Println(string(data2))
+		data2, err := yaml.Marshal(&yamlData)
+		checkError(err)
+		fmt.Println(string(data2))
 
-	writeFile(data)
+		writeFile(data)
+	*/
 }
