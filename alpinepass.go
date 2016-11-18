@@ -28,7 +28,8 @@ type Config struct {
 }
 
 type ConfigItem struct {
-	Password string
+	Password string `json:"password"`
+	User     string `json:"user"`
 }
 
 func readFile() string {
@@ -50,8 +51,8 @@ func convert() {
 
 }
 
-func writeFile(data string) {
-	err := ioutil.WriteFile("output.yml", []byte(data), 0644)
+func writeFile(data string, filename string) {
+	err := ioutil.WriteFile(filename, []byte(data), 0644)
 	checkError(err)
 }
 
@@ -76,12 +77,12 @@ func main() {
 	checkError(err)
 	fmt.Println(string(data2))
 
-	writeFile(data)
+	writeFile(data, "output.yml")
 
 	conf := &ConfigItem{
-		Password: "1"}
+		Password: "pw1",
+		User:     "user1"}
 	confJSON, _ := json.Marshal(conf)
 	fmt.Println(string(confJSON))
-	/*
-	 */
+	writeFile(string(confJSON), "output.json")
 }
