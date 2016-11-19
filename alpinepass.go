@@ -39,8 +39,11 @@ func readFile() string {
 	return string(data)
 }
 
-func parse(data string) {
-
+func parseData(data string) YamlData {
+	yamlData := YamlData{}
+	err := yaml.Unmarshal([]byte(data), &yamlData)
+	checkError(err)
+	return yamlData
 }
 
 func filter() {
@@ -64,24 +67,19 @@ func checkError(err error) {
 
 func main() {
 	data := readFile()
-	fmt.Print(data)
+	yamlData := parseData(data)
 
-	yamlData := YamlData{}
-
-	err2 := yaml.Unmarshal([]byte(data), &yamlData)
-	checkError(err2)
 	fmt.Println(yamlData)
 	fmt.Printf("%+v\n", yamlData)
 
 	data2, err := yaml.Marshal(&yamlData)
 	checkError(err)
 	fmt.Println(string(data2))
-
 	writeFile(string(data2), "output.yml")
 
-	conf := &ConfigItem{
+	conf := ConfigItem{
 		Password: "pw1",
-		User:     "user2"}
+		User:     "user1"}
 	confJSON, err := json.Marshal(conf)
 	checkError(err)
 	writeFile(string(confJSON), "output.json")
