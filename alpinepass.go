@@ -3,13 +3,13 @@ package main
 import (
 	//"flag"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 
 	"github.com/ghodss/yaml"
 	//"github.com/davecgh/go-spew/spew"
 )
 
+// Definition stores information about a system, used for importing data.
 type Definition struct {
 	Title    string
 	Type     string
@@ -22,20 +22,20 @@ type Definition struct {
 	Tags     []string
 }
 
-// YamlData holds aplinepass' work data
+// YamlData stores information about all systems, used for importing data.
 type YamlData struct {
-	//Refs map[string]Reference
 	Defs []Definition
 }
 
+// Config stores data about a system, used for exporting data.
 type Config struct {
 	ID       string `json:"id"`
-	Password string `json:"password"`
 	User     string `json:"user"`
+	Password string `json:"password"`
+	Host     string `json:"host,omitempty"`
 }
 
 func readFile() string {
-	fmt.Println("Reading input.yml!")
 	data, err := ioutil.ReadFile("input.yml")
 	checkError(err)
 	return string(data)
@@ -50,15 +50,24 @@ func parseData(data string) YamlData {
 
 func createConfig(data Definition) Config {
 	config := Config{}
+	config.Password = data.Password
+	config.User = data.User
+	//TODO host
 	return config
 }
 
-func filter() {
-
+func filterConfig(config Config) Config {
+	return config
 }
 
 func convert() {
 
+}
+
+func writeJSON(configs []Config) {
+	configsJSON, err := json.Marshal(configs)
+	checkError(err)
+	writeFile(string(configsJSON), "output.json")
 }
 
 func writeFile(data string, filename string) {
@@ -75,20 +84,13 @@ func checkError(err error) {
 func main() {
 	data := readFile()
 	yamlData := parseData(data)
-
 	configs := []Config{}
-	for i, definition := range yamlData.Defs {
-		fmt.Println(i)
-		configs = append(configs, createConfig(definition))
+
+	for _, definition := range yamlData.Defs {
+		config := createConfig(definition)
+		config = filterConfig(config)
+		configs = append(configs, config)
 	}
 
-	conf := Config{
-		Password: "pw1",
-		User:     "user1"}
-
-	moreConfigs := []Config{}
-	moreConfigs = append(moreConfigs, conf)
-	moreConfigsJSON, err := json.Marshal(moreConfigs)
-	checkError(err)
-	writeFile(string(moreConfigsJSON), "output.json")
+	writeJSON(configs)
 }
