@@ -10,7 +10,7 @@ import (
 	//"github.com/davecgh/go-spew/spew"
 )
 
-type DefItem struct {
+type Definition struct {
 	Title    string
 	Type     string
 	Env      string
@@ -25,7 +25,7 @@ type DefItem struct {
 // YamlData holds aplinepass' work data
 type YamlData struct {
 	//Refs map[string]Reference
-	Defs []DefItem
+	Defs []Definition
 }
 
 type Config struct {
@@ -48,7 +48,7 @@ func parseData(data string) YamlData {
 	return yamlData
 }
 
-func createConfig(data map[string]string) Config {
+func createConfig(data Definition) Config {
 	config := Config{}
 	return config
 }
@@ -76,23 +76,11 @@ func main() {
 	data := readFile()
 	yamlData := parseData(data)
 
-	//fmt.Printf("%+v\n", yamlData.Defs)
-	/*
-		configs := []Config{}
-		for i, e := range yamlData.Defs {
-			fmt.Println(i)
-			spew.Dump(e)
-			configs = append(configs, createConfig(e))
-		}
-	*/
-
-	//fmt.Println(yamlData)
-	fmt.Printf("%+v\n", yamlData)
-
-	data2, err := yaml.Marshal(&yamlData)
-	checkError(err)
-	fmt.Println(string(data2))
-	writeFile(string(data2), "output.yml")
+	configs := []Config{}
+	for i, definition := range yamlData.Defs {
+		fmt.Println(i)
+		configs = append(configs, createConfig(definition))
+	}
 
 	conf := Config{
 		Password: "pw1",
