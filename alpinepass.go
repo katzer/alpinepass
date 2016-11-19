@@ -17,6 +17,11 @@ type Reference struct {
 type Definition struct {
 }
 
+type DefItem struct {
+	user     string
+	password string
+}
+
 // YamlData holds aplinepass' work data
 type YamlData struct {
 	//map[string][]string
@@ -81,15 +86,13 @@ func main() {
 		configs = append(configs, createConfig(e))
 	}
 
-	/*
-		fmt.Println(yamlData)
-		fmt.Printf("%+v\n", yamlData)
+	fmt.Println(yamlData)
+	fmt.Printf("%+v\n", yamlData)
 
-		data2, err := yaml.Marshal(&yamlData)
-		checkError(err)
-		fmt.Println(string(data2))
-		writeFile(string(data2), "output.yml")
-	*/
+	data2, err := yaml.Marshal(&yamlData)
+	checkError(err)
+	fmt.Println(string(data2))
+	writeFile(string(data2), "output.yml")
 
 	conf := Config{
 		Password: "pw1",
