@@ -24,10 +24,11 @@ type YamlData struct {
 }
 
 type Config struct {
-	configs []ConfigItem
+	Configs []ConfigItem `json:""`
 }
 
 type ConfigItem struct {
+	Id       string `json:"id"`
 	Password string `json:"password"`
 	User     string `json:"user"`
 }
@@ -83,4 +84,11 @@ func main() {
 	confJSON, err := json.Marshal(conf)
 	checkError(err)
 	writeFile(string(confJSON), "output.json")
+
+	configs := Config{}
+	//configs.Configs = make([]ConfigItem)
+	configs.Configs = append(configs.Configs, conf)
+	fmt.Printf("%+v\n", configs)
+	configsJSON, err := json.Marshal(configs)
+	writeFile(string(configsJSON), "output.json")
 }
