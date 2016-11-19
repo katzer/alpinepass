@@ -6,32 +6,31 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/davecgh/go-spew/spew"
 	"github.com/ghodss/yaml"
 	//"github.com/davecgh/go-spew/spew"
 )
 
-type Reference struct {
-}
-
-type Definition struct {
-}
-
 type DefItem struct {
-	user     string
-	password string
+	Title    string
+	Type     string
+	Env      string
+	Location string
+	User     string
+	Password string
+	URL      string
+	Notes    string
 }
 
 // YamlData holds aplinepass' work data
 type YamlData struct {
 	//map[string][]string
 	//map[string]interface{}
-	Refs map[string]Reference
-	Defs []map[string]string
+	//Refs map[string]Reference
+	Defs []DefItem
 }
 
 type Config struct {
-	Id       string `json:"id"`
+	ID       string `json:"id"`
 	Password string `json:"password"`
 	User     string `json:"user"`
 }
@@ -79,14 +78,16 @@ func main() {
 	yamlData := parseData(data)
 
 	//fmt.Printf("%+v\n", yamlData.Defs)
-	configs := []Config{}
-	for i, e := range yamlData.Defs {
-		fmt.Println(i)
-		spew.Dump(e)
-		configs = append(configs, createConfig(e))
-	}
+	/*
+		configs := []Config{}
+		for i, e := range yamlData.Defs {
+			fmt.Println(i)
+			spew.Dump(e)
+			configs = append(configs, createConfig(e))
+		}
+	*/
 
-	fmt.Println(yamlData)
+	//fmt.Println(yamlData)
 	fmt.Printf("%+v\n", yamlData)
 
 	data2, err := yaml.Marshal(&yamlData)
