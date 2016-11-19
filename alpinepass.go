@@ -65,7 +65,7 @@ func convert() {
 }
 
 func writeJSON(configs []Config) {
-	configsJSON, err := json.Marshal(configs)
+	configsJSON, err := json.MarshalIndent(configs, "", "    ")
 	checkError(err)
 	writeFile(string(configsJSON), "output.json")
 }
