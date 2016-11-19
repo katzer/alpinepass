@@ -19,12 +19,11 @@ type DefItem struct {
 	Password string
 	URL      string
 	Notes    string
+	Tags     []string
 }
 
 // YamlData holds aplinepass' work data
 type YamlData struct {
-	//map[string][]string
-	//map[string]interface{}
 	//Refs map[string]Reference
 	Defs []DefItem
 }
