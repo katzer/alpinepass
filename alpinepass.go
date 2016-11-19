@@ -77,12 +77,12 @@ func main() {
 	checkError(err)
 	fmt.Println(string(data2))
 
-	writeFile(data, "output.yml")
+	writeFile(string(data2), "output.yml")
 
 	conf := &ConfigItem{
 		Password: "pw1",
-		User:     "user1"}
-	confJSON, _ := json.Marshal(conf)
-	fmt.Println(string(confJSON))
+		User:     "user2"}
+	confJSON, err := json.Marshal(conf)
+	checkError(err)
 	writeFile(string(confJSON), "output.json")
 }
