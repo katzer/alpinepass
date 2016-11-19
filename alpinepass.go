@@ -6,7 +6,9 @@ import (
 	"fmt"
 	"io/ioutil"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/ghodss/yaml"
+	//"github.com/davecgh/go-spew/spew"
 )
 
 type Reference struct {
@@ -43,6 +45,11 @@ func parseData(data string) YamlData {
 	return yamlData
 }
 
+func createConfig(data map[string]string) Config {
+	config := Config{}
+	return config
+}
+
 func filter() {
 
 }
@@ -66,13 +73,23 @@ func main() {
 	data := readFile()
 	yamlData := parseData(data)
 
-	fmt.Println(yamlData)
-	fmt.Printf("%+v\n", yamlData)
+	//fmt.Printf("%+v\n", yamlData.Defs)
+	configs := []Config{}
+	for i, e := range yamlData.Defs {
+		fmt.Println(i)
+		spew.Dump(e)
+		configs = append(configs, createConfig(e))
+	}
 
-	data2, err := yaml.Marshal(&yamlData)
-	checkError(err)
-	fmt.Println(string(data2))
-	writeFile(string(data2), "output.yml")
+	/*
+		fmt.Println(yamlData)
+		fmt.Printf("%+v\n", yamlData)
+
+		data2, err := yaml.Marshal(&yamlData)
+		checkError(err)
+		fmt.Println(string(data2))
+		writeFile(string(data2), "output.yml")
+	*/
 
 	conf := Config{
 		Password: "pw1",
@@ -81,6 +98,6 @@ func main() {
 	moreConfigs := []Config{}
 	moreConfigs = append(moreConfigs, conf)
 	moreConfigsJSON, err := json.Marshal(moreConfigs)
-
+	checkError(err)
 	writeFile(string(moreConfigsJSON), "output.json")
 }
