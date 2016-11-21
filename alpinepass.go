@@ -50,10 +50,16 @@ func parseData(data string) YamlData {
 
 func createConfig(data Definition) Config {
 	config := Config{}
+	config.ID = data.Type + "_" + data.Location
 	config.Password = data.Password
 	config.User = data.User
 	//TODO host
 	return config
+}
+
+func createID(data Definition) string {
+	//TODO implement and use
+	return ""
 }
 
 func filterConfig(config Config) Config {
