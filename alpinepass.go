@@ -67,6 +67,7 @@ func createID(data Definition) string {
 	id := ""
 	id = id + cleanString(data.Location) + Separator
 	id = id + cleanString(data.Env) + Separator
+	id = id + cleanString(data.Type) + Separator
 	id = id + cleanString(data.Title)
 	return id
 }
