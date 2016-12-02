@@ -2,7 +2,7 @@ package main
 
 import (
 	//"flag"
-	"encoding/json"
+
 	"io/ioutil"
 
 	"github.com/ghodss/yaml"
@@ -81,17 +81,6 @@ func cleanString(s string) string {
 
 func filterConfig(config Config) Config {
 	return config
-}
-
-func writeJSON(configs []Config) {
-	configsJSON, err := json.MarshalIndent(configs, "", "    ")
-	checkError(err)
-	writeFile(string(configsJSON), "output.json")
-}
-
-func writeFile(data string, filename string) {
-	err := ioutil.WriteFile(filename, []byte(data), 0644)
-	checkError(err)
 }
 
 func checkError(err error) {
