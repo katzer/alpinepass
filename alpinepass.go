@@ -34,6 +34,7 @@ type YamlData struct {
 // Config stores data about a system, used for exporting data.
 type Config struct {
 	ID       string `json:"id"`
+	Title    string `json:"title"`
 	User     string `json:"user"`
 	Password string `json:"password"`
 	Host     string `json:"host,omitempty"`
@@ -54,6 +55,7 @@ func parseData(data string) YamlData {
 
 func createConfig(data Definition) Config {
 	config := Config{}
+	config.Title = data.Title
 	config.ID = createID(data)
 	config.Password = data.Password
 	config.User = data.User
