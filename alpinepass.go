@@ -10,7 +10,10 @@ import (
 	"strings"
 )
 
+// Separator separates the different parts of an ID
 const Separator string = "."
+
+// Filler is used to replace whitespace in strings
 const Filler string = "-"
 
 // Definition stores information about a system, used for importing data.
@@ -78,10 +81,6 @@ func cleanString(s string) string {
 
 func filterConfig(config Config) Config {
 	return config
-}
-
-func convert() {
-
 }
 
 func writeJSON(configs []Config) {
