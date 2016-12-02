@@ -3,8 +3,6 @@ package main
 import (
 	//"flag"
 
-	"io/ioutil"
-
 	"github.com/ghodss/yaml"
 	//"github.com/davecgh/go-spew/spew"
 	"strings"
@@ -41,12 +39,6 @@ type Config struct {
 	User     string `json:"user"`
 	Password string `json:"password"`
 	Host     string `json:"host,omitempty"`
-}
-
-func readFile() string {
-	data, err := ioutil.ReadFile("input.yml")
-	checkError(err)
-	return string(data)
 }
 
 func parseData(data string) YamlData {

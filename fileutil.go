@@ -5,13 +5,19 @@ import (
 	"io/ioutil"
 )
 
-func writeJSON(configs []Config) {
-	configsJSON, err := json.MarshalIndent(configs, "", "    ")
+func readFile() string {
+	data, err := ioutil.ReadFile("input.yml")
 	checkError(err)
-	writeFile(string(configsJSON), "output.json")
+	return string(data)
 }
 
 func writeFile(data string, filename string) {
 	err := ioutil.WriteFile(filename, []byte(data), 0644)
 	checkError(err)
+}
+
+func writeJSON(configs []Config) {
+	configsJSON, err := json.MarshalIndent(configs, "", "    ")
+	checkError(err)
+	writeFile(string(configsJSON), "output.json")
 }
