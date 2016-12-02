@@ -7,7 +7,11 @@ import (
 
 	"github.com/ghodss/yaml"
 	//"github.com/davecgh/go-spew/spew"
+	"strings"
 )
+
+const Separator string = "."
+const Filler string = "-"
 
 // Definition stores information about a system, used for importing data.
 type Definition struct {
@@ -50,7 +54,7 @@ func parseData(data string) YamlData {
 
 func createConfig(data Definition) Config {
 	config := Config{}
-	config.ID = data.Type + "_" + data.Location
+	config.ID = createID(data)
 	config.Password = data.Password
 	config.User = data.User
 	//TODO host
@@ -58,8 +62,15 @@ func createConfig(data Definition) Config {
 }
 
 func createID(data Definition) string {
-	//TODO implement and use
-	return ""
+	id := ""
+	id = id + cleanString(data.Location) + Separator
+	id = id + cleanString(data.Env) + Separator
+	id = id + cleanString(data.Title)
+	return id
+}
+
+func cleanString(s string) string {
+	return strings.Replace(s, " ", Filler, -1)
 }
 
 func filterConfig(config Config) Config {
