@@ -73,8 +73,8 @@ Create a YAML output file ```/home/admin/endor_test.yml``` containing all test s
 
 ## License
 
-The code is available as open source under the terms of the [Apache 2.0 License](http://opensource.org/licenses/Apache-2.0)[license].
+The code is available as open source under the terms of the [Apache 2.0 License](http://opensource.org/licenses/Apache-2.0).
 
 Made with :heart: and :coffee: in Leipzig!
 
-© 2016 [appPlant GmbH](www.appplant.de)
+© 2016 [appPlant GmbH](http://www.appplant.de)
