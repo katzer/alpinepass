@@ -31,11 +31,18 @@ Options:
 
 -v Print the application's version.
 ```
+## Requirements
+
+The application [kpcli](http://kpcli.sourceforge.net/) must be installed for KeePass support.
+
+## Installation
+
+Download the latest version from the release page and add the executable to your ```PATH```.
 
 ## Development setup
 
 * install [Go](https://golang.org/)
-* set your `$GOPATH`
+* set the `$GOPATH`
 * clone the repository into `{$GOPATH}/src/github.com/appPlant/alpinepass`
 * `cd` into the repository
 * run `go get -v`
@@ -55,5 +62,3 @@ Options:
 ### Options
 
 ### Input format
-
-[TODO] Structure of input.yaml
