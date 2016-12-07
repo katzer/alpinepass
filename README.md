@@ -8,16 +8,28 @@ A tool for managing system environments.
 
 ```
 $ alpinepass -h
+
 usage: alpinepass [options...]
+
 Options:
--i [filepath] Define the input file. The file content must be YAML.
--o [directorypath] Define the output directory. The default directory is the application directory.
--n [filename] Specify the output's file name. This does not influence the file extension since it depends on the output format which is defined with the -t option. The default file name is output.
--t [json|yaml|keepass] output type, JSON, YAML, KeePass ...
--p passwords
--f [filter|filter:filteroptions] filters
--v Version
--d Debug
+
+-d Show debug messages during application execution.
+
+-f=[filter|filter:filteroptions] Apply one or more filters. Filters are given as a list seperated by semicolons. A filter's options are separated by commas.
+
+-h Display this help message.
+
+-i=[filepath] Define the input file. The file content must be YAML.
+
+-n=[filename] Specify the output's file name. This does not influence the file extension since it depends on the output format which is defined with the -t option. The default file name is output.
+
+-o=[json|yaml|keepass] Specify the output format.
+
+-p Include passwords in the output.
+
+-t=[directorypath] Define the output target directory. The default directory is the application directory.
+
+-v Print the application's version.
 ```
 
 ## Development setup
