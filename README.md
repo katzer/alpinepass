@@ -70,3 +70,9 @@ Create a JSON output containing production databases only:
 Create a YAML output file ```/home/admin/endor_test.yml``` containing all test systems located on Endor:
 
 ```$ alpinepass -t=/home/admin -n=endor_test -o=yaml -f=location:Endor;environment:test```
+
+The code is available as open source under the terms of the [Apache 2.0 License](http://opensource.org/licenses/Apache-2.0)[license].
+
+Made with :heart: and :coffee: in Leipzig!
+
+© 2016 [appPlant GmbH](www.appplant.de)
