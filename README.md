@@ -6,6 +6,10 @@
 
 A tool for managing system environments.
 
+```
+$ alpinepass -h
+```
+
 ## Development setup
 
 * install [Go](https://golang.org/)
