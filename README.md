@@ -14,3 +14,15 @@ A tool for managing system environments.
 * `cd` into the repository
 * run `go get -v`
 * run alpinepass with `go run alpinepass.go`
+
+## Manual
+
+### Overview
+
+**alpinepass** is an application for managing information about computer system environments. It transforms information defined in a YAML file into different output formats like JSON and KeePass files. 
+
+### Basic usage
+
+```alpinepass``` Executing the application without any options will reads the file *input.yaml* and creates the file *output.json*. The input file must exist in the same directory as the application, the output file will be created in the application's directory.
+
+### Options
