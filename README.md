@@ -66,4 +66,4 @@ Create a JSON output containing production databases only:
 ```$ alpinepass -f=type:db;environment:prod```
 
 Create a YAML output file ```/home/admin/endor_test.yml``` containing all test systems located on Endor:
-```$ alpinepass -t=/home/admin -n=endor_test -f=location:Endor;environment:test```
+```$ alpinepass -t=/home/admin -n=endor_test -o=yaml -f=location:Endor;environment:test```
