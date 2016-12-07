@@ -24,16 +24,17 @@ A tool for managing system environments.
 
 ### Basic usage
 
-```alpinepass``` Executing the application without any options reads the file *input.yaml* and creates the file *output.json*. The input file must exist in the same directory as the application, the output file is created in the same directory. The output does not contain any system passwords. No filters are applied to the input.
+```alpinepass``` Executing the application without any options reads the file ***input.yaml*** and creates the file ***output.json***. The input file must exist in the same directory as the application, the output file is created in the same directory. The output does not contain any system passwords. No filters are applied to the input.
 
 ### Options
 
-* ```-i [filepath]``` input file
-* ```-o [filepath]``` output file
-* ```-t``` output type, JSON, YAML, KeePass, CSV...
+* ```-i [filepath]``` Define the input file. The file content must be YAML.
+* ```-o [directorypath]``` Define the output directory. The default directory is the application directory.
+* ```-n [filename]``` Specify the output's file name. This does not influence the file extension since it depends on the output format which is defined with the ```-t``` option. The default file name is ***output***.
+* ```-t [json|yaml|keepass]``` output type, JSON, YAML, KeePass ...
 * ```-p``` passwords
 * ```-f [filter|filter:filteroptions]``` filters
-* ```-v``` verbosity
+* ```-v``` 
 
 ### Input format
 
