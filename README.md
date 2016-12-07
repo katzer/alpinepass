@@ -13,7 +13,8 @@ A tool for managing system environments.
 * clone the repository into `{$GOPATH}/src/github.com/appPlant/alpinepass`
 * `cd` into the repository
 * run `go get -v`
-* run alpinepass with `go run alpinepass.go`
+* build the application with `go build`
+* execute the application with `./alpinepass`
 
 ## Manual
 
