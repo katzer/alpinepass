@@ -30,5 +30,11 @@ A tool for managing system environments.
 
 * ```-i [filepath]``` input file
 * ```-o [filepath]``` output file
+* ```-t``` output type, JSON, YAML, KeePass, CSV...
 * ```-p``` passwords
 * ```-f [filter|filter:filteroptions]``` filters
+* ```-v``` verbosity
+
+### Input format
+
+[TODO] Structure of input.yaml
