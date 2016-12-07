@@ -7,14 +7,14 @@ go:
 
 os:
   - linux
-  - osx
+#  - osx
 
 services:
   - docker
 
 env:
-  - GOOS=darwin GOARCH=amd64
-  - GOOS=linux GOARCH=386
+#  - GOOS=darwin GOARCH=amd64
+#  - GOOS=linux GOARCH=386
   - GOOS=linux GOARCH=amd64
 
 notifications:
