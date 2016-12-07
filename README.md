@@ -20,10 +20,15 @@ A tool for managing system environments.
 
 ### Overview
 
-**alpinepass** is an application for managing information about computer system environments. It transforms information defined in a YAML file into different output formats like JSON and KeePass files. 
+**alpinepass** is an application for managing information about computer system environments. It transforms information defined in a YAML file into different output formats like JSON and KeePass files. Filters allow creating output which matches certain creteria like information about databases or test systems only.
 
 ### Basic usage
 
-```alpinepass``` Executing the application without any options will reads the file *input.yaml* and creates the file *output.json*. The input file must exist in the same directory as the application, the output file will be created in the application's directory.
+```alpinepass``` Executing the application without any options reads the file *input.yaml* and creates the file *output.json*. The input file must exist in the same directory as the application, the output file is created in the same directory. The output does not contain any system passwords. No filters are applied to the input.
 
 ### Options
+
+* ```-i [filepath]``` input file
+* ```-o [filepath]``` output file
+* ```-p``` passwords
+* ```-f [filter|filter:filteroptions]``` filters
