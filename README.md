@@ -73,6 +73,8 @@ Create a YAML output file ```/home/admin/endor_test.yml``` containing all test s
 
 ```$ alpinepass -t=/home/admin -n=endor_test -o=yaml -f=location:Endor;environment:test```
 
+## Dependencies
+
 ## License
 
 The code is available as open source under the terms of the [Apache 2.0 License](http://opensource.org/licenses/Apache-2.0).
