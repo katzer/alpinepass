@@ -6,5 +6,4 @@
 
 ## Libraries
 
-* https://github.com/urfave/cli
-* https://github.com/spf13/cobra
+* [spew](https://github.com/davecgh/go-spew)

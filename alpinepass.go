@@ -1,14 +1,11 @@
 package main
 
 import (
-	//"flag"
-
 	"os"
+	"strings"
 
 	"github.com/ghodss/yaml"
 	"github.com/urfave/cli"
-	//"github.com/davecgh/go-spew/spew"
-	"strings"
 )
 
 // Separator separates the different parts of an ID
