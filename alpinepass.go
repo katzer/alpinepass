@@ -3,7 +3,10 @@ package main
 import (
 	//"flag"
 
+	"os"
+
 	"github.com/ghodss/yaml"
+	"github.com/urfave/cli"
 	//"github.com/davecgh/go-spew/spew"
 	"strings"
 )
@@ -82,6 +85,8 @@ func checkError(err error) {
 }
 
 func main() {
+	cli.NewApp().Run(os.Args)
+
 	data := readFile()
 	yamlData := parseData(data)
 	configs := []Config{}

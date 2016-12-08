@@ -75,6 +75,9 @@ Create a YAML output file ```/home/admin/endor_test.yml``` containing all test s
 
 ## Dependencies
 
+* [cli](https://github.com/urfave/cli)
+* [yaml](github.com/ghodss/yaml)
+
 ## License
 
 The code is available as open source under the terms of the [Apache 2.0 License](http://opensource.org/licenses/Apache-2.0).
