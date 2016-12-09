@@ -3,18 +3,18 @@ engines:
     enabled: true
   golint:
     enabled: true
-#  config:
-#    min_confidence: 0.8
+    config:
+      min_confidence: 0.9
   govet:
     enabled: true
-#  fixme:
-#    enabled: true
-#    config:
-#      strings:
-#      - TODO
-#      - FIXME
-#      - BUG
-#      - HACK
+  fixme:
+    enabled: true
+    config:
+      strings:
+      - TODO
+      - FIXME
+      - BUG
+      - HACK
 
 ratings:
   paths:
