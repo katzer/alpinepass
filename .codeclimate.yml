@@ -1,21 +1,21 @@
 engines:
   gofmt:
     enabled: true
-  golint:
-    enabled: true
-  config:
-    min_confidence: 0.8
-  govet:
-    enabled: true
-  fixme:
-    enabled: true
-    config:
-      strings:
-      - TODO
-      - FIXME
-      - BUG
-      - HACK
+#  golint:
+#    enabled: true
+#  config:
+#    min_confidence: 0.8
+#  govet:
+#    enabled: true
+#  fixme:
+#    enabled: true
+#    config:
+#      strings:
+#      - TODO
+#      - FIXME
+#      - BUG
+#      - HACK
 
 ratings:
   paths:
-    - "**.go"
+  - "**.go"
