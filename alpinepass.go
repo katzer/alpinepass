@@ -82,7 +82,12 @@ func checkError(err error) {
 }
 
 func main() {
-	cli.NewApp().Run(os.Args)
+	app := cli.NewApp()
+	app.Name = "alpinepass"
+	app.Version = "0.0.0"
+	app.Author = "appPlant GmbH"
+	app.Usage = "Manage system environment information."
+	app.Run(os.Args)
 
 	data := readFile()
 	yamlData := parseData(data)
