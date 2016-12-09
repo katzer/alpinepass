@@ -83,10 +83,19 @@ func checkError(err error) {
 
 func main() {
 	app := cli.NewApp()
+
 	app.Name = "alpinepass"
 	app.Version = "0.0.0"
 	app.Author = "appPlant GmbH"
 	app.Usage = "Manage system environment information."
+
+	app.Flags = []cli.Flag{
+		cli.BoolFlag{
+			Name:  "passwords, p",
+			Usage: "Include passwords in the output.",
+		},
+	}
+
 	app.Action = func(c *cli.Context) error {
 		data := readFile()
 		yamlData := parseData(data)
@@ -102,5 +111,6 @@ func main() {
 		writeJSON(configs)
 		return nil
 	}
+
 	app.Run(os.Args)
 }
