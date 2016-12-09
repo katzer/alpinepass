@@ -87,17 +87,20 @@ func main() {
 	app.Version = "0.0.0"
 	app.Author = "appPlant GmbH"
 	app.Usage = "Manage system environment information."
-	app.Run(os.Args)
+	app.Action = func(c *cli.Context) error {
+		data := readFile()
+		yamlData := parseData(data)
+		configs := []Config{}
 
-	data := readFile()
-	yamlData := parseData(data)
-	configs := []Config{}
+		for _, definition := range yamlData.Defs {
+			config := createConfig(definition)
+			config = filterConfig(config)
+			configs = append(configs, config)
 
-	for _, definition := range yamlData.Defs {
-		config := createConfig(definition)
-		config = filterConfig(config)
-		configs = append(configs, config)
+		}
+
+		writeJSON(configs)
+		return nil
 	}
-
-	writeJSON(configs)
+	app.Run(os.Args)
 }
