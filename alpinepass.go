@@ -4,6 +4,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/appPlant/alpinepass/data"
 	"github.com/ghodss/yaml"
 	"github.com/urfave/cli"
 )
@@ -14,24 +15,6 @@ const Separator string = "."
 // Filler is used to replace whitespace in strings
 const Filler string = "-"
 
-// Definition stores information about a system, used for importing data.
-type Definition struct {
-	Title    string
-	Type     string
-	Env      string
-	Location string
-	User     string
-	Password string
-	URL      string
-	Notes    string
-	Tags     []string
-}
-
-// YamlData stores information about all systems, used for importing data.
-type YamlData struct {
-	Defs []Definition
-}
-
 // Config stores data about a system, used for exporting data.
 type Config struct {
 	ID       string `json:"id"`
@@ -41,29 +24,29 @@ type Config struct {
 	Host     string `json:"host,omitempty"`
 }
 
-func parseData(data string) YamlData {
-	yamlData := YamlData{}
-	err := yaml.Unmarshal([]byte(data), &yamlData)
+func parseData(rawData string) data.YamlData {
+	yamlData := data.YamlData{}
+	err := yaml.Unmarshal([]byte(rawData), &yamlData)
 	checkError(err)
 	return yamlData
 }
 
-func createConfig(data Definition) Config {
+func createConfig(definition data.Definition) Config {
 	config := Config{}
-	config.Title = data.Title
-	config.ID = createID(data)
-	config.Password = data.Password
-	config.User = data.User
+	config.Title = definition.Title
+	config.ID = createID(definition)
+	config.Password = definition.Password
+	config.User = definition.User
 	//TODO host
 	return config
 }
 
-func createID(data Definition) string {
+func createID(definition data.Definition) string {
 	id := ""
-	id = id + cleanString(data.Location) + Separator
-	id = id + cleanString(data.Env) + Separator
-	id = id + cleanString(data.Type) + Separator
-	id = id + cleanString(data.Title)
+	id = id + cleanString(definition.Location) + Separator
+	id = id + cleanString(definition.Env) + Separator
+	id = id + cleanString(definition.Type) + Separator
+	id = id + cleanString(definition.Title)
 	return id
 }
 
