@@ -3,8 +3,6 @@ package main
 import (
 	"encoding/json"
 	"io/ioutil"
-
-	"github.com/appPlant/alpinepass/data"
 )
 
 func readFile() string {
@@ -18,7 +16,7 @@ func writeFile(data string, filename string) {
 	checkError(err)
 }
 
-func writeJSON(configs []data.Config) {
+func writeJSON(configs []Config) {
 	configsJSON, err := json.MarshalIndent(configs, "", "    ")
 	checkError(err)
 	writeFile(string(configsJSON), "output.json")
