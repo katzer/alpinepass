@@ -1,11 +1,9 @@
 package main
 
 import (
-	"os"
 	"strings"
 
 	"github.com/ghodss/yaml"
-	"github.com/urfave/cli"
 )
 
 // Separator separates the different parts of an ID
@@ -48,42 +46,6 @@ func filterConfig(config Config) Config {
 	return config
 }
 
-func checkError(err error) {
-	if err != nil {
-		panic(err)
-	}
-}
-
 func main() {
-	app := cli.NewApp()
-
-	app.Name = "alpinepass"
-	app.Version = "0.0.0"
-	app.Author = "appPlant GmbH"
-	app.Usage = "Manage system environment information."
-
-	app.Flags = []cli.Flag{
-		cli.BoolFlag{
-			Name:  "passwords, p",
-			Usage: "Include passwords in the output.",
-		},
-	}
-
-	app.Action = func(c *cli.Context) error {
-		data := readFile()
-		yamlData := parseData(data)
-		configs := []Config{}
-
-		for _, definition := range yamlData.Defs {
-			config := createConfig(definition)
-			config = filterConfig(config)
-			configs = append(configs, config)
-
-		}
-
-		writeJSON(configs)
-		return nil
-	}
-
-	app.Run(os.Args)
+	runApp()
 }
