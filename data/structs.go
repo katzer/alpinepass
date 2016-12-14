@@ -17,3 +17,12 @@ type Definition struct {
 type YamlData struct {
 	Defs []Definition
 }
+
+// Config stores data about a system, used for exporting data.
+type Config struct {
+	ID       string `json:"id"`
+	Title    string `json:"title"`
+	User     string `json:"user"`
+	Password string `json:"password"`
+	Host     string `json:"host,omitempty"`
+}

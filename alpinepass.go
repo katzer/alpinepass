@@ -4,9 +4,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/appPlant/alpinepass/data"
 	"github.com/ghodss/yaml"
 	"github.com/urfave/cli"
+
+	"github.com/appPlant/alpinepass/data"
 )
 
 // Separator separates the different parts of an ID
@@ -15,15 +16,6 @@ const Separator string = "."
 // Filler is used to replace whitespace in strings
 const Filler string = "-"
 
-// Config stores data about a system, used for exporting data.
-type Config struct {
-	ID       string `json:"id"`
-	Title    string `json:"title"`
-	User     string `json:"user"`
-	Password string `json:"password"`
-	Host     string `json:"host,omitempty"`
-}
-
 func parseData(rawData string) data.YamlData {
 	yamlData := data.YamlData{}
 	err := yaml.Unmarshal([]byte(rawData), &yamlData)
@@ -31,8 +23,8 @@ func parseData(rawData string) data.YamlData {
 	return yamlData
 }
 
-func createConfig(definition data.Definition) Config {
-	config := Config{}
+func createConfig(definition data.Definition) data.Config {
+	config := data.Config{}
 	config.Title = definition.Title
 	config.ID = createID(definition)
 	config.Password = definition.Password
@@ -54,7 +46,7 @@ func cleanString(s string) string {
 	return strings.Replace(s, " ", Filler, -1)
 }
 
-func filterConfig(config Config) Config {
+func filterConfig(config data.Config) data.Config {
 	return config
 }
 
@@ -80,9 +72,9 @@ func main() {
 	}
 
 	app.Action = func(c *cli.Context) error {
-		data := readFile()
-		yamlData := parseData(data)
-		configs := []Config{}
+		rawData := readFile()
+		yamlData := parseData(rawData)
+		configs := []data.Config{}
 
 		for _, definition := range yamlData.Defs {
 			config := createConfig(definition)
