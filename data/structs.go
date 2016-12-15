@@ -1,4 +1,4 @@
-package main
+package data
 
 // Definition stores information about a system, used for importing data.
 type Definition struct {
