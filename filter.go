@@ -1,5 +1,7 @@
 package main
 
-func filterConfig(config Config) Config {
-	return config
+import "github.com/urfave/cli"
+
+func filterConfigs(configs []Config, context *cli.Context) []Config {
+	return configs
 }

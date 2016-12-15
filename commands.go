@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 
 	yaml "gopkg.in/yaml.v2"
@@ -44,7 +45,6 @@ func readConfigs() []Config {
 
 	for _, definition := range yamlData.Defs {
 		config := createConfig(definition)
-		config = filterConfig(config)
 		configs = append(configs, config)
 	}
 
@@ -52,17 +52,18 @@ func readConfigs() []Config {
 }
 
 func runShowCommand(context *cli.Context) error {
-	fmt.Println("Running the show command!")
-
-	readConfigs()
+	configs := readConfigs()
+	configs = filterConfigs(configs, context)
+	configsJSON, err := json.MarshalIndent(configs, "", "    ")
+	checkError(err)
+	fmt.Println(string(configsJSON))
 
 	return nil
 }
 
 func runOutCommand(context *cli.Context) error {
-	fmt.Println("Running the out command!")
-
 	configs := readConfigs()
+	configs = filterConfigs(configs, context)
 	writeJSON(configs)
 
 	return nil
