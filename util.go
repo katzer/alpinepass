@@ -2,7 +2,7 @@ package main
 
 import "strings"
 
-// Filler is used to replace whitespace in strings
+// Filler is used to replace spaces in strings
 const Filler string = "-"
 
 func checkError(err error) {

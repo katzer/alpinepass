@@ -37,14 +37,7 @@ func createID(definition Definition) string {
 	return id
 }
 
-func runShowCommand(context *cli.Context) error {
-	fmt.Println("Running the show command!")
-	return nil
-}
-
-func runOutCommand(context *cli.Context) error {
-	fmt.Println("Running the out command!")
-
+func readConfigs() []Config {
 	data := readFile()
 	yamlData := parseData(data)
 	configs := []Config{}
@@ -55,6 +48,21 @@ func runOutCommand(context *cli.Context) error {
 		configs = append(configs, config)
 	}
 
+	return configs
+}
+
+func runShowCommand(context *cli.Context) error {
+	fmt.Println("Running the show command!")
+
+	readConfigs()
+
+	return nil
+}
+
+func runOutCommand(context *cli.Context) error {
+	fmt.Println("Running the out command!")
+
+	configs := readConfigs()
 	writeJSON(configs)
 
 	return nil
