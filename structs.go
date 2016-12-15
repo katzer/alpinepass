@@ -20,9 +20,9 @@ type YamlData struct {
 
 // Config stores data about a system, used for exporting data.
 type Config struct {
-	ID       string `json:"id"`
+	ID       string `json:"id,"`
 	Title    string `json:"title"`
 	User     string `json:"user"`
-	Password string `json:"password"`
+	Password string `json:"password,omitempty"`
 	Host     string `json:"host,omitempty"`
 }

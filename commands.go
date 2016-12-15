@@ -4,9 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	yaml "gopkg.in/yaml.v2"
-
 	"github.com/urfave/cli"
+	yaml "gopkg.in/yaml.v2"
 )
 
 // Separator separates the different parts of an ID

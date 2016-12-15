@@ -16,10 +16,6 @@ func writeFile(data string, filename string) {
 	checkError(err)
 }
 
-func toJSON(configs []Config) {
-
-}
-
 func writeJSON(configs []Config) {
 	configsJSON, err := json.MarshalIndent(configs, "", "    ")
 	checkError(err)

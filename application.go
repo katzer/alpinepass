@@ -31,7 +31,7 @@ func runApp() {
 		},
 		cli.Command{
 			Name:        "out",
-			Description: "Save the system data as a file in the specified output format.",
+			Description: "Save the system information as a file. The default output format is JSON.",
 			Action: func(c *cli.Context) error {
 				return runOutCommand(c)
 			},
