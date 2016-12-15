@@ -6,20 +6,22 @@ import (
 
 	"github.com/urfave/cli"
 	yaml "gopkg.in/yaml.v2"
+
+	d "github.com/appPlant/alpinepass/data"
 )
 
 // Separator separates the different parts of an ID
 const Separator string = "."
 
-func parseData(data string) YamlData {
-	yamlData := YamlData{}
+func parseData(data string) d.YamlData {
+	yamlData := d.YamlData{}
 	err := yaml.Unmarshal([]byte(data), &yamlData)
 	checkError(err)
 	return yamlData
 }
 
-func createConfig(definition Definition) Config {
-	config := Config{}
+func createConfig(definition d.Definition) d.Config {
+	config := d.Config{}
 	config.Title = definition.Title
 	config.ID = createID(definition)
 	config.Password = definition.Password
@@ -28,7 +30,7 @@ func createConfig(definition Definition) Config {
 	return config
 }
 
-func createID(definition Definition) string {
+func createID(definition d.Definition) string {
 	id := ""
 	id = id + cleanString(definition.Location) + Separator
 	id = id + cleanString(definition.Env) + Separator
@@ -37,10 +39,10 @@ func createID(definition Definition) string {
 	return id
 }
 
-func readConfigs() []Config {
+func readConfigs() []d.Config {
 	data := readFile()
 	yamlData := parseData(data)
-	configs := []Config{}
+	configs := []d.Config{}
 
 	for _, definition := range yamlData.Defs {
 		config := createConfig(definition)
