@@ -1,0 +1,9 @@
+compile: &defaults
+  build: .
+  volumes:
+    - .:/code:rw
+  command: rake compile
+
+shell:
+  <<: *defaults
+  command: sh -l
