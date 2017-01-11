@@ -8,6 +8,7 @@ import (
 	yaml "gopkg.in/yaml.v2"
 
 	d "github.com/appPlant/alpinepass/data"
+	"github.com/appPlant/alpinepass/filters"
 )
 
 // Separator separates the different parts of an ID
@@ -54,7 +55,7 @@ func readConfigs() []d.Config {
 
 func runShowCommand(context *cli.Context) error {
 	configs := readConfigs()
-	configs = filterConfigs(configs, context)
+	configs = filters.FilterConfigs(configs, context)
 	configsJSON, err := json.MarshalIndent(configs, "", "    ")
 	checkError(err)
 	fmt.Println(string(configsJSON))
@@ -64,8 +65,7 @@ func runShowCommand(context *cli.Context) error {
 
 func runOutCommand(context *cli.Context) error {
 	configs := readConfigs()
-	configs = filterConfigs(configs, context)
+	configs = filters.FilterConfigs(configs, context)
 	writeJSON(configs)
-
 	return nil
 }
