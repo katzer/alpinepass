@@ -10,11 +10,16 @@ type Filter interface {
 }
 
 func FilterConfigs(configs []d.Config, context *cli.Context) []d.Config {
-	passwordFilter := PasswordFilter{}
 	if !context.GlobalBool("passwords") {
-		for i := 0; i < len(configs); i++ {
-			configs[i] = passwordFilter.filter(configs[i])
-		}
+		passwordFilter := PasswordFilter{}
+		applyFilter(configs, passwordFilter)
+	}
+	return configs
+}
+
+func applyFilter(configs []d.Config, filter Filter) []d.Config {
+	for i := 0; i < len(configs); i++ {
+		configs[i] = filter.filter(configs[i])
 	}
 	return configs
 }
