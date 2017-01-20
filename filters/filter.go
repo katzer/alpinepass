@@ -12,7 +12,7 @@ type Filter interface {
 func FilterConfigs(configs []d.Config, context *cli.Context) []d.Config {
 	if !context.GlobalBool("passwords") {
 		passwordFilter := PasswordFilter{}
-		applyFilter(configs, passwordFilter)
+		configs = applyFilter(configs, passwordFilter)
 	}
 	return configs
 }
