@@ -19,6 +19,10 @@ func runApp() {
 			Name:  "passwords, p",
 			Usage: "Include passwords in the output",
 		},
+		cli.StringSliceFlag{
+			Name:  "filter, f",
+			Usage: "Filter configurations by name, type and more.",
+		},
 	}
 
 	app.Commands = []cli.Command{

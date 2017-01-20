@@ -1,6 +1,8 @@
 package filters
 
 import (
+	"fmt"
+
 	d "github.com/appPlant/alpinepass/data"
 	"github.com/urfave/cli"
 )
@@ -13,6 +15,9 @@ func FilterConfigs(configs []d.Config, context *cli.Context) []d.Config {
 	if !context.GlobalBool("passwords") {
 		passwordFilter := PasswordFilter{}
 		configs = applyFilter(configs, passwordFilter)
+	}
+	if context.GlobalStringSlice("filter") != nil {
+		fmt.Println(context.GlobalStringSlice("filter"))
 	}
 	return configs
 }
