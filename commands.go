@@ -34,10 +34,10 @@ func createConfig(definition d.Definition) d.Config {
 
 func createID(definition d.Definition) string {
 	id := ""
-	id = id + cleanString(definition.Location) + Separator
-	id = id + cleanString(definition.Env) + Separator
-	id = id + cleanString(definition.Type) + Separator
-	id = id + cleanString(definition.Title)
+	id = id + util.CleanString(definition.Location) + Separator
+	id = id + util.CleanString(definition.Env) + Separator
+	id = id + util.CleanString(definition.Type) + Separator
+	id = id + util.CleanString(definition.Title)
 	return id
 }
 
