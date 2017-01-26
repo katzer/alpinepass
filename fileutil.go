@@ -8,12 +8,6 @@ import (
 	"github.com/appPlant/alpinepass/util"
 )
 
-func readFile() string {
-	data, err := ioutil.ReadFile("input.yml")
-	util.CheckError(err)
-	return string(data)
-}
-
 func writeFile(data string, filename string) {
 	err := ioutil.WriteFile(filename, []byte(data), 0644)
 	util.CheckError(err)

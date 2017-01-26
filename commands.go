@@ -9,6 +9,7 @@ import (
 
 	d "github.com/appPlant/alpinepass/data"
 	"github.com/appPlant/alpinepass/filters"
+	"github.com/appPlant/alpinepass/io"
 	"github.com/appPlant/alpinepass/util"
 )
 
@@ -42,7 +43,7 @@ func createID(definition d.Definition) string {
 }
 
 func readConfigs() []d.Config {
-	data := readFile()
+	data := io.ReadFile()
 	yamlData := parseData(data)
 	configs := []d.Config{}
 
