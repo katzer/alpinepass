@@ -9,6 +9,7 @@ import (
 
 	d "github.com/appPlant/alpinepass/data"
 	"github.com/appPlant/alpinepass/filters"
+	"github.com/appPlant/alpinepass/util"
 )
 
 // Separator separates the different parts of an ID
@@ -17,7 +18,7 @@ const Separator string = "."
 func parseData(data string) d.YamlData {
 	yamlData := d.YamlData{}
 	err := yaml.Unmarshal([]byte(data), &yamlData)
-	checkError(err)
+	util.CheckError(err)
 	return yamlData
 }
 
@@ -57,7 +58,7 @@ func runShowCommand(context *cli.Context) error {
 	configs := readConfigs()
 	configs = filters.FilterConfigs(configs, context)
 	configsJSON, err := json.MarshalIndent(configs, "", "    ")
-	checkError(err)
+	util.CheckError(err)
 	fmt.Println(string(configsJSON))
 
 	return nil

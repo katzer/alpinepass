@@ -5,21 +5,22 @@ import (
 	"io/ioutil"
 
 	d "github.com/appPlant/alpinepass/data"
+	"github.com/appPlant/alpinepass/util"
 )
 
 func readFile() string {
 	data, err := ioutil.ReadFile("input.yml")
-	checkError(err)
+	util.CheckError(err)
 	return string(data)
 }
 
 func writeFile(data string, filename string) {
 	err := ioutil.WriteFile(filename, []byte(data), 0644)
-	checkError(err)
+	util.CheckError(err)
 }
 
 func writeJSON(configs []d.Config) {
 	configsJSON, err := json.MarshalIndent(configs, "", "    ")
-	checkError(err)
+	util.CheckError(err)
 	writeFile(string(configsJSON), "output.json")
 }
