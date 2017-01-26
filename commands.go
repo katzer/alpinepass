@@ -68,6 +68,6 @@ func runShowCommand(context *cli.Context) error {
 func runOutCommand(context *cli.Context) error {
 	configs := readConfigs()
 	configs = filters.FilterConfigs(configs, context)
-	writeJSON(configs)
+	io.WriteJSON(configs)
 	return nil
 }

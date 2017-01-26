@@ -1,4 +1,4 @@
-package main
+package io
 
 import (
 	"encoding/json"
@@ -13,7 +13,8 @@ func writeFile(data string, filename string) {
 	util.CheckError(err)
 }
 
-func writeJSON(configs []d.Config) {
+//WriteJSON writes Config to a file in JSON format.
+func WriteJSON(configs []d.Config) {
 	configsJSON, err := json.MarshalIndent(configs, "", "    ")
 	util.CheckError(err)
 	writeFile(string(configsJSON), "output.json")
