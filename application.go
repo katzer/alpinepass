@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 
+	a "github.com/appPlant/alpinepass/app"
 	"github.com/urfave/cli"
 )
 
@@ -39,10 +40,9 @@ func runApp() {
 
 	app.Action = func(context *cli.Context) error {
 		if context.GlobalBool("show") {
-			return runShowCommand(context)
-		} else {
-			return runOutCommand(context)
+			return a.RunShowCommand(context)
 		}
+		return a.RunOutCommand(context)
 	}
 
 	app.Run(os.Args)
