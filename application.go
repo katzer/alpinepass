@@ -3,7 +3,6 @@ package main
 import (
 	"os"
 
-	a "github.com/appPlant/alpinepass/app"
 	"github.com/urfave/cli"
 )
 
@@ -36,13 +35,6 @@ func runApp() {
 			Name:  "show, s",
 			Usage: "Show the output in the console. An output file will not be written.",
 		},
-	}
-
-	app.Action = func(context *cli.Context) error {
-		if context.GlobalBool("show") {
-			return a.RunShowCommand(context)
-		}
-		return a.RunOutCommand(context)
 	}
 
 	app.Run(os.Args)

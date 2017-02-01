@@ -55,7 +55,7 @@ func readConfigs() []d.Config {
 	return configs
 }
 
-func RunShowCommand(context *cli.Context) error {
+func runShowCommand(context *cli.Context) error {
 	configs := readConfigs()
 	configs = filters.FilterConfigs(configs, context)
 	configsJSON, err := json.MarshalIndent(configs, "", "    ")
@@ -65,7 +65,7 @@ func RunShowCommand(context *cli.Context) error {
 	return nil
 }
 
-func RunOutCommand(context *cli.Context) error {
+func runOutCommand(context *cli.Context) error {
 	configs := readConfigs()
 	configs = filters.FilterConfigs(configs, context)
 	io.WriteJSON(configs)

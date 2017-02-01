@@ -1,5 +1,7 @@
 package main
 
+import "github.com/appPlant/alpinepass/app"
+
 func main() {
-	runApp()
+	app.RunApp()
 }
