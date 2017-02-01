@@ -29,13 +29,20 @@ func runApp() {
 		},
 		cli.BoolFlag{
 			Name:  "passwords, p",
-			Usage: "Include passwords in the output",
+			Usage: "Include passwords in the output.",
+		},
+		cli.BoolFlag{
+			Name:  "show, s",
+			Usage: "Show the output in the console. An output file will not be written.",
 		},
 	}
 
-	app.Action = func(c *cli.Context) error {
-		return runShowCommand(c)
-		//return runOutCommand(c)
+	app.Action = func(context *cli.Context) error {
+		if context.GlobalBool("show") {
+			return runShowCommand(context)
+		} else {
+			return runOutCommand(context)
+		}
 	}
 
 	app.Run(os.Args)
