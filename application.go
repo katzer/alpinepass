@@ -33,21 +33,9 @@ func runApp() {
 		},
 	}
 
-	app.Commands = []cli.Command{
-		cli.Command{
-			Name:        "show",
-			Description: "Print the filtered and unconverted system data to the console.",
-			Action: func(c *cli.Context) error {
-				return runShowCommand(c)
-			},
-		},
-		cli.Command{
-			Name:        "out",
-			Description: "Save the system information as a file. The default output format is JSON.",
-			Action: func(c *cli.Context) error {
-				return runOutCommand(c)
-			},
-		},
+	app.Action = func(c *cli.Context) error {
+		return runShowCommand(c)
+		//return runOutCommand(c)
 	}
 
 	app.Run(os.Args)
