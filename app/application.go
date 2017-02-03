@@ -6,6 +6,7 @@ import (
 	"github.com/urfave/cli"
 )
 
+//RunApp sets up the cli application and executes it.
 func RunApp() {
 	app := cli.NewApp()
 
@@ -35,15 +36,12 @@ func RunApp() {
 		},
 		cli.BoolFlag{
 			Name:  "show, s",
-			Usage: "Show the output in the console. An output file will not be written.",
+			Usage: "Show the output in the console. An output file will not be written. Use this for previewing the generated file.",
 		},
 	}
 
 	app.Action = func(context *cli.Context) error {
-		if context.GlobalBool("show") {
-			return runShowCommand(context)
-		}
-		return runOutCommand(context)
+		return execute(context)
 	}
 
 	app.Run(os.Args)

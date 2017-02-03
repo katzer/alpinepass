@@ -71,3 +71,10 @@ func runOutCommand(context *cli.Context) error {
 	io.WriteJSON(configs)
 	return nil
 }
+
+func execute(context *cli.Context) error {
+	if context.GlobalBool("show") {
+		return runShowCommand(context)
+	}
+	return runOutCommand(context)
+}
