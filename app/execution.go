@@ -13,7 +13,7 @@ import (
 
 //execute reads the input and writes the output while processing the "show" flag.
 func execute(context *cli.Context) error {
-	configs := io.ReadConfigs()
+	configs := io.ReadConfigs(context.GlobalString("input"))
 	configs = filters.FilterConfigs(configs, context)
 
 	if context.GlobalBool("show") {

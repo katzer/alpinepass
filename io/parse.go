@@ -36,8 +36,8 @@ func createConfig(definition d.Definition) d.Config {
 }
 
 //ReadConfigs reads the input file and creates Config objects to work with.
-func ReadConfigs() []d.Config {
-	data := readFile()
+func ReadConfigs(path string) []d.Config {
+	data := readFile(path)
 	yamlData := parseYaml(data)
 	configs := []d.Config{}
 

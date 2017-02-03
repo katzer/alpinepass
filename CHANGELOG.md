@@ -2,6 +2,6 @@
 
 ## UNRELEASED
 
-* New command "out" for exporting system information to a file.
-* New command "show" for printing system information to the console.
+* Basic functionality. Read "input.yml" and write "output.json".
 * New "passwords" flag for including passwords in the output.
+* New "input" flag for specifying the input file.
