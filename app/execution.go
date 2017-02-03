@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"github.com/urfave/cli"
-	yaml "gopkg.in/yaml.v2"
 
 	d "github.com/appPlant/alpinepass/data"
 	"github.com/appPlant/alpinepass/filters"
@@ -13,15 +12,8 @@ import (
 	"github.com/appPlant/alpinepass/util"
 )
 
-// Separator separates the different parts of an ID
+// Separator separates the different parts of an ID.
 const Separator string = "."
-
-func parseData(data string) d.YamlData {
-	yamlData := d.YamlData{}
-	err := yaml.Unmarshal([]byte(data), &yamlData)
-	util.CheckError(err)
-	return yamlData
-}
 
 func createConfig(definition d.Definition) d.Config {
 	config := d.Config{}
@@ -44,7 +36,7 @@ func createID(definition d.Definition) string {
 
 func readConfigs() []d.Config {
 	data := io.ReadFile()
-	yamlData := parseData(data)
+	yamlData := io.ParseYaml(data)
 	configs := []d.Config{}
 
 	for _, definition := range yamlData.Defs {
