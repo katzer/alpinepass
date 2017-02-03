@@ -1,13 +1,13 @@
 package io
 
 import (
+	yaml "gopkg.in/yaml.v2"
+
 	d "github.com/appPlant/alpinepass/data"
 	"github.com/appPlant/alpinepass/util"
-	yaml "gopkg.in/yaml.v2"
 )
 
-// Separator separates the different parts of an ID.
-const Separator string = "."
+const separator string = "."
 
 func parseYaml(data string) d.YamlData {
 	yamlData := d.YamlData{}
@@ -18,9 +18,9 @@ func parseYaml(data string) d.YamlData {
 
 func createID(definition d.Definition) string {
 	id := ""
-	id = id + util.CleanString(definition.Location) + Separator
-	id = id + util.CleanString(definition.Env) + Separator
-	id = id + util.CleanString(definition.Type) + Separator
+	id = id + util.CleanString(definition.Location) + separator
+	id = id + util.CleanString(definition.Env) + separator
+	id = id + util.CleanString(definition.Type) + separator
 	id = id + util.CleanString(definition.Title)
 	return id
 }
@@ -35,6 +35,7 @@ func createConfig(definition d.Definition) d.Config {
 	return config
 }
 
+//ReadConfigs reads the input file and creates Config objects to work with.
 func ReadConfigs() []d.Config {
 	data := readFile()
 	yamlData := parseYaml(data)
