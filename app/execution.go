@@ -21,7 +21,7 @@ func execute(context *cli.Context) error {
 		util.CheckError(err)
 		fmt.Println(string(configsJSON))
 	} else {
-		io.WriteJSON(configs)
+		io.WriteJSON(context.GlobalString("output"), configs)
 	}
 
 	return nil

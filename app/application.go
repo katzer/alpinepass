@@ -17,6 +17,10 @@ func RunApp() {
 
 	app.Flags = []cli.Flag{
 		/*
+			cli.StringFlag{
+				Name:  "format, fo",
+				Usage: "Specify the output format.",
+			},
 			cli.StringSliceFlag{
 				Name:  "filter, f",
 				Usage: "Filter configurations by name, type and more.",
@@ -26,12 +30,10 @@ func RunApp() {
 			Name:  "input, i",
 			Usage: "Specify the input file, absolute or relative path.",
 		},
-		/*
-			cli.StringFlag{
-				Name:  "output, o",
-				Usage: "Specify the output format.",
-			},
-		*/
+		cli.StringFlag{
+			Name:  "output, o",
+			Usage: "Specify the output file, absolute or relative path. An existing file will be overwritten.",
+		},
 		cli.BoolFlag{
 			Name:  "passwords, p",
 			Usage: "Include passwords in the output.",

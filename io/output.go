@@ -14,8 +14,12 @@ func writeFile(data string, filename string) {
 }
 
 //WriteJSON writes Config to a file in JSON format.
-func WriteJSON(configs []d.Config) {
+func WriteJSON(path string, configs []d.Config) {
+	if path == "" {
+		path = "output.json"
+	}
+
 	configsJSON, err := json.MarshalIndent(configs, "", "    ")
 	util.CheckError(err)
-	writeFile(string(configsJSON), "output.json")
+	writeFile(string(configsJSON), path)
 }
