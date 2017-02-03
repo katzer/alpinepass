@@ -55,26 +55,18 @@ func readConfigs() []d.Config {
 	return configs
 }
 
-func runShowCommand(context *cli.Context) error {
-	configs := readConfigs()
-	configs = filters.FilterConfigs(configs, context)
-	configsJSON, err := json.MarshalIndent(configs, "", "    ")
-	util.CheckError(err)
-	fmt.Println(string(configsJSON))
-
-	return nil
-}
-
-func runOutCommand(context *cli.Context) error {
-	configs := readConfigs()
-	configs = filters.FilterConfigs(configs, context)
-	io.WriteJSON(configs)
-	return nil
-}
-
+//execute reads the input and writes the output while processing the "show" flag.
 func execute(context *cli.Context) error {
+	configs := readConfigs()
+	configs = filters.FilterConfigs(configs, context)
+
 	if context.GlobalBool("show") {
-		return runShowCommand(context)
+		configsJSON, err := json.MarshalIndent(configs, "", "    ")
+		util.CheckError(err)
+		fmt.Println(string(configsJSON))
+	} else {
+		io.WriteJSON(configs)
 	}
-	return runOutCommand(context)
+
+	return nil
 }
