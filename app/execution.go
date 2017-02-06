@@ -11,7 +11,7 @@ import (
 	"github.com/appPlant/alpinepass/util"
 )
 
-//execute reads the input and writes the output while processing the "show" flag.
+//execute reads the input, filters it and writes the output.
 func execute(context *cli.Context) error {
 	configs := io.ReadConfigs(context.GlobalString("input"))
 	configs = filters.FilterConfigs(configs, context)
