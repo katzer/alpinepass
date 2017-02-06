@@ -12,6 +12,11 @@ type PropertyFilter struct {
 }
 
 func (n PropertyFilter) filter(data d.Config) d.Config {
+	//var remove = false
 	fmt.Println(n.Slices)
 	return data
+}
+
+func filterProperty() {
+
 }

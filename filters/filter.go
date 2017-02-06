@@ -17,8 +17,8 @@ func FilterConfigs(configs []d.Config, context *cli.Context) []d.Config {
 		configs = applyFilter(configs, passwordFilter)
 	}
 	if context.GlobalStringSlice("filter") != nil {
-		nameFilter := NameFilter{context.GlobalStringSlice("filter")}
-		configs = applyFilter(configs, nameFilter)
+		propertyFilter := PropertyFilter{context.GlobalStringSlice("filter")}
+		configs = applyFilter(configs, propertyFilter)
 	}
 	return configs
 }
