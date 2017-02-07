@@ -34,6 +34,22 @@ defs:
     tags:
       - Ubuntu
       - Indiana Jones
+  - <<: *prod_db
+    location: *Berlin
+    user: prodUserB01
+    password: prod_pw
+    url: proddb.B01
+    notes: host:proddb.B01
+    tags:
+      - MySQL
+  - <<: *int_db
+    location: *Berlin
+    user: intUserB01
+    password: int_pw
+    url: intdb.B01
+    notes: host:intdb.B01
+    tags:
+      - MySQL
   - <<: *prod_app
     location: &Dresden D02
     user: prodUserD02
@@ -52,3 +68,19 @@ defs:
     tags:
       - Windows
       - Batman
+  - <<: *prod_db
+    location: *Dresden
+    user: prodUserD02
+    password: prod_pw
+    url: proddb.D02
+    notes: host:proddb.D02
+    tags:
+      - DB2
+  - <<: *int_db
+    location: *Dresden
+    user: intUserD02
+    password: int_pw
+    url: intdb.D02
+    notes: host:intdb.D02
+    tags:
+      - DB2
