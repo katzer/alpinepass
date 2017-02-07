@@ -9,20 +9,20 @@ refs:
     env: &int int
 defs:
   - <<: *prod_app
-    location: &Nepal X001
-    user: prodUserX001
+    location: &Berlin B01
+    user: prodUserB01
     password: prod_pw
-    url: production.X001
-    notes: host:prod01vm.X001
+    url: production.B01
+    notes: host:prod01vm.B01
     tags:
       - Ubuntu Intrepid Ibex
       - Indiana Jones
   - <<: *int_app
-    location: *Nepal
-    user: intUserX001
+    location: *Berlin
+    user: intUserB01
     password: int_pw
-    url: integration.X001
-    notes: host:int01vm.X001
+    url: integration.B01
+    notes: host:int01vm.B01
     tags:
       - Ubuntu Intrepid Ibex
       - Indiana Jones
