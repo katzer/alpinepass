@@ -7,6 +7,14 @@ refs:
     title: "INT App"
     type: *server
     env: &int int
+  ProdDb: &prod_db
+    title: "PROD DB"
+    type: &db database
+    env: *prod
+  IntDb: &int_db
+    title: "INT DB"
+    type: *db
+    env: *int
 defs:
   - <<: *prod_app
     location: &Berlin B01
@@ -15,7 +23,7 @@ defs:
     url: production.B01
     notes: host:prod01vm.B01
     tags:
-      - Ubuntu Intrepid Ibex
+      - Ubuntu
       - Indiana Jones
   - <<: *int_app
     location: *Berlin
@@ -24,5 +32,23 @@ defs:
     url: integration.B01
     notes: host:int01vm.B01
     tags:
-      - Ubuntu Intrepid Ibex
+      - Ubuntu
       - Indiana Jones
+  - <<: *prod_app
+    location: &Dresden D02
+    user: prodUserD02
+    password: prod_pw
+    url: production.D02
+    notes: host:prod01vm.D02
+    tags:
+      - Windows
+      - Batman
+  - <<: *int_app
+    location: *Dresden
+    user: intUserD02
+    password: int_pw
+    url: integration.D02
+    notes: host:int01vm.D02
+    tags:
+      - Windows
+      - Batman
