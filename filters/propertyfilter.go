@@ -8,10 +8,16 @@ type PropertyFilter struct {
 }
 
 func (p PropertyFilter) filter(data d.Config) d.Config {
+	verifyFlags(p.Slices) //TODO verify only once and not for every Config
 	//var remove = false
+
 	return data
 }
 
 func filterProperty() {
 
+}
+
+func verifyFlags(flags []string) {
+	//TODO veryfy that input like "type:Prod" is valid!
 }
