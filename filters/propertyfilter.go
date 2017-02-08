@@ -1,8 +1,12 @@
 package filters
 
-import d "github.com/appPlant/alpinepass/data"
-import "strings"
-import "fmt"
+import (
+	"fmt"
+	"strings"
+
+	d "github.com/appPlant/alpinepass/data"
+	"github.com/appPlant/alpinepass/util"
+)
 
 //PropertyFilter allows filtering a Config for the content of its properties.
 type PropertyFilter struct {
@@ -26,5 +30,10 @@ func filterProperty(property string, data d.Config) {
 }
 
 func verifyFlags(flags []string) {
-	//TODO veryfy that input like "type:Prod" is valid!
+	for i := 0; i < len(flags); i++ {
+		flag := flags[i]
+		if !strings.Contains(flag, ":") {
+			util.ThrowError("The filter does not contain ':'!")
+		}
+	}
 }
