@@ -1,8 +1,9 @@
 package util
 
 import "strings"
-import "fmt"
+
 import "os"
+import "fmt"
 
 //CheckError throws an exception if an error exists.
 func CheckError(err error) {
@@ -20,8 +21,9 @@ func CleanString(s string) string {
 }
 
 //ThrowError prints the error information and exits the application.
-func ThrowError(s string) {
+func ThrowError(message string) {
 	//TODO read about Go error handling and use this.
-	fmt.Println(s)
+	os.Stderr.WriteString(message)
+	fmt.Println()
 	os.Exit(-1)
 }

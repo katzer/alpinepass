@@ -35,5 +35,8 @@ func verifyFlags(flags []string) {
 		if !strings.Contains(flag, ":") {
 			util.ThrowError("The filter does not contain ':'!")
 		}
+		if strings.Count(flag, ":") > 1 {
+			util.ThrowError("The filter contains too many ':'!")
+		}
 	}
 }
