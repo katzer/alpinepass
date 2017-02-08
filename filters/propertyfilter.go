@@ -31,10 +31,12 @@ func filterProperty(property string, data d.Config) {
 	*/
 }
 
+//verifyFlags checks that the input flags are valid.
 func verifyFlags(flags []string) {
 	for i := 0; i < len(flags); i++ {
 		flag := flags[i]
 
+		//Do some simple checks.
 		if !strings.Contains(flag, ":") {
 			util.ThrowError("The filter does not contain ':'! Flag: " + flag)
 		}
@@ -42,6 +44,7 @@ func verifyFlags(flags []string) {
 			util.ThrowError("The filter contains too many ':'! Flag: " + flag)
 		}
 
+		//check that the key part of a flag matches the fields available in struct Config.
 		data := d.Config{}
 		fieldNames := structs.Names(data)
 		key := strings.ToLower(strings.Split(flag, ":")[0])
