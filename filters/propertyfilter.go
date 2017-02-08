@@ -1,11 +1,11 @@
 package filters
 
 import (
-	"fmt"
 	"strings"
 
 	d "github.com/appPlant/alpinepass/data"
 	"github.com/appPlant/alpinepass/util"
+	"github.com/fatih/structs"
 )
 
 //PropertyFilter allows filtering a Config for the content of its properties.
@@ -23,20 +23,36 @@ func (p PropertyFilter) filter(data d.Config) d.Config {
 }
 
 func filterProperty(property string, data d.Config) {
-	var split = strings.Split(property, ":")
-	var key = split[0]
-	var value = split[1]
-	fmt.Println(key + " " + value)
+	/*
+		var split = strings.Split(property, ":")
+		var key = split[0]
+		var value = split[1]
+		fmt.Println(key + " " + value)
+	*/
 }
 
 func verifyFlags(flags []string) {
 	for i := 0; i < len(flags); i++ {
 		flag := flags[i]
+
 		if !strings.Contains(flag, ":") {
-			util.ThrowError("The filter does not contain ':'!")
+			util.ThrowError("The filter does not contain ':'! Flag: " + flag)
 		}
 		if strings.Count(flag, ":") > 1 {
-			util.ThrowError("The filter contains too many ':'!")
+			util.ThrowError("The filter contains too many ':'! Flag: " + flag)
+		}
+
+		data := d.Config{}
+		fieldNames := structs.Names(data)
+		key := strings.ToLower(strings.Split(flag, ":")[0])
+		isContained := false
+		for j := 0; j < len(fieldNames); j++ {
+			if key == strings.ToLower(fieldNames[j]) {
+				isContained = true
+			}
+		}
+		if !isContained {
+			util.ThrowError("The filter type is not valid! Flag: " + flag)
 		}
 	}
 }
