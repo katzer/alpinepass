@@ -25,12 +25,15 @@ func createID(definition d.Definition) string {
 	return id
 }
 
-func createConfig(definition d.Definition) d.Config {
+func createConfig(def d.Definition) d.Config {
 	config := d.Config{}
-	config.Title = definition.Title
-	config.ID = createID(definition)
-	config.Password = definition.Password
-	config.User = definition.User
+	config.ID = createID(def)
+	config.Title = def.Title
+	config.Location = def.Location
+	config.Environment = def.Env
+	config.User = def.User
+	config.Password = def.Password
+
 	//TODO host
 	return config
 }

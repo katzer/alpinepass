@@ -1,6 +1,7 @@
 package filters
 
 import (
+	"fmt"
 	"strings"
 
 	d "github.com/appPlant/alpinepass/data"
@@ -23,12 +24,15 @@ func (p PropertyFilter) filter(data d.Config) d.Config {
 }
 
 func filterProperty(property string, data d.Config) {
-	/*
-		var split = strings.Split(property, ":")
-		var key = split[0]
-		var value = split[1]
-		fmt.Println(key + " " + value)
-	*/
+	var split = strings.Split(property, ":")
+	var key = split[0]
+	var value = split[1]
+	fmt.Println(key + " " + value)
+
+	switch key {
+	case "location":
+
+	}
 }
 
 //verifyFlags checks that the input flags are valid.
