@@ -16,14 +16,13 @@ type PropertyFilter struct {
 
 func (p PropertyFilter) filter(data d.Config) d.Config {
 	verifyFlags(p.Slices) //TODO verify only once and not for every Config
-	//var remove = false
 	for i := 0; i < len(p.Slices); i++ {
 		filterProperty(p.Slices[i], data)
 	}
 	return data
 }
 
-func filterProperty(property string, data d.Config) {
+func filterProperty(property string, data d.Config) d.Config {
 	var split = strings.Split(property, ":")
 	var key = split[0]
 	var value = split[1]
@@ -31,8 +30,12 @@ func filterProperty(property string, data d.Config) {
 
 	switch key {
 	case "location":
-
+		if !strings.Contains(data.Location, value) {
+			data.IsValid = false
+		}
 	}
+
+	return data
 }
 
 //verifyFlags checks that the input flags are valid.

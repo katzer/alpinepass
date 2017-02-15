@@ -34,6 +34,8 @@ func createConfig(def d.Definition) d.Config {
 	config.User = def.User
 	config.Password = def.Password
 
+	config.IsValid = true
+
 	//TODO host
 	return config
 }
