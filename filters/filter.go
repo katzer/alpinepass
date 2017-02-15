@@ -24,8 +24,14 @@ func FilterConfigs(configs []d.Config, context *cli.Context) []d.Config {
 }
 
 func applyFilter(configs []d.Config, filter Filter) []d.Config {
+	cleanedConfigs := []d.Config{}
+
 	for i := 0; i < len(configs); i++ {
 		configs[i] = filter.filter(configs[i])
+		if configs[i].IsValid {
+			cleanedConfigs = append(cleanedConfigs, configs[i])
+		}
 	}
-	return configs
+
+	return cleanedConfigs
 }

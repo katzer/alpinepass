@@ -27,5 +27,5 @@ type Config struct {
 	User        string `json:"user"`
 	Password    string `json:"password,omitempty"`
 	Host        string `json:"host,omitempty"`
-	IsValid     bool   `json:"-"`
+	IsValid     bool   `json:"valid"`
 }

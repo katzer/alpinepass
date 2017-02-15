@@ -1,7 +1,6 @@
 package filters
 
 import (
-	"fmt"
 	"strings"
 
 	d "github.com/appPlant/alpinepass/data"
@@ -17,7 +16,7 @@ type PropertyFilter struct {
 func (p PropertyFilter) filter(data d.Config) d.Config {
 	verifyFlags(p.Slices) //TODO verify only once and not for every Config
 	for i := 0; i < len(p.Slices); i++ {
-		filterProperty(p.Slices[i], data)
+		data = filterProperty(p.Slices[i], data)
 	}
 	return data
 }
@@ -26,11 +25,32 @@ func filterProperty(property string, data d.Config) d.Config {
 	var split = strings.Split(property, ":")
 	var key = split[0]
 	var value = split[1]
-	fmt.Println(key + " " + value)
 
+	//TODO rather use reflection?
 	switch key {
+	case "id":
+		if !strings.Contains(data.ID, value) {
+			data.IsValid = false
+		}
+	case "title":
+		if !strings.Contains(data.Title, value) {
+			data.IsValid = false
+		}
 	case "location":
 		if !strings.Contains(data.Location, value) {
+			data.IsValid = false
+		}
+
+	case "environment":
+		if !strings.Contains(data.Environment, value) {
+			data.IsValid = false
+		}
+	case "user":
+		if !strings.Contains(data.User, value) {
+			data.IsValid = false
+		}
+	case "host":
+		if !strings.Contains(data.Host, value) {
 			data.IsValid = false
 		}
 	}
