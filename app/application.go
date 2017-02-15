@@ -11,7 +11,7 @@ func RunApp() {
 	app := cli.NewApp()
 
 	app.Name = "alpinepass"
-	app.Version = "0.0.0"
+	app.Version = "0.0.1"
 	app.Author = "appPlant GmbH"
 	app.Usage = "Manage system environment information."
 

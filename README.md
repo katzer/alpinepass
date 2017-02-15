@@ -15,19 +15,15 @@ Options:
 
 -d Show debug messages during application execution.
 
--f=[filter|filter:filteroptions] Apply one or more filters. Filters are given as a list seperated by semicolons. A filter's options are separated by commas.
+-f [filter|key:value] Apply a filter. The falg can be used multiple to allow advanced filtering.
 
 -h Display this help message.
 
--i=[filepath] Define the input file. The file content must be YAML.
+-i [filepath] Define the input file. The file content must be YAML.
 
--n=[filename] Specify the output's file name. This does not influence the file extension since it depends on the output format which is defined with the -t option. The default file name is output.
-
--o=[json|yaml|keepass] Specify the output format.
+-o [filepath] Specify the output file. The file content will be JSON.
 
 -p Include passwords in the output.
-
--t=[directorypath] Define the output target directory. The default directory is the application directory.
 
 -v Print the application's version.
 ```
