@@ -10,6 +10,7 @@
 ## Libraries
 
 * [spew](https://github.com/davecgh/go-spew)
+* [logrus](github.com/Sirupsen/logrus)
 
 ## Tools
 
