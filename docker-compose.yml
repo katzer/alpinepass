@@ -1,9 +1,11 @@
 compile: &defaults
   build: .
   volumes:
-    - .:/code:rw
+    - .:/root/code:rw
   command: rake compile
-
+bintest:
+  <<: *defaults
+  command: /bin/sh -lc "rake test:bintest"
 shell:
   <<: *defaults
   command: sh -l
