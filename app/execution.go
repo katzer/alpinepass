@@ -17,11 +17,17 @@ func execute(context *cli.Context) error {
 	configs = filters.FilterConfigs(configs, context)
 
 	if context.GlobalBool("show") {
-		configsJSON, err := json.MarshalIndent(configs, "", "    ")
+		var configsJSON []byte
+		var err error
+		if context.GlobalBool("pretty") {
+			configsJSON, err = json.MarshalIndent(configs, "", "    ")
+		} else {
+			configsJSON, err = json.Marshal(configs)
+		}
 		util.CheckError(err)
 		fmt.Println(string(configsJSON))
 	} else {
-		io.WriteJSON(context.GlobalString("output"), configs)
+		io.WriteJSON(context.GlobalString("output"), configs, context.GlobalBool("pretty"))
 	}
 
 	return nil

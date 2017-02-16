@@ -16,12 +16,6 @@ func RunApp() {
 	app.Usage = "Manage system environment information."
 
 	app.Flags = []cli.Flag{
-		/*
-			cli.StringFlag{
-				Name:  "format, fo",
-				Usage: "Specify the output format.",
-			},
-		*/
 		cli.StringSliceFlag{
 			Name:  "filter, f",
 			Usage: "Filter configurations by name, type and more.",
@@ -37,6 +31,10 @@ func RunApp() {
 		cli.BoolFlag{
 			Name:  "passwords, p",
 			Usage: "Include passwords in the output.",
+		},
+		cli.BoolFlag{
+			Name:  "pretty, pr",
+			Usage: "Make the output more readable.",
 		},
 		cli.BoolFlag{
 			Name:  "show, s",
