@@ -3,6 +3,7 @@
 [![Travis CI Build Status](https://travis-ci.org/appPlant/alpinepass.svg?branch=master)](https://travis-ci.org/appPlant/alpinepass)
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/8uavdsappvon3gjh?svg=true)](https://ci.appveyor.com/project/EightBitBoy/alpinepass)
 [![Code Climate](https://codeclimate.com/github/appPlant/alpinepass/badges/gpa.svg)](https://codeclimate.com/github/appPlant/alpinepass)
+[![codebeat badge](https://codebeat.co/badges/35499bc6-3480-4e21-9e9e-29bb7d394bab)](https://codebeat.co/projects/github-com-appplant-alpinepass)
 
 A tool for managing system environments.
 
