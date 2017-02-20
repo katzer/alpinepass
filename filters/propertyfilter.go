@@ -3,6 +3,10 @@ package filters
 import (
 	"strings"
 
+	"regexp"
+
+	"fmt"
+
 	d "github.com/appPlant/alpinepass/data"
 	"github.com/appPlant/alpinepass/util"
 	"github.com/fatih/structs"
@@ -26,6 +30,9 @@ func filterProperty(property string, data d.Config) d.Config {
 	var key = split[0]
 	var value = split[1]
 
+	var regex = regexp.MustCompile(value)
+	fmt.Println(regex.MatchString(data.Location))
+
 	//TODO rather use reflection?
 	switch key {
 	case "id":
@@ -37,10 +44,9 @@ func filterProperty(property string, data d.Config) d.Config {
 			data.IsValid = false
 		}
 	case "location":
-		if !strings.Contains(data.Location, value) {
+		if !regex.MatchString(data.Location) {
 			data.IsValid = false
 		}
-
 	case "environment":
 		if !strings.Contains(data.Environment, value) {
 			data.IsValid = false
