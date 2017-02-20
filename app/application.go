@@ -18,7 +18,7 @@ func RunApp() {
 	app.Flags = []cli.Flag{
 		cli.StringSliceFlag{
 			Name:  "filter, f",
-			Usage: "Filter configurations by name, type and more.",
+			Usage: "Filter configurations by name, type and more. Syntax: -f \"[property]:[regex]\"",
 		},
 		cli.StringFlag{
 			Name:  "input, i",
