@@ -14,8 +14,6 @@ usage: alpinepass [options...]
 
 Options:
 
--d Show debug messages during application execution.
-
 -f [filter|key:value] Apply a filter. The falg can be used multiple to allow advanced filtering.
 
 -h Display this help message.
@@ -25,6 +23,10 @@ Options:
 -o [filepath] Specify the output file. The file content will be JSON.
 
 -p Include passwords in the output.
+
+-pr Format the output for better readability.
+
+-s Show the output in the console. An output file will not be written.
 
 -v Print the application's version.
 ```

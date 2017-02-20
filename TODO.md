@@ -1,5 +1,9 @@
 # TODO
 
+## Logic
+
+* Sort output by ID.
+
 ## Links
 
 * https://github.com/golang/go/wiki/GithubCodeLayout

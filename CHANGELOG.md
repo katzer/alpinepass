@@ -7,3 +7,4 @@
 * New "output" flag for specifying the output file.
 * New "passwords" flag for including passwords in the output.
 * New "filter" flag for filtering the input.
+* New "pretty" flag for formatting the output.
