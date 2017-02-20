@@ -33,7 +33,7 @@ func RunApp() {
 			Usage: "Include passwords in the output.",
 		},
 		cli.BoolFlag{
-			Name:  "pretty, pr",
+			Name:  "readable, r",
 			Usage: "Make the output more readable.",
 		},
 		cli.BoolFlag{

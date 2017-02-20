@@ -19,7 +19,7 @@ func execute(context *cli.Context) error {
 	if context.GlobalBool("show") {
 		var configsJSON []byte
 		var err error
-		if context.GlobalBool("pretty") {
+		if context.GlobalBool("readable") {
 			configsJSON, err = json.MarshalIndent(configs, "", "    ")
 		} else {
 			configsJSON, err = json.Marshal(configs)

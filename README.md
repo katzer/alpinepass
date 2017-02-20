@@ -24,7 +24,7 @@ Options:
 
 -p Include passwords in the output.
 
--pr Format the output for better readability.
+-r Format the output for better readability.
 
 -s Show the output in the console. An output file will not be written.
 
