@@ -5,8 +5,6 @@ import (
 
 	"regexp"
 
-	"fmt"
-
 	d "github.com/appPlant/alpinepass/data"
 	"github.com/appPlant/alpinepass/util"
 	"github.com/fatih/structs"
@@ -29,18 +27,16 @@ func filterProperty(property string, data d.Config) d.Config {
 	var split = strings.Split(property, ":")
 	var key = split[0]
 	var value = split[1]
-
 	var regex = regexp.MustCompile(value)
-	fmt.Println(regex.MatchString(data.Location))
 
 	//TODO rather use reflection?
 	switch key {
 	case "id":
-		if !strings.Contains(data.ID, value) {
+		if !regex.MatchString(data.ID) {
 			data.IsValid = false
 		}
 	case "title":
-		if !strings.Contains(data.Title, value) {
+		if !regex.MatchString(data.Title) {
 			data.IsValid = false
 		}
 	case "location":
@@ -48,15 +44,15 @@ func filterProperty(property string, data d.Config) d.Config {
 			data.IsValid = false
 		}
 	case "environment":
-		if !strings.Contains(data.Environment, value) {
+		if !regex.MatchString(data.Environment) {
 			data.IsValid = false
 		}
 	case "user":
-		if !strings.Contains(data.User, value) {
+		if !regex.MatchString(data.User) {
 			data.IsValid = false
 		}
 	case "host":
-		if !strings.Contains(data.Host, value) {
+		if !regex.MatchString(data.Host) {
 			data.IsValid = false
 		}
 	}
