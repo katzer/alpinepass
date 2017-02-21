@@ -111,6 +111,17 @@
 8. New "skip" flag for disabling input verification.
 
     ```
-	$ alpinepass -d
-	$ alpinepass -d s
+	$ alpinepass -d -r -s
+    [
+        {
+            "id": "B01.prod.server.PROD-App",
+            "title": "PROD DB",
+            "location": "B01",
+            "environment": "prod",
+            "user": "prodUserB01",
+			"host": "prodDatabase.B01"
+        }
+    ]
+	$ alpinepass -d -r
+    The host "prodDatabase.B01" does not match the naming convention "[environment]Db.[location]".
 	```
