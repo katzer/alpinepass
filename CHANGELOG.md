@@ -24,9 +24,7 @@
 
     ```
 	$ alpinepass -d
-	[{
-            "id": "B01.prod.server.PROD-App",
-            "title": "PROD App","location": "B01","environment": "prod","user": "prodUserB01"}]
+	[{"id": "B01.prod.server.PROD-App","title": "PROD App","location": "B01","environment": "prod","user": "prodUserB01"}]
     ```
 
 5. New "readable" flag for formatting the output.
@@ -39,8 +37,7 @@
             "title": "PROD App",
             "location": "B01",
             "environment": "prod",
-            "user": "prodUserB01",
-            "valid": true
+            "user": "prodUserB01"
         }
 	]
     ```
@@ -57,10 +54,48 @@
             "environment": "prod",
             "user": "prodUserB01",
 			"password": "prod_pw"
-            "valid": true
         }
 	]
 	```
 
-* New "filter" flag for filtering the input.
-* New "skip" flag for disabling input verification.
+7. New "filter" flag for filtering the input.
+
+    ```
+	$ alpinepass -d -p
+	[
+        {
+            "id": "B01.prod.server.PROD-App",
+            "title": "PROD App",
+            "location": "B01",
+            "environment": "prod",
+            "user": "prodUserB01",
+			"password": "prod_pw"
+        },
+		{
+            "id": "D02.prod.server.PROD-App",
+            "title": "PROD App",
+            "location": "D02",
+            "environment": "prod",
+            "user": "prodUserD02",
+			"password": "prod_pw"
+        }
+	]
+	$ alpinepass -d -p -f location:D02
+	[
+		{
+            "id": "D02.prod.server.PROD-App",
+            "title": "PROD App",
+            "location": "D02",
+            "environment": "prod",
+            "user": "prodUserD02",
+			"password": "prod_pw"
+        }
+	]
+	```
+
+8. New "skip" flag for disabling input verification.
+
+    ```
+	$ alpinepass -d
+	$ alpinepass -d s
+	```
