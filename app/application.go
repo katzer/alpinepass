@@ -16,6 +16,10 @@ func RunApp() {
 	app.Usage = "Manage system environment information."
 
 	app.Flags = []cli.Flag{
+		cli.BoolFlag{
+			Name:  "display, d",
+			Usage: "Display the output in the console. An output file will not be written. Use this for previewing the generated file.",
+		},
 		cli.StringSliceFlag{
 			Name:  "filter, f",
 			Usage: "Filter configurations by name, type and more. Syntax: -f \"[property]:[regex]\"",
@@ -37,8 +41,8 @@ func RunApp() {
 			Usage: "Make the output more readable.",
 		},
 		cli.BoolFlag{
-			Name:  "show, s",
-			Usage: "Show the output in the console. An output file will not be written. Use this for previewing the generated file.",
+			Name:  "skip, s",
+			Usage: "Skip the input validation.",
 		},
 	}
 

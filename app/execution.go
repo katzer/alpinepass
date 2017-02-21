@@ -16,7 +16,7 @@ func execute(context *cli.Context) error {
 	configs := io.ReadConfigs(context.GlobalString("input"))
 	configs = filters.FilterConfigs(configs, context)
 
-	if context.GlobalBool("show") {
+	if context.GlobalBool("display") {
 		var configsJSON []byte
 		var err error
 		if context.GlobalBool("readable") {
