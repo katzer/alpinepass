@@ -5,7 +5,11 @@
 1. Basic functionality. Read "input.yml" and write "output.json".
 
     ```
+	$ ls
+	input.yml
 	$ alpinepass
+	$ ls
+	output.json
     ```
 
 2. New "input" flag for specifying the input file.
@@ -31,7 +35,18 @@
 
     ```
 	$ alpinepass -d -r
-	[
+    [
+        {
+            "id": "B01.prod.server.PROD-App",
+            "title": "PROD App",
+            "location": "B01",
+            "environment": "prod",
+            "user": "prodUserB01"
+        }
+    ]
+	$ alpinepass -r
+	$ cat output.yml
+    [
         {
             "id": "B01.prod.server.PROD-App",
             "title": "PROD App",
