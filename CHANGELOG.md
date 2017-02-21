@@ -1,10 +1,16 @@
 # alpinepass
 
-## UNRELEASED
+## 0.0.1 (UNRELEASED)
 
-* Basic functionality. Read "input.yml" and write "output.json".
-* New "input" flag for specifying the input file.
-* New "output" flag for specifying the output file.
+1. Basic functionality. Read "input.yml" and write "output.json".
+    ```
+	$ alpinepass
+    ```
+2. New "input" flag for specifying the input file.
+    ```
+	$ alpinepass -i /path/to/input.yml
+    ```
+3. New "output" flag for specifying the output file.
 * New "passwords" flag for including passwords in the output.
 * New "filter" flag for filtering the input.
 * New "readable" flag for formatting the output.
