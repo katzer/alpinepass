@@ -9,7 +9,7 @@
 	input.yml
 	$ alpinepass
 	$ ls
-	output.json
+	input.yml output.json
     ```
 
 2. New "input" flag for specifying the input file.
@@ -24,7 +24,7 @@
 	$ alpinepass -o /path/to/output.json
     ```
 
-4. New "display" flag for previewing the output in the console.
+4. New "display" flag for previewing the output in the console. An output file will not be written.
 
     ```
 	$ alpinepass -d
