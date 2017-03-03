@@ -1,0 +1,14 @@
+compile: &defaults
+  dockerfile: Dockerfile.glibc-2.12
+  environment:
+    BUILD_CONFIG: build_config.glibc-2.12.rb
+bintest:
+  <<: *defaults
+clean:
+  <<: *defaults
+shell:
+  <<: *defaults
+release:
+  <<: *defaults
+getversion:
+  <<: *defaults
