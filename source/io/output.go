@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"io/ioutil"
 
-	d "github.com/appPlant/alpinepass/src/data"
-	"github.com/appPlant/alpinepass/src/util"
+	d "github.com/appPlant/alpinepass/source/data"
+	"github.com/appPlant/alpinepass/source/util"
 )
 
 func writeFile(data string, filename string) {

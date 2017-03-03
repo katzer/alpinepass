@@ -6,10 +6,10 @@ import (
 
 	"github.com/urfave/cli"
 
-	"github.com/appPlant/alpinepass/src/filters"
-	"github.com/appPlant/alpinepass/src/io"
-	"github.com/appPlant/alpinepass/src/util"
-	"github.com/appPlant/alpinepass/src/validation"
+	"github.com/appPlant/alpinepass/source/filters"
+	"github.com/appPlant/alpinepass/source/io"
+	"github.com/appPlant/alpinepass/source/util"
+	"github.com/appPlant/alpinepass/source/validation"
 )
 
 //execute reads the input, filters it and writes the output.
