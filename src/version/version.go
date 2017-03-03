@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/appPlant/alpinepass/util"
+	"github.com/appPlant/alpinepass/src/util"
 )
 
 func main() {
