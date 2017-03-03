@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/appPlant/alpinepass/util"
+	"github.com/appPlant/alpinepass/src/util"
 )
 
 func readFile(path string) string {

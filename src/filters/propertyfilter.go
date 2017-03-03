@@ -5,8 +5,8 @@ import (
 
 	"regexp"
 
-	d "github.com/appPlant/alpinepass/data"
-	"github.com/appPlant/alpinepass/util"
+	d "github.com/appPlant/alpinepass/src/data"
+	"github.com/appPlant/alpinepass/src/util"
 	"github.com/fatih/structs"
 )
 

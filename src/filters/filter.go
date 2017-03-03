@@ -1,7 +1,7 @@
 package filters
 
 import (
-	d "github.com/appPlant/alpinepass/data"
+	d "github.com/appPlant/alpinepass/src/data"
 	"github.com/urfave/cli"
 )
 

@@ -3,8 +3,8 @@ package io
 import (
 	yaml "gopkg.in/yaml.v2"
 
-	d "github.com/appPlant/alpinepass/data"
-	"github.com/appPlant/alpinepass/util"
+	d "github.com/appPlant/alpinepass/src/data"
+	"github.com/appPlant/alpinepass/src/util"
 )
 
 const separator string = "."
