@@ -25,3 +25,4 @@
 * binary stripping?
 * version output?
 * master input.yml!
+* https://github.com/nomuna/tentacle/blob/master/.travis.yml
