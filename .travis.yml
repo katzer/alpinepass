@@ -14,7 +14,7 @@ before_script:
 script:
   - scripts/bintest
 
-before_deploy:
+#before_deploy:
 #  - scripts/release
 #  - export BUILD_VERSION=`rake version`
 #  - sudo chmod -R 1777 releases
