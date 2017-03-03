@@ -2,10 +2,10 @@ package main
 
 import (
 	"os"
+
+	"github.com/appPlant/alpinepass/util"
 )
 
-const version string = "0.1.0foobar"
-
 func main() {
-	os.Stdout.WriteString(version)
+	os.Stdout.WriteString(util.Version)
 }

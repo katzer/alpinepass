@@ -3,6 +3,7 @@ package app
 import (
 	"os"
 
+	"github.com/appPlant/alpinepass/util"
 	"github.com/urfave/cli"
 )
 
@@ -11,7 +12,7 @@ func RunApp() {
 	app := cli.NewApp()
 
 	app.Name = "alpinepass"
-	app.Version = "0.0.1"
+	app.Version = util.Version
 	app.Author = "appPlant GmbH"
 	app.Usage = "Manage system environment information."
 
