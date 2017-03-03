@@ -1,0 +1,20 @@
+compile: &defaults
+  build: .
+  volumes:
+    - .:/root/code:rw
+  command: /bin/bash -c "rake compile"
+bintest:
+  <<: *defaults
+  command: /bin/bash -lc "rake test:bintest"
+clean:
+  <<: *defaults
+  command: /bin/bash -c "rake clean"
+release:
+  <<: *defaults
+  command: /bin/bash -c "rake release"
+shell:
+  <<: *defaults
+  command: /bin/bash -l
+getversion:
+  <<: *defaults
+  command: /bin/bash -c "rake version"
