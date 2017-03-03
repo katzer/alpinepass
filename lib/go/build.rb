@@ -40,7 +40,7 @@ module Go
       if OS.windows?
         "set GOOS=#{os}&&set GOARCH=#{arch}&&go get -v &&go build -i -ldflags=\"-s -X main.version=$(go run #{version_path}/*.go)\" -o #{binpath}/#{appname}"
       else
-        "GOOS=#{os} GOARCH=#{arch} go get -v && go build -i -ldflags=\"-s -X main.version=$(go run #{version_path}/*.go)\" -o #{binpath}/#{appname};"
+        "GOOS=#{os} GOARCH=#{arch} echo \"### GOPATH: ${GOPATH}\"&&echo \"### BINPATH: #{binpath}\" && go get -v && go build -i -ldflags=\"-s -X main.version=$(go run #{version_path}/*.go)\" -o #{binpath}/#{appname};"
       end
     end
   end

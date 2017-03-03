@@ -19,3 +19,9 @@
 ## Tools
 
 * [gox](github.com/mitchellh/gox)
+
+## Other
+
+* binary stripping?
+* version output?
+* master input.yml!
