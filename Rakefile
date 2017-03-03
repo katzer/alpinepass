@@ -16,7 +16,7 @@ def build_path
 end
 
 def src_path
-  "#{APP_ROOT}/src"
+  "#{APP_ROOT}"
 end
 
 def orbit_path
