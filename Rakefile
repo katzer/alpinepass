@@ -27,7 +27,7 @@ def version_path
   "#{src_path}/version"
 end
 
-APP_VERSION = `go run #{version_path}/*.go -v`.freeze
+APP_VERSION = `go get -v && go run #{version_path}/*.go -v`.freeze
 
 Dir.chdir('lib') { Dir['tasks/*.rake'].each { |file| load file } }
 
