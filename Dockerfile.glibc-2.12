@@ -6,3 +6,5 @@ RUN go get github.com/Sirupsen/logrus
 RUN go get github.com/rifflock/lfshook
 RUN go get github.com/lestrrat/go-file-rotatelogs
 RUN go get github.com/olekukonko/tablewriter
+
+RUN go get github.com/urfave/cli
