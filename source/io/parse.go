@@ -7,7 +7,8 @@ import (
 	"github.com/appPlant/alpinepass/source/util"
 )
 
-const separator string = "."
+//Separator is the character used for separating the parts of a generated ID.
+const Separator string = "_"
 
 func parseYaml(data string) d.YamlData {
 	yamlData := d.YamlData{}
@@ -18,9 +19,9 @@ func parseYaml(data string) d.YamlData {
 
 func createID(definition d.Definition) string {
 	id := ""
-	id = id + util.CleanString(definition.Location) + separator
-	id = id + util.CleanString(definition.Env) + separator
-	id = id + util.CleanString(definition.Type) + separator
+	id = id + util.CleanString(definition.Location) + Separator
+	id = id + util.CleanString(definition.Env) + Separator
+	id = id + util.CleanString(definition.Type) + Separator
 	id = id + util.CleanString(definition.Title)
 	return id
 }
