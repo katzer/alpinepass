@@ -1,3 +1,3 @@
 cd src
 go build -o alpinepass
-cp alpinepass ../alpinepass
+mv alpinepass ../alpinepass
