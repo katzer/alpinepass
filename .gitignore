@@ -56,3 +56,4 @@ build-iPhoneSimulator/
 /*.exe
 /.idea
 /src/alpinepass
+/src/version/version
