@@ -34,87 +34,87 @@ defs:
     tags:
       - Ubuntu
       - Indiana Jones
-  - <<: *prod_db
-    location: *Berlin
-    user: prodUserB01
-    password: prod_pw
-    url: proddb.B01
-    notes: host:proddb.B01
-    tags:
-      - MySQL
-  - <<: *int_db
-    location: *Berlin
-    user: intUserB01
-    password: int_pw
-    url: intdb.B01
-    notes: host:intdb.B01
-    tags:
-      - MySQL
-  - <<: *prod_app
-    location: &Dresden D02
-    user: prodUserD02
-    password: prod_pw
-    url: production.D02
-    notes: host:prod01vm.D02
-    tags:
-      - Windows
-      - Batman
-  - <<: *int_app
-    location: *Dresden
-    user: intUserD02
-    password: int_pw
-    url: integration.D02
-    notes: host:int01vm.D02
-    tags:
-      - Windows
-      - Batman
-  - <<: *prod_db
-    location: *Dresden
-    user: prodUserD02
-    password: prod_pw
-    url: proddb.D02
-    notes: host:proddb.D02
-    tags:
-      - DB2
-  - <<: *int_db
-    location: *Dresden
-    user: intUserD02
-    password: int_pw
-    url: intdb.D02
-    notes: host:intdb.D02
-    tags:
-      - DB2
-  - <<: *prod_app
-    location: &Leipzig L03
-    user: prodUserL03
-    password: prod_pw
-    url: production.L03
-    notes: host:prod01vm.L03
-    tags:
-      - FreeBSD
-      - Han Solo
-  - <<: *int_app
-    location: *Leipzig
-    user: intUserL03
-    password: int_pw
-    url: integration.L03
-    notes: host:int01vm.L03
-    tags:
-      - FreeBSD
-      - Han Solo
-  - <<: *prod_db
-    location: *Leipzig
-    user: prodUserL03
-    password: prod_pw
-    url: proddb.L03
-    notes: host:proddb.L03
-    tags:
-      - Neo4j
-  - <<: *int_db
-    location: *Leipzig
-    user: intUserL03
-    password: int_pw
-    url: intdb.L03
-    notes: host:intdb.L03
-    tags:
-      - Neo4j
+  # - <<: *prod_db
+  #   location: *Berlin
+  #   user: prodUserB01
+  #   password: prod_pw
+  #   url: proddb.B01
+  #   notes: host:proddb.B01
+  #   tags:
+  #     - MySQL
+  # - <<: *int_db
+  #   location: *Berlin
+  #   user: intUserB01
+  #   password: int_pw
+  #   url: intdb.B01
+  #   notes: host:intdb.B01
+  #   tags:
+  #     - MySQL
+  # - <<: *prod_app
+  #   location: &Dresden D02
+  #   user: prodUserD02
+  #   password: prod_pw
+  #   url: production.D02
+  #   notes: host:prod01vm.D02
+  #   tags:
+  #     - Windows
+  #     - Batman
+  # - <<: *int_app
+  #   location: *Dresden
+  #   user: intUserD02
+  #   password: int_pw
+  #   url: integration.D02
+  #   notes: host:int01vm.D02
+  #   tags:
+  #     - Windows
+  #     - Batman
+  # - <<: *prod_db
+  #   location: *Dresden
+  #   user: prodUserD02
+  #   password: prod_pw
+  #   url: proddb.D02
+  #   notes: host:proddb.D02
+  #   tags:
+  #     - DB2
+  # - <<: *int_db
+  #   location: *Dresden
+  #   user: intUserD02
+  #   password: int_pw
+  #   url: intdb.D02
+  #   notes: host:intdb.D02
+  #   tags:
+  #     - DB2
+  # - <<: *prod_app
+  #   location: &Leipzig L03
+  #   user: prodUserL03
+  #   password: prod_pw
+  #   url: production.L03
+  #   notes: host:prod01vm.L03
+  #   tags:
+  #     - FreeBSD
+  #     - Han Solo
+  # - <<: *int_app
+  #   location: *Leipzig
+  #   user: intUserL03
+  #   password: int_pw
+  #   url: integration.L03
+  #   notes: host:int01vm.L03
+  #   tags:
+  #     - FreeBSD
+  #     - Han Solo
+  # - <<: *prod_db
+  #   location: *Leipzig
+  #   user: prodUserL03
+  #   password: prod_pw
+  #   url: proddb.L03
+  #   notes: host:proddb.L03
+  #   tags:
+  #     - Neo4j
+  # - <<: *int_db
+  #   location: *Leipzig
+  #   user: intUserL03
+  #   password: int_pw
+  #   url: intdb.L03
+  #   notes: host:intdb.L03
+  #   tags:
+  #     - Neo4j

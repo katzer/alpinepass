@@ -41,12 +41,10 @@ func RunApp() {
 			Name:  "readable, r",
 			Usage: "Make the output more readable.",
 		},
-		/*
-			cli.BoolFlag{
-				Name:  "skip, s",
-				Usage: "Skip the input validation.",
-			},
-		*/
+		cli.BoolFlag{
+			Name:  "skip, s",
+			Usage: "Skip the input validation.",
+		},
 	}
 
 	app.Action = func(context *cli.Context) error {
