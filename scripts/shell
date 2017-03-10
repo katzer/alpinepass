@@ -1,0 +1,2 @@
+docker-compose -f docker-compose.common.yml -f docker-compose.glibc-2.14.yml build shell
+docker-compose -f docker-compose.common.yml -f docker-compose.glibc-2.14.yml run shell
