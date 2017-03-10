@@ -1,7 +1,7 @@
 package validation
 
 import (
-	"github.com/appPlant/alpinepass/source/data"
+	"github.com/appPlant/alpinepass/src/data"
 )
 
 //Validate validates the input.

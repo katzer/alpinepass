@@ -1,6 +1,6 @@
 package filters
 
-import d "github.com/appPlant/alpinepass/source/data"
+import d "github.com/appPlant/alpinepass/src/data"
 
 // PasswordFilter removes passwords from a Config.
 type PasswordFilter struct {

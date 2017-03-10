@@ -3,8 +3,8 @@ package io
 import (
 	yaml "gopkg.in/yaml.v2"
 
-	d "github.com/appPlant/alpinepass/source/data"
-	"github.com/appPlant/alpinepass/source/util"
+	d "github.com/appPlant/alpinepass/src/data"
+	"github.com/appPlant/alpinepass/src/util"
 )
 
 //Separator is the character used for separating the parts of a generated ID.

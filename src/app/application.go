@@ -3,7 +3,7 @@ package app
 import (
 	"os"
 
-	"github.com/appPlant/alpinepass/source/util"
+	"github.com/appPlant/alpinepass/src/util"
 	"github.com/urfave/cli"
 )
 
