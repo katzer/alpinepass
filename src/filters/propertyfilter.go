@@ -10,6 +10,9 @@ import (
 	"github.com/fatih/structs"
 )
 
+//Separator is tha character used for separating filter keys and values.
+const Separator string = "="
+
 //PropertyFilter allows filtering a Config for the content of its properties.
 type PropertyFilter struct {
 	Slices []string
@@ -24,7 +27,7 @@ func (p PropertyFilter) filter(data d.Config) d.Config {
 }
 
 func filterProperty(property string, data d.Config) d.Config {
-	var split = strings.Split(property, ":")
+	var split = strings.Split(property, Separator)
 	var key = split[0]
 	var value = split[1]
 	var regex = regexp.MustCompile(value)
@@ -66,17 +69,17 @@ func verifyFlags(flags []string) {
 		flag := flags[i]
 
 		//Do some simple checks.
-		if !strings.Contains(flag, ":") {
-			util.ThrowError("The filter does not contain ':'! Flag: " + flag)
+		if !strings.Contains(flag, Separator) {
+			util.ThrowError("The filter does not contain '" + Separator + "'! Flag: " + flag)
 		}
-		if strings.Count(flag, ":") > 1 {
-			util.ThrowError("The filter contains too many ':'! Flag: " + flag)
+		if strings.Count(flag, Separator) > 1 {
+			util.ThrowError("The filter contains too many '" + Separator + "'! Flag: " + flag)
 		}
 
 		//check that the key part of a flag matches the fields available in struct Config.
 		data := d.Config{}
 		fieldNames := structs.Names(data)
-		key := strings.ToLower(strings.Split(flag, ":")[0])
+		key := strings.ToLower(strings.Split(flag, Separator)[0])
 		isContained := false
 		for j := 0; j < len(fieldNames); j++ {
 			if key == strings.ToLower(fieldNames[j]) {
