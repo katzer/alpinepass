@@ -2,9 +2,12 @@ FROM appplant/go-cli:glibc-2.14
 MAINTAINER Sebastian Katzer "haertel@appplant.de"
 
 RUN go get github.com/urfave/cli
+RUN go get github.com/fatih/structs
+RUN go get gopkg.in/yaml.v2
+
 
 RUN mkdir $GOPATH/src/github.com/appPlant
 RUN mkdir $GOPATH/src/github.com/appPlant/alpinepass
 
 ENV ORBIT_HOME $APP_HOME/bintest/orbit
-ENV ALPINEPASS_HOME $GOPATH/src/github.com/appPlant/alpinepass
+ENV AP_HOME $GOPATH/src/github.com/appPlant/alpinepass

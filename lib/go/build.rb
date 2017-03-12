@@ -40,7 +40,7 @@ module Go
       if OS.windows?
         "set GOOS=#{os}&&set GOARCH=#{arch}&&go build -i -ldflags=\"-s -X main.version=$(go run #{version_path}/*.go)\" -o #{binpath}/#{appname}"
       else
-        "GOOS=#{os} GOARCH=#{arch} cp -r . $ALPINEPASS_HOME && go build -i -ldflags=\"-s -X main.version=$(go run #{version_path}/*.go)\" -o #{binpath}/#{appname};"
+        "GOOS=#{os} GOARCH=#{arch} ls && cp -r ./ $AP_HOME/src/ && go build -i -ldflags=\"-s -X main.version=$(go run #{version_path}/*.go)\" -o #{binpath}/#{appname};"
       end
     end
   end
