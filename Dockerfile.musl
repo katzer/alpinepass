@@ -1,10 +1,12 @@
 FROM appplant/go-cli:musl
-MAINTAINER Sebastian Katzer "katzer@appplant.de"
+MAINTAINER Stefan Härtel "haertel@appplant.de"
 
-RUN go get gopkg.in/hypersleep/easyssh.v0
-RUN go get github.com/Sirupsen/logrus
-RUN go get github.com/rifflock/lfshook
-RUN go get github.com/lestrrat/go-file-rotatelogs
-RUN go get github.com/olekukonko/tablewriter
+RUN go get github.com/urfave/cli
+RUN go get github.com/fatih/structs
+RUN go get gopkg.in/yaml.v2
+
+RUN mkdir $GOPATH/src/github.com/appPlant
+RUN mkdir $GOPATH/src/github.com/appPlant/alpinepass
 
 ENV ORBIT_HOME $APP_HOME/bintest/orbit
+ENV AP_HOME $GOPATH/src/github.com/appPlant/alpinepass

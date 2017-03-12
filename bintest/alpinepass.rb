@@ -5,3 +5,4 @@ class TestAlpinepass < Test::Unit::TestCase
 	def test_basic
 		puts 'Hello, world!'
 	end
+end

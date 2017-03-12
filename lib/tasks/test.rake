@@ -10,13 +10,13 @@ namespace :test do
 
     Go::Build.builds.each do |gb|
       next unless gb.bintest?
-      test_bin_path = "#{orbit_path}/bin/ski"
+      test_bin_path = "#{orbit_path}/bin/alpinepass"
       bin_path      = "#{build_path}/#{gb.name}/bin"
 
       test_bin_path << '.exe' if OS.windows?
 
       cp_r bin_path, orbit_path
-      sh "ruby #{APP_ROOT}/bintest/ski.rb #{test_bin_path}"
+      sh "ruby #{APP_ROOT}/bintest/alpinepass.rb #{test_bin_path}"
     end
   end
 end
