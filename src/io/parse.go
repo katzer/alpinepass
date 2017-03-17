@@ -34,10 +34,15 @@ func createConfig(def d.Definition) d.Config {
 	} else {
 		config.ID = createID(def)
 	}
-	config.Location = def.Location
-	config.Environment = def.Env
+
+	config.Name = def.Name
+	config.Type = def.Type
 	config.User = def.User
 	config.Password = def.Password
+	config.URL = def.URL
+
+	config.Location = def.Location
+	config.Environment = def.Env
 
 	config.IsValid = true
 

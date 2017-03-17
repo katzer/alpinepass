@@ -16,8 +16,8 @@ refs:
 defs:
   - <<: *prodApp
     location: &Berlin B01
-    id: prodApp.B01
-    name: prodApp.B01
+    id: prodAppB01
+    name: prodAppB01
     user: prodUserB01
     password: prod_pw
     url: production.B01

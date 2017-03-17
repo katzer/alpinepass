@@ -38,10 +38,6 @@ func filterProperty(property string, data d.Config) d.Config {
 		if !regex.MatchString(data.ID) {
 			data.IsValid = false
 		}
-	case "title":
-		if !regex.MatchString(data.Title) {
-			data.IsValid = false
-		}
 	case "location":
 		if !regex.MatchString(data.Location) {
 			data.IsValid = false
