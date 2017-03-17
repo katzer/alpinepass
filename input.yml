@@ -6,7 +6,7 @@ refs:
     type: *server
     env: &int int
   ProdDb: &prodDb
-    type: &db database
+    type: &db db
     env: *prod
   IntDb: &intDb
     type: *db
@@ -42,6 +42,7 @@ defs:
     url: proddb.B01
     server: DBB01
     db: PROD_BO1
+    host: PROD_DB_HOST_B01
   #   notes: foo
   #   tags:
   #     - MySQL
