@@ -43,7 +43,7 @@ func filterProperty(property string, data d.Config) d.Config {
 			data.IsValid = false
 		}
 	case "environment":
-		if !regex.MatchString(data.Environment) {
+		if !regex.MatchString(data.Env) {
 			data.IsValid = false
 		}
 	case "user":

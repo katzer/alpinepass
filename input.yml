@@ -2,7 +2,7 @@ refs:
   ProdApp: &prodApp
     type: &server server
     env: &prod prod
-  IntApp: &int_app
+  IntApp: &intApp
     type: *server
     env: &int int
   # ProdDb: &prod_db
@@ -17,22 +17,23 @@ defs:
   - <<: *prodApp
     location: &Berlin B01
     id: prodAppB01
-    name: prodAppB01
+    name: MyProdAppB01
     user: prodUserB01
     password: prod_pw
     url: production.B01
     # tags:
     #   - Ubuntu
     #   - Indiana Jones
-  # - <<: *int_app
-  #   location: *Berlin
-  #   user: intUserB01
-  #   password: int_pw
-  #   url: integration.B01
-  #   notes: host:int01vm.B01
-  #   tags:
-  #     - Ubuntu
-  #     - Indiana Jones
+  - <<: *intApp
+    location: *Berlin
+    id: intAppB01
+    name: MyIntAppB01
+    user: intUserB01
+    password: int_pw
+    url: integration.B01
+    # tags:
+    #   - Ubuntu
+    #   - Indiana Jones
   # - <<: *prod_db
   #   location: *Berlin
   #   user: prodUserB01

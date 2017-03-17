@@ -42,7 +42,7 @@ func createConfig(def d.Definition) d.Config {
 	config.URL = def.URL
 
 	config.Location = def.Location
-	config.Environment = def.Env
+	config.Env = def.Env
 
 	config.IsValid = true
 
