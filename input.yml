@@ -1,39 +1,38 @@
 refs:
-  ProdApp: &prod_app
-    title: "PROD App"
+  ProdApp: &prodApp
     type: &server server
     env: &prod prod
   IntApp: &int_app
-    title: "INT App"
     type: *server
     env: &int int
-  ProdDb: &prod_db
-    title: "PROD DB"
-    type: &db database
-    env: *prod
-  IntDb: &int_db
-    title: "INT DB"
-    type: *db
-    env: *int
+  # ProdDb: &prod_db
+  #   title: "PROD DB"
+  #   type: &db database
+  #   env: *prod
+  # IntDb: &int_db
+  #   title: "INT DB"
+  #   type: *db
+  #   env: *int
 defs:
-  - <<: *prod_app
+  - <<: *prodApp
     location: &Berlin B01
+    id: prodApp.B01
+    name: prodApp.B01
     user: prodUserB01
     password: prod_pw
     url: production.B01
-    notes: host:prod01vm.B01
-    tags:
-      - Ubuntu
-      - Indiana Jones
-  - <<: *int_app
-    location: *Berlin
-    user: intUserB01
-    password: int_pw
-    url: integration.B01
-    notes: host:int01vm.B01
-    tags:
-      - Ubuntu
-      - Indiana Jones
+    # tags:
+    #   - Ubuntu
+    #   - Indiana Jones
+  # - <<: *int_app
+  #   location: *Berlin
+  #   user: intUserB01
+  #   password: int_pw
+  #   url: integration.B01
+  #   notes: host:int01vm.B01
+  #   tags:
+  #     - Ubuntu
+  #     - Indiana Jones
   # - <<: *prod_db
   #   location: *Berlin
   #   user: prodUserB01

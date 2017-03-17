@@ -28,8 +28,12 @@ func createID(definition d.Definition) string {
 
 func createConfig(def d.Definition) d.Config {
 	config := d.Config{}
-	config.ID = createID(def)
-	config.Title = def.Title
+
+	if def.Id != "" {
+		config.ID = def.Id
+	} else {
+		config.ID = createID(def)
+	}
 	config.Location = def.Location
 	config.Environment = def.Env
 	config.User = def.User

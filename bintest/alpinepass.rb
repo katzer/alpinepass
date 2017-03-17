@@ -7,11 +7,12 @@ PATH = { 'PATH' => "#{File.expand_path('tools', __dir__)}:#{ENV['PATH']}"  }
 class TestAlpinepass < Test::Unit::TestCase
 	def test_run
 		output, error, status = Open3.capture3(PATH, BIN)
-		assert_true status.success?, 'Process did not exit cleanly'
 		check_error(output, error, 'run')
+		assert_true status.success?, 'Process did not exit cleanly'
 	end
 end
 
+#there should be no error
 def check_error(output, error, test_name)
   return if error.empty?
   puts "test: #{test_name}"
@@ -19,6 +20,7 @@ def check_error(output, error, test_name)
   puts "error: #{error}"
 end
 
+#there should be an error
 def check_no_error(output, error, test_name)
   return unless error.empty?
   puts "test: #{test_name}"

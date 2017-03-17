@@ -2,15 +2,19 @@ package data
 
 // Definition stores information about a system, used for importing data.
 type Definition struct {
-	Title    string
-	Type     string
+	Id   string
+	Name string
+	Type string
+	User string
+	URL  string
+
 	Env      string
 	Location string
-	User     string
 	Password string
-	URL      string
 	Notes    string
 	Tags     []string
+
+	Title string //obsolete
 }
 
 // YamlData stores information about all systems, used for importing data.
