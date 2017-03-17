@@ -5,14 +5,12 @@ refs:
   IntApp: &intApp
     type: *server
     env: &int int
-  # ProdDb: &prod_db
-  #   title: "PROD DB"
-  #   type: &db database
-  #   env: *prod
-  # IntDb: &int_db
-  #   title: "INT DB"
-  #   type: *db
-  #   env: *int
+  ProdDb: &prodDb
+    type: &db database
+    env: *prod
+  IntDb: &intDb
+    type: *db
+    env: *int
 defs:
   - <<: *prodApp
     location: &Berlin B01
@@ -31,15 +29,20 @@ defs:
     user: intUserB01
     password: int_pw
     url: integration.B01
+    # notes: foo
     # tags:
     #   - Ubuntu
     #   - Indiana Jones
-  # - <<: *prod_db
-  #   location: *Berlin
-  #   user: prodUserB01
-  #   password: prod_pw
-  #   url: proddb.B01
-  #   notes: host:proddb.B01
+  - <<: *prodDb
+    location: *Berlin
+    id: prodDbB01
+    name: MyProdDbB01
+    user: prodUserB01
+    password: prod_pw
+    url: proddb.B01
+    server: DBB01
+    db: PROD_BO1
+  #   notes: foo
   #   tags:
   #     - MySQL
   # - <<: *int_db

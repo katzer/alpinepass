@@ -2,17 +2,20 @@ package data
 
 // Definition stores information about a system, used for importing data.
 type Definition struct {
-	Id   string
-	Name string
-	Type string
-	User string
-	URL  string
+	ID       string
+	Name     string
+	Type     string
+	User     string
+	Password string
+	URL      string
+	Server   string
+	DB       string
 
 	Env      string
 	Location string
-	Password string
-	Notes    string
-	Tags     []string
+
+	Notes string   //TODO
+	Tags  []string //TODO
 
 	Title string //obsolete
 }
@@ -30,8 +33,11 @@ type Config struct {
 	User     string `json:"user"`
 	Password string `json:"password,omitempty"`
 	URL      string `json:"url"`
-	Location string `json:"location"`
+	Server   string `json:"server,omitempty"`
+	DB       string `json:"db,omitempty"`
+
 	Env      string `json:"env"`
-	Host     string `json:"host,omitempty"`
-	IsValid  bool   `json:"-"`
+	Location string `json:"location"`
+
+	IsValid bool `json:"-"`
 }

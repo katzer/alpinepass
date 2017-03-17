@@ -32,7 +32,7 @@ func filterProperty(property string, data d.Config) d.Config {
 	var value = split[1]
 	var regex = regexp.MustCompile(value)
 
-	//TODO rather use reflection?
+	//TODO rather use reflection!
 	switch key {
 	case "id":
 		if !regex.MatchString(data.ID) {
@@ -48,10 +48,6 @@ func filterProperty(property string, data d.Config) d.Config {
 		}
 	case "user":
 		if !regex.MatchString(data.User) {
-			data.IsValid = false
-		}
-	case "host":
-		if !regex.MatchString(data.Host) {
 			data.IsValid = false
 		}
 	}

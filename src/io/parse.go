@@ -27,10 +27,12 @@ func createID(definition d.Definition) string {
 }
 
 func createConfig(def d.Definition) d.Config {
+	//TODO check for mandatory fields in Definition!
+
 	config := d.Config{}
 
-	if def.Id != "" {
-		config.ID = def.Id
+	if def.ID != "" {
+		config.ID = def.ID
 	} else {
 		config.ID = createID(def)
 	}
@@ -40,6 +42,8 @@ func createConfig(def d.Definition) d.Config {
 	config.User = def.User
 	config.Password = def.Password
 	config.URL = def.URL
+	config.Server = def.Server
+	config.DB = def.DB
 
 	config.Location = def.Location
 	config.Env = def.Env
