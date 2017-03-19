@@ -46,6 +46,7 @@ func createConfig(def d.Definition) d.Config {
 	config.DB = def.DB
 	config.Host = def.Host
 	config.Port = def.Port
+	config.SID = def.SID
 
 	config.Location = def.Location
 	config.Env = def.Env
