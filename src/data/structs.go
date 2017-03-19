@@ -10,6 +10,7 @@ type Definition struct {
 	URL      string
 	Server   string
 	DB       string
+	Host     string
 
 	Env      string
 	Location string
@@ -35,6 +36,7 @@ type Config struct {
 	URL      string `json:"url"`
 	Server   string `json:"server,omitempty"`
 	DB       string `json:"db,omitempty"`
+	Host     string `json:"host,omitempty"`
 
 	Env      string `json:"env"`
 	Location string `json:"location"`
