@@ -11,6 +11,7 @@ type Definition struct {
 	Server   string
 	DB       string
 	Host     string
+	Port     string
 
 	Env      string
 	Location string
@@ -37,6 +38,7 @@ type Config struct {
 	Server   string `json:"server,omitempty"`
 	DB       string `json:"db,omitempty"`
 	Host     string `json:"host,omitempty"`
+	Port     string `json:"port,omitempty"`
 
 	Env      string `json:"env"`
 	Location string `json:"location"`
