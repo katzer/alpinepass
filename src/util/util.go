@@ -13,7 +13,7 @@ func CheckError(err error) {
 }
 
 // Filler is used to replace spaces in strings.
-const Filler string = "-"
+const Filler string = "_"
 
 //CleanString removes whitespace in string.
 func CleanString(s string) string {
