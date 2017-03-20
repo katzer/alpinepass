@@ -1,6 +1,10 @@
 # alpinepass
 
-## 0.0.1 (UNRELEASED)
+## 0.1.1 - UNRELEASED
+
+1. Adjust the release script.
+
+## 0.1.0 - 2017-03-20
 
 1. Basic functionality. Read "input.yml" and write "output.json".
 
