@@ -1,9 +1,5 @@
 # TODO
 
-## Logic
-
-* Sort output by ID.
-
 ## Links
 
 * https://github.com/golang/go/wiki/GithubCodeLayout
@@ -23,6 +19,9 @@
 ## Other
 
 * binary stripping?
-* version output?
 * master input.yml!
 * https://github.com/nomuna/tentacle/blob/master/.travis.yml
+* https://onsi.github.io/ginkgo/
+* http://agouti.org/
+* http://onsi.github.io/gomega/
+* !!! https://github.com/stretchr/testify
