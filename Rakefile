@@ -27,7 +27,7 @@ def version_path
   "#{src_path}/version"
 end
 
-APP_VERSION = `cp -r ./ $AP_HOME/ && go run #{version_path}/*.go -v`.freeze
+APP_VERSION = `cp -r ./src $AP_HOME/src && go run #{version_path}/*.go -v`.freeze
 puts '###--- alpinepass VERSION: ' + APP_VERSION
 
 Dir.chdir('lib') { Dir['tasks/*.rake'].each { |file| load file } }
