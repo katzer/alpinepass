@@ -2,6 +2,7 @@ package util
 
 import "strings"
 import "github.com/appPlant/alpinepass/src/data"
+import "encoding/json"
 
 import "os"
 import "fmt"
@@ -23,7 +24,6 @@ func CleanString(s string) string {
 
 //ThrowError prints the error information and exits the application.
 func ThrowError(message string) {
-	//TODO read about Go error handling and use this.
 	os.Stderr.WriteString(message)
 	fmt.Println()
 	os.Exit(-1)
@@ -31,9 +31,14 @@ func ThrowError(message string) {
 
 //ThrowConfigError prints the error, some information about a Config and exits the application.
 func ThrowConfigError(message string, config data.Config) {
-	//TODO read about Go error handling and use this.
+	var configJSON []byte
+	var err error
+	configJSON, err = json.MarshalIndent(config, "", "    ")
+	CheckError(err)
+
 	os.Stderr.WriteString(message)
-	//TODO pint out config
+	fmt.Println()
+	os.Stderr.WriteString(string(configJSON))
 	fmt.Println()
 	os.Exit(-1)
 }

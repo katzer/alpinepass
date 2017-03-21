@@ -13,12 +13,20 @@ func writeFile(data string, filename string) {
 	util.CheckError(err)
 }
 
-func ConfigToJSON(config d.Config) {
+func ConfigToJSON(config d.Config, pretty bool) {
 
 }
 
-func ConfigsToJSON(configs []d.Config) {
-
+func ConfigsToJSON(configs []d.Config, pretty bool) string {
+	var configsJSON []byte
+	var err error
+	if pretty {
+		configsJSON, err = json.MarshalIndent(configs, "", "    ")
+	} else {
+		configsJSON, err = json.Marshal(configs)
+	}
+	util.CheckError(err)
+	return string(configsJSON)
 }
 
 //WriteJSON writes Config to a file in JSON format.
