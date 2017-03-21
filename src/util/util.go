@@ -30,7 +30,7 @@ func ThrowError(message string) {
 }
 
 //ThrowConfigError prints the error, some information about a Config and exits the application.
-func ThrowConfigError(message string, config data.Config) {
+func ThrowConfigError(config data.Config, message string) {
 	var configJSON []byte
 	var err error
 	configJSON, err = json.MarshalIndent(config, "", "    ")
@@ -45,6 +45,7 @@ func ThrowConfigError(message string, config data.Config) {
 
 //StringInArray checks if a string is contained in an array.
 func StringInArray(item string, array []string) bool {
+	//TODO everything to lower case
 	for i := 0; i < len(array); i++ {
 		if item == array[i] {
 			return true
