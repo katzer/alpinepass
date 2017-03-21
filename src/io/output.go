@@ -13,6 +13,14 @@ func writeFile(data string, filename string) {
 	util.CheckError(err)
 }
 
+func ConfigToJSON(config d.Config) {
+
+}
+
+func ConfigsToJSON(configs []d.Config) {
+
+}
+
 //WriteJSON writes Config to a file in JSON format.
 func WriteJSON(path string, configs []d.Config, pretty bool) {
 	if path == "" {

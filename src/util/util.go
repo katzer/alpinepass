@@ -1,6 +1,7 @@
 package util
 
 import "strings"
+import "github.com/appPlant/alpinepass/src/data"
 
 import "os"
 import "fmt"
@@ -24,6 +25,15 @@ func CleanString(s string) string {
 func ThrowError(message string) {
 	//TODO read about Go error handling and use this.
 	os.Stderr.WriteString(message)
+	fmt.Println()
+	os.Exit(-1)
+}
+
+//ThrowConfigError prints the error, some information about a Config and exits the application.
+func ThrowConfigError(message string, config data.Config) {
+	//TODO read about Go error handling and use this.
+	os.Stderr.WriteString(message)
+	//TODO pint out config
 	fmt.Println()
 	os.Exit(-1)
 }
