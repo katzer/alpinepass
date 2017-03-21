@@ -2,11 +2,11 @@ namespace :test do
   desc 'run integration tests'
   task bintest: [:compile] do
     config_path = "#{orbit_path}/config"
-    ssh_path    = "#{orbit_path}/config/ssh"
+    #ssh_path    = "#{orbit_path}/config/ssh"
 
     mkdir_p config_path
-    mkdir_p ssh_path
-    cp '/root/.ssh/orbit.key', ssh_path
+    #mkdir_p ssh_path
+    #cp '/root/.ssh/orbit.key', ssh_path
 
     Go::Build.builds.each do |gb|
       next unless gb.bintest?
