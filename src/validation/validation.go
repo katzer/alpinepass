@@ -13,7 +13,7 @@ func Validate(configs []data.Config) {
 }
 
 func verifyType(config data.Config) {
-	if config.Type != "db" || config.Type != "server" || config.Type != "web" {
+	if !util.StringInArray(config.Type, []string{"db", "server", "web"}) {
 		util.ThrowConfigError("The Config has an invalid type!", config)
 	}
 }
