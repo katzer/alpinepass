@@ -42,3 +42,13 @@ func ThrowConfigError(message string, config data.Config) {
 	fmt.Println()
 	os.Exit(-1)
 }
+
+//StringInArray checks if a string is contained in an array.
+func StringInArray(item string, array []string) bool {
+	for i := 0; i < len(array); i++ {
+		if item == array[i] {
+			return true
+		}
+	}
+	return false
+}
