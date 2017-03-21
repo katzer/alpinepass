@@ -4,17 +4,17 @@ import (
 	"encoding/json"
 	"io/ioutil"
 
-	d "github.com/appPlant/alpinepass/src/data"
+	"github.com/appPlant/alpinepass/src/data"
 	"github.com/appPlant/alpinepass/src/util"
 )
 
-func writeFile(data string, filename string) {
-	err := ioutil.WriteFile(filename, []byte(data), 0644)
+func writeFile(filedata string, filename string) {
+	err := ioutil.WriteFile(filename, []byte(filedata), 0644)
 	util.CheckError(err)
 }
 
 //WriteJSON writes Config to a file in JSON format.
-func WriteJSON(path string, configs []d.Config, pretty bool) {
+func WriteJSON(path string, configs []data.Config, pretty bool) {
 	if path == "" {
 		path = "output.json"
 	}
