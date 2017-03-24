@@ -2,6 +2,7 @@ package filters
 
 import (
 	"reflect"
+	"regexp"
 	"strings"
 
 	"fmt"
@@ -28,19 +29,29 @@ func (p PropertyFilter) filter(data d.Config) d.Config {
 }
 
 func filterProperty(property string, data d.Config) d.Config {
-	//var split = strings.Split(property, Separator)
-	//var key = split[0]
-	//var value = split[1]
-	//var regex = regexp.MustCompile(value)
+	var split = strings.Split(property, Separator)
+	var key = split[0]
+	var value = split[1]
+	var regex = regexp.MustCompile(value)
 
-	fmt.Println("###----")
+	//TODO check that key exists in Config field
+
 	t := reflect.ValueOf(data)
-	fmt.Println(t)
+
+	field := ""
 	for i := 0; i < t.NumField(); i++ {
-		//fmt.Println(t.Field(i))
-		fmt.Println(t.Type().Field(i).Name)
+		fieldName := t.Type().Field(i).Name
+		if strings.ToLower(fieldName) == key {
+			field = fieldName
+			fmt.Println(field)
+		}
 	}
-	fmt.Println("###----")
+	//TODO get the field value
+	fieldValue := ""
+
+	if !regex.MatchString(fieldValue) {
+		data.IsValid = false
+	}
 	return data
 }
 
