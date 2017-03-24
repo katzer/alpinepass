@@ -52,7 +52,6 @@ func verifyCommonFields(config data.Config) string {
 	if config.URL == "" {
 		return "The Config has no URL!"
 	}
-
 	return ""
 }
 
@@ -64,6 +63,21 @@ func verifyType(config data.Config) string {
 }
 
 func verifyDbFields(config data.Config) string {
+	if config.Server == "" {
+		return "The Config has no Server!"
+	}
+	if config.DB == "" {
+		return "The Config has no DB!"
+	}
+	if config.SID == "" {
+		return "The Config has no SID!"
+	}
+	if config.Host == "" {
+		return "The Config has no Host!"
+	}
+	if config.Port == "" {
+		return "The Config has no Port!"
+	}
 	return ""
 }
 
