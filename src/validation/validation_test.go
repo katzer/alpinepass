@@ -18,9 +18,11 @@ func TestValidateCommonFieldsFail(t *testing.T) {
 
 func TestValidateCommonFieldsSuccess(t *testing.T) {
 	config := data.Config{
-		ID:       "test.mandatory.success",
-		Env:      "int",
-		Location: "Earth",
+		ID:   "test.mandatory.success",
+		Env:  "int",
+		Type: "db",
+		User: "someUser",
+		URL:  "url.com",
 	}
 
 	assert.Equal(t, "", verifyCommonFields(config),
