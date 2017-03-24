@@ -11,31 +11,67 @@ func Validate(configs []data.Config) {
 		config := configs[i]
 		message := ""
 
+		message = verifyCommonFields(config)
+		handleMessage(config, message)
+
 		message = verifyType(config)
 		handleMessage(config, message)
 
-		message = verifyMandatoryFields(config)
-		handleMessage(config, message)
+		if config.Type == data.DB {
+			message = verifyDbFields(config)
+			handleMessage(config, message)
+		}
+
+		if config.Type == data.SERVER {
+			message = verifyServerFields(config)
+			handleMessage(config, message)
+		}
+
+		if config.Type == data.WEB {
+			message = verifyWebFields(config)
+			handleMessage(config, message)
+		}
 	}
 	//TODO IDs should be unique!
 }
 
 //verifyMandatoryFields checks for mandatory fields and returns an error message.
-func verifyMandatoryFields(config data.Config) string {
+func verifyCommonFields(config data.Config) string {
 	if config.ID == "" {
 		return "The Config has no ID!"
 	}
 	if config.Env == "" {
 		return "The Config has no Env!"
 	}
+	if config.Type == "" {
+		return "The Config has no Type!"
+	}
+	if config.User == "" {
+		return "The Config has no User!"
+	}
+	if config.URL == "" {
+		return "The Config has no URL!"
+	}
 
 	return ""
 }
 
 func verifyType(config data.Config) string {
-	if !util.StringInArray(config.Type, []string{"db", "server", "web"}) {
+	if !util.StringInArray(config.Type, []string{data.DB, data.SERVER, data.WEB}) {
 		return "The Config has an invalid type!"
 	}
+	return ""
+}
+
+func verifyDbFields(config data.Config) string {
+	return ""
+}
+
+func verifyServerFields(config data.Config) string {
+	return ""
+}
+
+func verifyWebFields(config data.Config) string {
 	return ""
 }
 

@@ -1,5 +1,9 @@
 package data
 
+const DB = "db"
+const SERVER = "server"
+const WEB = "web"
+
 // Definition stores information about a system, used for importing data.
 type Definition struct {
 	ID       string
