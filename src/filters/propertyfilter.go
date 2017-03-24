@@ -1,9 +1,10 @@
 package filters
 
 import (
+	"reflect"
 	"strings"
 
-	"regexp"
+	"fmt"
 
 	d "github.com/appPlant/alpinepass/src/data"
 	"github.com/appPlant/alpinepass/src/util"
@@ -27,31 +28,19 @@ func (p PropertyFilter) filter(data d.Config) d.Config {
 }
 
 func filterProperty(property string, data d.Config) d.Config {
-	var split = strings.Split(property, Separator)
-	var key = split[0]
-	var value = split[1]
-	var regex = regexp.MustCompile(value)
+	//var split = strings.Split(property, Separator)
+	//var key = split[0]
+	//var value = split[1]
+	//var regex = regexp.MustCompile(value)
 
-	//TODO rather use reflection!
-	switch key {
-	case "id":
-		if !regex.MatchString(data.ID) {
-			data.IsValid = false
-		}
-	case "location":
-		if !regex.MatchString(data.Location) {
-			data.IsValid = false
-		}
-	case "env":
-		if !regex.MatchString(data.Env) {
-			data.IsValid = false
-		}
-	case "user":
-		if !regex.MatchString(data.User) {
-			data.IsValid = false
-		}
+	fmt.Println("###----")
+	t := reflect.ValueOf(data)
+	fmt.Println(t)
+	for i := 0; i < t.NumField(); i++ {
+		//fmt.Println(t.Field(i))
+		fmt.Println(t.Type().Field(i).Name)
 	}
-
+	fmt.Println("###----")
 	return data
 }
 
