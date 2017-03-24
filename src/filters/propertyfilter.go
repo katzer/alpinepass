@@ -5,8 +5,6 @@ import (
 	"regexp"
 	"strings"
 
-	"fmt"
-
 	d "github.com/appPlant/alpinepass/src/data"
 	"github.com/appPlant/alpinepass/src/util"
 	"github.com/fatih/structs"
@@ -43,11 +41,9 @@ func filterProperty(property string, data d.Config) d.Config {
 		fieldName := t.Type().Field(i).Name
 		if strings.ToLower(fieldName) == key {
 			field = fieldName
-			fmt.Println(field)
 		}
 	}
-	//TODO get the field value
-	fieldValue := ""
+	fieldValue := t.FieldByName(field).String()
 
 	if !regex.MatchString(fieldValue) {
 		data.IsValid = false
