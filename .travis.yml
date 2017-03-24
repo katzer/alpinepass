@@ -16,6 +16,7 @@ script:
 
 before_deploy:
  - scripts/release
+ - gem install os
  - export BUILD_VERSION=`rake version`
  - echo $BUILD_VERSION
  - sudo chmod -R 1777 releases
