@@ -11,18 +11,24 @@ func Validate(configs []data.Config) {
 	for i := 0; i < len(configs); i++ {
 		config := configs[i]
 		verifyType(config)
-		verifyMandatoryFields(config)
+		message := verifyMandatoryFields(config)
+		if message != "" {
+			util.ThrowConfigError(config, "The Config has no ID!")
+		}
 	}
 	//TODO IDs should be unique!
 }
 
-func verifyMandatoryFields(config data.Config) {
+//verifyMandatoryFields checks for mandatory fields and returns an error message.
+func verifyMandatoryFields(config data.Config) string {
 	if config.ID == "" {
-		util.ThrowConfigError(config, "The Config has no ID!")
+		return "The Config has no ID!"
 	}
 	if config.Env == "" {
-		util.ThrowConfigError(config, "The Config has no Env!")
+		return "The Config has no Env!"
 	}
+
+	return ""
 }
 
 func verifyType(config data.Config) {
