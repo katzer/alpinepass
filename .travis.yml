@@ -10,7 +10,6 @@ services:
 
 before_script:
   - chmod u+x scripts/*
-  - gem install os
 
 script:
   - scripts/bintest
