@@ -7,22 +7,46 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestValidateMandatoryFieldsFail(t *testing.T) {
+func TestValidateCommonFieldsFail(t *testing.T) {
 	config := data.Config{
 		Location: "Earth",
 	}
 
-	assert.NotEqual(t, "", verifyMandatoryFields(config),
+	assert.NotEqual(t, "", verifyCommonFields(config),
 		"The validation should fail.")
 }
 
-func TestValidateMandatoryFieldsSuccess(t *testing.T) {
+func TestValidateCommonFieldsSuccess(t *testing.T) {
 	config := data.Config{
 		ID:       "test.mandatory.success",
 		Env:      "int",
 		Location: "Earth",
 	}
 
-	assert.Equal(t, "", verifyMandatoryFields(config),
+	assert.Equal(t, "", verifyCommonFields(config),
 		"The validation should not fail.")
+}
+
+func TestValidateTypeSuccess(t *testing.T) {
+
+}
+
+func TestValidateTypeFail(t *testing.T) {
+
+}
+
+func TestDbFieldsSuccess(t *testing.T) {
+
+}
+
+func TestDbFieldsFail(t *testing.T) {
+
+}
+
+func TestWebFieldsSuccess(t *testing.T) {
+
+}
+
+func TestWebFieldsFail(t *testing.T) {
+
 }
