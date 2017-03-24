@@ -7,14 +7,15 @@ import (
 
 //Validate validates the input.
 func Validate(configs []data.Config) {
-	//TODO mandatory fields
 	for i := 0; i < len(configs); i++ {
 		config := configs[i]
-		verifyType(config)
-		message := verifyMandatoryFields(config)
-		if message != "" {
-			util.ThrowConfigError(config, "The Config has no ID!")
-		}
+		message := ""
+
+		message = verifyType(config)
+		handleMessage(config, message)
+
+		message = verifyMandatoryFields(config)
+		handleMessage(config, message)
 	}
 	//TODO IDs should be unique!
 }
@@ -31,8 +32,15 @@ func verifyMandatoryFields(config data.Config) string {
 	return ""
 }
 
-func verifyType(config data.Config) {
+func verifyType(config data.Config) string {
 	if !util.StringInArray(config.Type, []string{"db", "server", "web"}) {
-		util.ThrowConfigError(config, "The Config has an invalid type!")
+		return "The Config has an invalid type!"
+	}
+	return ""
+}
+
+func handleMessage(config data.Config, message string) {
+	if message != "" {
+		util.ThrowConfigError(config, message)
 	}
 }
