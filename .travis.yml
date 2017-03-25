@@ -13,11 +13,6 @@ before_script:
 
 script:
   - gem install os
-  - ls $GOPATH
-  - ls $GOPATH/src
-  - ls $GOPATH/src/github.com
-  - ls $GOPATH/src/github.com/appPlant
-  - ls $GOPATH/src/github.com/appPlant/alpinepass
   - echo "alpinepass version"
   - rake version
   - scripts/bintest
@@ -26,6 +21,7 @@ before_deploy:
  - scripts/release
  - gem install os
  - export BUILD_VERSION=`rake version`
+ - ls releases
  - echo $BUILD_VERSION
  - sudo chmod -R 1777 releases
  - ls -la releases
