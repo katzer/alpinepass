@@ -27,8 +27,26 @@ def version_path
   "#{src_path}/version"
 end
 
-APP_VERSION = `cp -r ./src $AP_HOME/src && go run #{version_path}/*.go -v`.freeze
-#puts '###--- alpinepass VERSION: ' + APP_VERSION
+puts ENV["PATH"]
+
+def get_version
+  if ENV["DOCKER"]
+    puts "###--- DOCKER"
+    return "d1.0"
+  elsif ENV["TRAVIS"]
+    puts "###--- TRAVIS"
+    return "t1.0"
+  elsif
+    puts "###--- OSX"
+    return "m1.0"
+  else
+    puts "###--- NO ENVIRONMENT"
+    raise "Cannot get the applicatiom version!"
+  end
+  #return `cp -r ./src $AP_HOME/src && go run #{version_path}/*.go -v`
+end
+
+APP_VERSION = get_version().freeze
 
 Dir.chdir('lib') { Dir['tasks/*.rake'].each { |file| load file } }
 
