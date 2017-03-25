@@ -20,6 +20,8 @@ script:
 before_deploy:
  - scripts/release
  - gem install os
+ - echo "alpinepass version"
+ - rake version
  - export BUILD_VERSION=`rake version`
  - ls releases
  - echo $BUILD_VERSION
