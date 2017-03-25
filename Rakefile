@@ -30,14 +30,15 @@ end
 puts ENV["PATH"]
 
 def get_version
-  if ENV["DOCKER"]
-    puts "###--- DOCKER"
-    return "d1.0"
+  puts "### Getting the application version."
+  if ENV["AP_HOME"]
+    puts "### DOCKER"
+    return `cp -r ./src $AP_HOME/src && go run #{version_path}/*.go`
   elsif ENV["TRAVIS"]
-    puts "###--- TRAVIS"
+    puts "### TRAVIS"
     return "t1.0"
   else
-    puts "###--- DEV"
+    puts "### DEV"
     return `go run #{version_path}/*.go`
   end
   #return `cp -r ./src $AP_HOME/src && go run #{version_path}/*.go -v`
