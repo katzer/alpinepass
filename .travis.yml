@@ -25,7 +25,9 @@ before_deploy:
  - ls releases
  - sudo chmod -R 1777 releases
  - ls -la releases
- - ls -la releases/$BUILD_VERSION
+ - cd releases
+ - ls -la
+ #- ls -la releases/$BUILD_VERSION
 
 deploy:
  provider: releases
