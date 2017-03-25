@@ -36,12 +36,9 @@ def get_version
   elsif ENV["TRAVIS"]
     puts "###--- TRAVIS"
     return "t1.0"
-  elsif
-    puts "###--- OSX"
-    return "m1.0"
   else
-    puts "###--- NO ENVIRONMENT"
-    raise "Cannot get the applicatiom version!"
+    puts "###--- DEV"
+    return `go run #{version_path}/*.go`
   end
   #return `cp -r ./src $AP_HOME/src && go run #{version_path}/*.go -v`
 end
