@@ -12,6 +12,8 @@ before_script:
   - chmod u+x scripts/*
 
 script:
+  - echo "alpinepass version"
+  - rake version
   - scripts/bintest
 
 before_deploy:

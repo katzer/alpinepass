@@ -36,12 +36,11 @@ def get_version
     return `cp -r ./src $AP_HOME/src && go run #{version_path}/*.go`
   elsif ENV["TRAVIS"]
     puts "### TRAVIS"
-    return "t1.0"
+    return `cp -r ./src $GOPATH/src/github.com/appPlant/alpinepass/src && go run #{version_path}/*.go`
   else
     puts "### DEV"
     return `go run #{version_path}/*.go`
   end
-  #return `cp -r ./src $AP_HOME/src && go run #{version_path}/*.go -v`
 end
 
 APP_VERSION = get_version().freeze
