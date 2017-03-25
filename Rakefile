@@ -36,7 +36,7 @@ def get_version
     return `cp -r ./src $AP_HOME/src && go run #{version_path}/*.go`
   elsif ENV["TRAVIS"]
     puts "### TRAVIS"
-    return `cp -r ./src $GOPATH/src/github.com/appPlant/alpinepass/src && go run #{version_path}/*.go`
+    return `go run #{version_path}/*.go`
   else
     puts "### DEV"
     return `go run #{version_path}/*.go`

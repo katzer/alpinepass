@@ -13,6 +13,11 @@ before_script:
 
 script:
   - gem install os
+  - ls $GOPATH
+  - ls $GOPATH/src
+  - ls $GOPATH/src/github.com
+  - ls $GOPATH/src/github.com/appPlant
+  - ls $GOPATH/src/github.com/appPlant/alpinepass
   - echo "alpinepass version"
   - rake version
   - scripts/bintest
