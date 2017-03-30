@@ -13,7 +13,7 @@ refs:
     env: *int
 defs:
   BO1_PROD:
-  - <<: *prodApp
+    <<: *prodApp
     location: &Berlin B01
     id: prodAppB01
     name: MyProdAppB01
