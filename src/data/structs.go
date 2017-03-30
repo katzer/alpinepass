@@ -29,7 +29,9 @@ type Definition struct {
 
 // YamlData stores information about all systems, used for importing data.
 type YamlData struct {
-	Defs []Definition
+	Defs struct {
+		inner []Definition
+	}
 }
 
 // Config stores data about a system, used for exporting data.

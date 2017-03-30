@@ -1,6 +1,8 @@
 package io
 
 import (
+	"fmt"
+
 	yaml "gopkg.in/yaml.v2"
 
 	d "github.com/appPlant/alpinepass/src/data"
@@ -63,10 +65,18 @@ func ReadConfigs(path string) []d.Config {
 	yamlData := parseYaml(data)
 	configs := []d.Config{}
 
-	for _, definition := range yamlData.Defs {
-		config := createConfig(definition)
-		configs = append(configs, config)
-	}
+	fmt.Printf("--- yamlData:\n%v\n\n", yamlData)
+
+	/*
+		for k, v := range yamlData.Defs {
+			fmt.Println("k:", k, "v:", v)
+		}
+
+		for _, definition := range yamlData.Defs {
+			config := createConfig(definition)
+			configs = append(configs, config)
+		}
+	*/
 
 	return configs
 }
