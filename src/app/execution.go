@@ -17,7 +17,9 @@ func execute(context *cli.Context) error {
 	configs := io.ReadConfigs(context.GlobalString("input"))
 	configs = filters.FilterConfigs(configs, context)
 
-	validation.Validate(configs)
+	if !context.GlobalBool("skip") {
+		validation.Validate(configs)
+	}
 
 	if context.GlobalBool("display") {
 		var configsJSON []byte
