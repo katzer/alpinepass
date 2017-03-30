@@ -18,11 +18,11 @@ type Definition struct {
 	Port     string
 	SID      string
 
-	Env      string
-	Location string
+	Env string
+	//Location string
 
-	Notes string   //TODO
-	Tags  []string //TODO
+	//Notes string   //TODO
+	//Tags []string //TODO
 
 	Title string //obsolete
 }

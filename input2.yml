@@ -1,0 +1,22 @@
+refs:
+  ProdApp: &prodApp
+    type: &server server
+    env: &prod prod
+  IntApp: &intApp
+    type: *server
+    env: &int int
+  ProdDb: &prodDb
+    type: &db db
+    env: *prod
+  IntDb: &intDb
+    type: *db
+    env: *int
+defs:
+  BO1_PROD:
+  - <<: *prodApp
+    location: &Berlin B01
+    id: prodAppB01
+    name: MyProdAppB01
+    user: prodUserB01
+    password: prod_pw
+    url: production.B01

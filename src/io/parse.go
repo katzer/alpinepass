@@ -19,7 +19,7 @@ func parseYaml(data string) d.YamlData {
 
 func createID(definition d.Definition) string {
 	id := ""
-	id = id + util.CleanString(definition.Location) + Separator
+	//id = id + util.CleanString(definition.Location) + Separator
 	id = id + util.CleanString(definition.Env) + Separator
 	id = id + util.CleanString(definition.Type) + Separator
 	id = id + util.CleanString(definition.Title)
@@ -48,7 +48,7 @@ func createConfig(def d.Definition) d.Config {
 	config.Port = def.Port
 	config.SID = def.SID
 
-	config.Location = def.Location
+	//config.Location = def.Location
 	config.Env = def.Env
 
 	config.IsValid = true
