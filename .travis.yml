@@ -27,6 +27,8 @@ before_deploy:
   - ls -la releases
   - cd releases
   - ls -la
+  - cd $BUILD_VERSION
+  - ls -ls
 
 deploy:
   provider: releases
