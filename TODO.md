@@ -18,9 +18,8 @@
 
 ## Other
 
+* Add a "debug" flag for showing stack traces!
 * binary stripping?
-* master input.yml!
-* https://github.com/nomuna/tentacle/blob/master/.travis.yml
 * https://onsi.github.io/ginkgo/
 * http://agouti.org/
 * http://onsi.github.io/gomega/
