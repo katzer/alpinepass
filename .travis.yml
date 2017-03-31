@@ -12,6 +12,7 @@ before_script:
   - chmod u+x scripts/*
 
 script:
+  - go test ./src/...
   - gem install os
   - rake version
   - scripts/bintest
