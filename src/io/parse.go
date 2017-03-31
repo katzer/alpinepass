@@ -22,7 +22,6 @@ func createID(definition d.Definition) string {
 	//id = id + util.CleanString(definition.Location) + Separator
 	id = id + util.CleanString(definition.Env) + Separator
 	id = id + util.CleanString(definition.Type) + Separator
-	id = id + util.CleanString(definition.Title)
 	return id
 }
 
@@ -47,13 +46,11 @@ func createConfig(def d.Definition) d.Config {
 	config.Host = def.Host
 	config.Port = def.Port
 	config.SID = def.SID
-
-	//config.Location = def.Location
 	config.Env = def.Env
+	config.Location = def.Location
 
 	config.IsValid = true
 
-	//TODO host
 	return config
 }
 

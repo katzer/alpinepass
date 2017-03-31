@@ -1,19 +1,40 @@
 refs:
+  planet: &planet
+    id:
+    name:
+    user:
+    password:
+    url:
+    type:
+    env:
+    location: []
+    responsible: []
+    notes: []
+
   ProdApp: &prodApp
+    <<: *planet
     type: &server server
     env: &prod prod
   IntApp: &intApp
+    <<: *planet
     type: *server
     env: &int int
+
   ProdDb: &prodDb
+    <<: *planet
     type: &db db
     env: *prod
   IntDb: &intDb
+    <<: *planet
     type: *db
     env: *int
+
 defs:
   - <<: *prodApp
-    location: &Berlin B01
+    location: &Berlin
+      - B01
+      - Berlin
+      - Europe
     id: prodAppB01
     name: MyProdAppB01
     user: prodUserB01
