@@ -14,17 +14,17 @@ import (
 
 //execute reads the input, filters it and writes the output.
 func execute(context *cli.Context) error {
-	configs := io.ReadConfigs(context.GlobalString("input"))
+	configs := io.ReadConfigs(context.GlobalString(FlagInput))
 	configs = filters.FilterConfigs(configs, context)
 
-	if !context.GlobalBool("skip") {
+	if !context.GlobalBool(FlagSkip) {
 		validation.Validate(configs)
 	}
 
-	if context.GlobalBool("display") {
+	if context.GlobalBool(FlagDisplay) {
 		var configsJSON []byte
 		var err error
-		if context.GlobalBool("readable") {
+		if context.GlobalBool(FlagReadable) {
 			configsJSON, err = json.MarshalIndent(configs, "", "    ")
 		} else {
 			configsJSON, err = json.Marshal(configs)
@@ -32,7 +32,7 @@ func execute(context *cli.Context) error {
 		util.CheckError(err, "Marshalling JSON failed!")
 		fmt.Println(string(configsJSON))
 	} else {
-		io.WriteJSON(context.GlobalString("output"), configs, context.GlobalBool("readable"))
+		io.WriteJSON(context.GlobalString(FlagOutput), configs, context.GlobalBool(FlagReadable))
 	}
 
 	return nil
