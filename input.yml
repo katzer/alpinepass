@@ -40,6 +40,12 @@ defs:
     user: prodUserB01
     password: prod_pw
     url: production.B01
+    responsible:
+      - Luke Skywalker
+      - Han Solo
+    notes:
+      - cool
+      - awesome
   - <<: *intApp
     location: *Berlin
     id: intAppB01
@@ -47,3 +53,9 @@ defs:
     user: intUserB01
     password: int_pw
     url: integration.B01
+    responsible:
+      - Princess Leia
+      - Ben
+    notes:
+      - good
+      - super

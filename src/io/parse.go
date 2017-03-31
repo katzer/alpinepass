@@ -18,16 +18,14 @@ func parseYaml(data string) d.YamlData {
 }
 
 func createID(definition d.Definition) string {
+	//TODO find a way to generate an ID
 	id := ""
-	//id = id + util.CleanString(definition.Location) + Separator
 	id = id + util.CleanString(definition.Env) + Separator
 	id = id + util.CleanString(definition.Type) + Separator
 	return id
 }
 
 func createConfig(def d.Definition) d.Config {
-	//TODO check for mandatory fields in Definition!
-
 	config := d.Config{}
 
 	if def.ID != "" {
@@ -48,6 +46,8 @@ func createConfig(def d.Definition) d.Config {
 	config.SID = def.SID
 	config.Env = def.Env
 	config.Location = def.Location
+	config.Responsible = def.Responsible
+	config.Notes = def.Notes
 
 	config.IsValid = true
 
