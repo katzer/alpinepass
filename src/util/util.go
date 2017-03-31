@@ -9,11 +9,12 @@ import "github.com/urfave/cli"
 import "github.com/appPlant/alpinepass/src/data"
 
 var GlobalContext *cli.Context
+var Debug = false
 
 //CheckError throws an exception if an error exists. If an error message exists, it is shown.
 func CheckError(err error, message string) {
 	if err != nil {
-		if message == "" {
+		if message == "" || Debug {
 			panic(err)
 		} else {
 			ThrowError(message)

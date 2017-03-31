@@ -7,13 +7,28 @@ import (
 	"github.com/urfave/cli"
 )
 
+//FlagDebug holds the name for the debug flag.
 const FlagDebug = "debug"
+
+//FlagDisplay holds the name for the display flag.
 const FlagDisplay = "display"
+
+//FlagFilter holds the name for the filter flag.
 const FlagFilter = "filter"
+
+//FlagInput holds the name for the input flag.
 const FlagInput = "input"
+
+//FlagOutput holds the name for the output flag.
 const FlagOutput = "output"
+
+//FlagPasswords holds the name wor the passwords flag.
 const FlagPasswords = "passwords"
+
+//FlagReadable holds the name for the readable flag.
 const FlagReadable = "readable"
+
+//FlagSkip holds the name for the skip flag.
 const FlagSkip = "skip"
 
 //RunApp sets up the cli application and executes it.
@@ -62,6 +77,8 @@ func RunApp() {
 
 	app.Action = func(context *cli.Context) error {
 		util.GlobalContext = context
+		util.Debug = context.GlobalBool(FlagDebug)
+
 		return execute(context)
 	}
 
