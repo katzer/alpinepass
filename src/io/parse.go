@@ -13,7 +13,7 @@ const Separator string = "_"
 func parseYaml(data string) d.YamlData {
 	yamlData := d.YamlData{}
 	err := yaml.Unmarshal([]byte(data), &yamlData)
-	util.CheckError(err)
+	util.CheckError(err, "Parsing YAML failed!")
 	return yamlData
 }
 

@@ -13,9 +13,9 @@ func readFile(path string) string {
 	}
 
 	_, err := os.Stat(path)
-	util.CheckError(err)
+	util.CheckError(err, "The file "+path+" does not exist!")
 
 	data, err := ioutil.ReadFile(path)
-	util.CheckError(err)
+	util.CheckError(err, "The file "+path+" cannot be read!")
 	return string(data)
 }

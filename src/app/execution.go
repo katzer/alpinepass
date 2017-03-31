@@ -29,7 +29,7 @@ func execute(context *cli.Context) error {
 		} else {
 			configsJSON, err = json.Marshal(configs)
 		}
-		util.CheckError(err)
+		util.CheckError(err, "Marshalling JSON failed!")
 		fmt.Println(string(configsJSON))
 	} else {
 		io.WriteJSON(context.GlobalString("output"), configs, context.GlobalBool("readable"))

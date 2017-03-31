@@ -10,7 +10,7 @@ import (
 
 func writeFile(filedata string, filename string) {
 	err := ioutil.WriteFile(filename, []byte(filedata), 0644)
-	util.CheckError(err)
+	util.CheckError(err, "the file "+filename+"cannot be written!")
 }
 
 //WriteJSON writes Config to a file in JSON format.
@@ -26,6 +26,6 @@ func WriteJSON(path string, configs []data.Config, pretty bool) {
 	} else {
 		configsJSON, err = json.Marshal(configs)
 	}
-	util.CheckError(err)
+	util.CheckError(err, "Marshalling to JSON failed!")
 	writeFile(string(configsJSON), path)
 }

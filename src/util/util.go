@@ -7,10 +7,14 @@ import "encoding/json"
 import "os"
 import "fmt"
 
-//CheckError throws an exception if an error exists.
-func CheckError(err error) {
+//CheckError throws an exception if an error exists. If an error message exists, it is shown.
+func CheckError(err error, message string) {
 	if err != nil {
-		panic(err)
+		if message == "" {
+			panic(err)
+		} else {
+			ThrowError(message)
+		}
 	}
 }
 
@@ -34,7 +38,7 @@ func ThrowConfigError(config data.Config, message string) {
 	var configJSON []byte
 	var err error
 	configJSON, err = json.MarshalIndent(config, "", "    ")
-	CheckError(err)
+	CheckError(err, "Marshalling to JSON failed!")
 
 	os.Stderr.WriteString(message)
 	fmt.Println()
