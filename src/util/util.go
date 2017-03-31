@@ -1,11 +1,14 @@
 package util
 
-import "strings"
-import "github.com/appPlant/alpinepass/src/data"
 import "encoding/json"
-
-import "os"
 import "fmt"
+import "os"
+import "strings"
+
+import "github.com/urfave/cli"
+import "github.com/appPlant/alpinepass/src/data"
+
+var GlobalContext *cli.Context
 
 //CheckError throws an exception if an error exists. If an error message exists, it is shown.
 func CheckError(err error, message string) {
@@ -28,8 +31,10 @@ func CleanString(s string) string {
 
 //ThrowError prints the error information and exits the application.
 func ThrowError(message string) {
-	os.Stderr.WriteString(message)
-	fmt.Println()
+	os.Stderr.WriteString("### ERROR ###\n")
+	os.Stderr.WriteString(message + "\n")
+	os.Stderr.WriteString("### END ERROR ###\n\n")
+	cli.ShowAppHelp(GlobalContext)
 	os.Exit(-1)
 }
 

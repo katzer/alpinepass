@@ -48,6 +48,7 @@ func RunApp() {
 	}
 
 	app.Action = func(context *cli.Context) error {
+		util.GlobalContext = context
 		return execute(context)
 	}
 
