@@ -1,10 +1,10 @@
 /*.exe
 /output.yml
 /output.json
+/bintest/orbit/bin/alpinepass
 
 /.idea
 /alpinepass
-/bintest/orbit/bin
 /bintest/orbit/config
 /build
 /releases
