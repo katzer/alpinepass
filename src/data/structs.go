@@ -1,7 +1,12 @@
 package data
 
+//DB is used for referencing db type systems.
 const DB = "db"
+
+//SERVER is used for referencing server type systems.
 const SERVER = "server"
+
+//WEB is used for referencing web type systems.
 const WEB = "web"
 
 // Definition stores information about a system, used for importing data.
