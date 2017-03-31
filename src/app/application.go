@@ -7,6 +7,15 @@ import (
 	"github.com/urfave/cli"
 )
 
+const FlagDebug = "debug"
+const FlagDisplay = "display"
+const FlagFilter = "filter"
+const FlagInput = "input"
+const FlagOutput = "output"
+const FlagPasswords = "passwords"
+const FlagReadable = "readable"
+const FlagSkip = "skip"
+
 //RunApp sets up the cli application and executes it.
 func RunApp() {
 	app := cli.NewApp()
@@ -18,31 +27,35 @@ func RunApp() {
 
 	app.Flags = []cli.Flag{
 		cli.BoolFlag{
-			Name:  "display, d",
+			Name:  FlagDebug,
+			Usage: "Print the stack trace when an error occurs.",
+		},
+		cli.BoolFlag{
+			Name:  FlagDisplay + ", d",
 			Usage: "Display the output in the console. An output file will not be written. Use this for previewing the generated file.",
 		},
 		cli.StringSliceFlag{
-			Name:  "filter, f",
+			Name:  FlagFilter + ", f",
 			Usage: "Filter configurations by name, type and more. Syntax: -f \"[property]:[regex]\"",
 		},
 		cli.StringFlag{
-			Name:  "input, i",
+			Name:  FlagInput + ", i",
 			Usage: "Specify the input file, absolute or relative path.",
 		},
 		cli.StringFlag{
-			Name:  "output, o",
+			Name:  FlagOutput + ", o",
 			Usage: "Specify the output file, absolute or relative path. An existing file will be overwritten.",
 		},
 		cli.BoolFlag{
-			Name:  "passwords, p",
+			Name:  FlagPasswords + ", p",
 			Usage: "Include passwords in the output.",
 		},
 		cli.BoolFlag{
-			Name:  "readable, r",
+			Name:  FlagReadable + ", r",
 			Usage: "Make the output more readable.",
 		},
 		cli.BoolFlag{
-			Name:  "skip, s",
+			Name:  FlagSkip + ", s",
 			Usage: "Skip the input validation.",
 		},
 	}
