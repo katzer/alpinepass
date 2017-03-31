@@ -16,6 +16,13 @@ class TestAlpinepass < Test::Unit::TestCase
 		# assert_true status.success?, 'Process did not exit cleanly!'
     # assert_include output, 'The file input.yml does not exist!', 'The error message is not correct!'
 	end
+
+  def test_run_input_valid
+		output, error, status = Open3.capture3(PATH, BIN, '-r', '-s', '-i valid.yml')
+
+		expect_no_error(output, error, 'run valid.yml')
+		assert_true status.success?, 'Process did not exit cleanly!'
+	end
 end
 
 #there should be no error
@@ -33,4 +40,3 @@ def expect_error(output, error, test_name)
   puts "output: #{output}"
   puts "error: #{error.inspect}"
 end
-1
