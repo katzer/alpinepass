@@ -5,6 +5,8 @@ import (
 	"regexp"
 	"strings"
 
+	"fmt"
+
 	d "github.com/appPlant/alpinepass/src/data"
 	"github.com/appPlant/alpinepass/src/util"
 	"github.com/fatih/structs"
@@ -38,17 +40,40 @@ func filterProperty(property string, data d.Config) d.Config {
 
 	field := ""
 	for i := 0; i < t.NumField(); i++ {
+		//fmt.Println(reflect.TypeOf(t).String())
 		fieldName := t.Type().Field(i).Name
+		//fmt.Println(reflect.TypeOf(t.FieldByName(fieldName)))
 		if strings.ToLower(fieldName) == key {
 			field = fieldName
 		}
 	}
 	fieldValue := t.FieldByName(field).String()
 
+	fmt.Println(reflect.TypeOf(fieldValue))
+	//fmt.Println(t.FieldByName(field).Type().String())
+	if reflect.TypeOf(fieldValue).String() == "string" {
+		fmt.Println(fieldValue + " is a string!")
+	}
+	if t.FieldByName(field).Type().String() == "[]string" {
+		fmt.Println(fieldValue + "is a list!")
+	}
+	/*
+		if reflect.TypeOf(fieldValue).String() == "[]" {
+			fmt.Println(fieldValue + " is a list!")
+		}
+	*/
+
 	if !regex.MatchString(fieldValue) {
 		data.IsValid = false
 	}
 	return data
+}
+
+func filterSingleProperty() {
+}
+
+func filterListProperty() {
+
 }
 
 //verifyFlags checks that the input flags are valid.
