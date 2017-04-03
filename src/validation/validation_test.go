@@ -9,7 +9,7 @@ import (
 
 func TestValidateCommonFieldsFail(t *testing.T) {
 	config := data.Config{
-		Location: "Earth",
+		Location: []string{"Solar System", "Earth"},
 	}
 
 	assert.NotEqual(t, "", verifyCommonFields(config),
