@@ -6,16 +6,15 @@ import "github.com/appPlant/alpinepass/src/data"
 
 func TestFilterLocationTrue(t *testing.T) {
 	filter := "location=Earth"
-	config := data.Config{Location: "Earth"}
+	config := data.Config{Location: []string{"Solar System", "Earth"}}
 	filteredConfig := filterProperty(filter, config)
 
-	assert.Equal(t, true, filteredConfig.IsValid,
-		"The Config should match the filter.")
+	assert.Equal(t, true, filteredConfig.IsValid, "The Config should match the filter.")
 }
 
 func TestFilterLocationFalse(t *testing.T) {
 	filter := "location=Earth"
-	config := data.Config{Location: "Moon"}
+	config := data.Config{Location: []string{"Solar System", "Mars"}}
 	filteredConfig := filterProperty(filter, config)
 
 	assert.Equal(t, false, filteredConfig.IsValid,
