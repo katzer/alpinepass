@@ -125,16 +125,16 @@ defs:
     notes:
       - cool
       - awesome
-  - <<: *int_server
-    location: *Berlin
-    id: intAppB01
-    name: MyIntAppB01
-    user: intUserB01
-    password: int_pw
-    url: integration.B01
-    responsible:
-      - Princess Leia
-      - Ben
-    notes:
-      - good
-      - super
+  # - <<: *int_server
+  #   location: *Berlin
+  #   id: intAppB01
+  #   name: MyIntAppB01
+  #   user: intUserB01
+  #   password: int_pw
+  #   url: integration.B01
+  #   responsible:
+  #     - Princess Leia
+  #     - Ben
+  #   notes:
+  #     - good
+  #     - super
