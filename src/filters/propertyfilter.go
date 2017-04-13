@@ -2,8 +2,9 @@ package filters
 
 import (
 	"reflect"
-	"regexp"
 	"strings"
+
+	"fmt"
 
 	d "github.com/appPlant/alpinepass/src/data"
 	"github.com/appPlant/alpinepass/src/util"
@@ -29,36 +30,42 @@ func (p PropertyFilter) filter(data d.Config) d.Config {
 func filterProperty(property string, data d.Config) d.Config {
 	var split = strings.Split(property, Separator)
 	var key = split[0]
-	var value = split[1]
-	var regex = regexp.MustCompile(value)
+	//var value = split[1]
+	//var regex = regexp.MustCompile(value)
 
 	//TODO check that key exists in Config field
 
 	t := reflect.ValueOf(data)
 
-	field := ""
+	fieldName := ""
 	for i := 0; i < t.NumField(); i++ {
-		fieldName := t.Type().Field(i).Name
-		if strings.ToLower(fieldName) == key {
-			field = fieldName
+		name := t.Type().Field(i).Name
+		if strings.ToLower(name) == key {
+			fieldName = name
 		}
 	}
-	fieldValue := t.FieldByName(field).String()
+	fmt.Println("### The fields being filtered: " + fieldName)
+	//fieldValue := t.FieldByName(field).String()
 
 	//fmt.Print("### Type: ")
 	//fmt.Println(reflect.TypeOf(fieldValue))
 	//fmt.Println(t.FieldByName(field).Type().String())
 	//TODO Is the outer if condition necessary? Aren't all fields just strings?
-	if reflect.TypeOf(fieldValue).String() == "string" {
-		if t.FieldByName(field).Type().String() == "[]string" {
-			//fmt.Println("### Filtering a list!")
-		} else {
-			//fmt.Println("### Filtering a string!")
-			if !regex.MatchString(fieldValue) {
-				data.IsValid = false
+	/*
+		if reflect.TypeOf(fieldValue).String() == "string" {
+			if t.FieldByName(field).Type().String() == "[]string" {
+				//fmt.Println("### Filtering a list!")
+				for i := 0; i < fieldValue.len; i++ {
+
+				}
+			} else {
+				//fmt.Println("### Filtering a string!")
+				if !regex.MatchString(fieldValue) {
+					data.IsValid = false
+				}
 			}
 		}
-	}
+	*/
 
 	return data
 }
