@@ -48,6 +48,7 @@ func filterProperty(property string, data d.Config) d.Config {
 	//fmt.Print("### Type: ")
 	//fmt.Println(reflect.TypeOf(fieldValue))
 	//fmt.Println(t.FieldByName(field).Type().String())
+	//TODO Is the outer if condition necessary? Aren't all fields just strings?
 	if reflect.TypeOf(fieldValue).String() == "string" {
 		if t.FieldByName(field).Type().String() == "[]string" {
 			//fmt.Println("### Filtering a list!")
