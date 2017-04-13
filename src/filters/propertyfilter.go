@@ -5,8 +5,6 @@ import (
 	"regexp"
 	"strings"
 
-	"fmt"
-
 	d "github.com/appPlant/alpinepass/src/data"
 	"github.com/appPlant/alpinepass/src/util"
 	"github.com/fatih/structs"
@@ -40,41 +38,28 @@ func filterProperty(property string, data d.Config) d.Config {
 
 	field := ""
 	for i := 0; i < t.NumField(); i++ {
-		//fmt.Println(reflect.TypeOf(t).String())
 		fieldName := t.Type().Field(i).Name
-		//fmt.Println(reflect.TypeOf(t.FieldByName(fieldName)))
 		if strings.ToLower(fieldName) == key {
 			field = fieldName
 		}
 	}
 	fieldValue := t.FieldByName(field).String()
 
-	fmt.Print("### Type: ")
-	fmt.Println(reflect.TypeOf(fieldValue))
+	//fmt.Print("### Type: ")
+	//fmt.Println(reflect.TypeOf(fieldValue))
 	//fmt.Println(t.FieldByName(field).Type().String())
 	if reflect.TypeOf(fieldValue).String() == "string" {
-		fmt.Println("### Filtering a string!")
-	}
-	if t.FieldByName(field).Type().String() == "[]string" {
-		fmt.Println("### Filtering a list!")
-	}
-	/*
-		if reflect.TypeOf(fieldValue).String() == "[]" {
-			fmt.Println(fieldValue + " is a list!")
+		if t.FieldByName(field).Type().String() == "[]string" {
+			//fmt.Println("### Filtering a list!")
+		} else {
+			//fmt.Println("### Filtering a string!")
+			if !regex.MatchString(fieldValue) {
+				data.IsValid = false
+			}
 		}
-	*/
-
-	if !regex.MatchString(fieldValue) {
-		data.IsValid = false
 	}
+
 	return data
-}
-
-func filterSingleProperty() {
-}
-
-func filterListProperty() {
-
 }
 
 //verifyFlags checks that the input flags are valid.
@@ -90,7 +75,7 @@ func verifyFlags(flags []string) {
 			util.ThrowError("The filter contains too many '" + Separator + "'! Flag: " + flag)
 		}
 
-		//check that the key part of a flag matches the fields available in struct Config.
+		//Check that the key part of a flag matches the fields available in struct Config.
 		data := d.Config{}
 		fieldNames := structs.Names(data)
 		key := strings.ToLower(strings.Split(flag, Separator)[0])
