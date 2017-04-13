@@ -44,8 +44,10 @@ func filterProperty(property string, data d.Config) d.Config {
 			fieldName = name
 		}
 	}
-	fmt.Println("### The fields being filtered: " + fieldName)
-	//fieldValue := t.FieldByName(field).String()
+	fmt.Println("### The field being filtered: " + fieldName)
+	fieldValue := t.FieldByName(fieldName)
+	fmt.Println(fieldValue)
+	//fmt.Println(reflect.TypeOf(fieldValue).Elem())
 
 	//fmt.Print("### Type: ")
 	//fmt.Println(reflect.TypeOf(fieldValue))
