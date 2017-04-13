@@ -49,13 +49,14 @@ func filterProperty(property string, data d.Config) d.Config {
 	}
 	fieldValue := t.FieldByName(field).String()
 
+	fmt.Print("### Type: ")
 	fmt.Println(reflect.TypeOf(fieldValue))
 	//fmt.Println(t.FieldByName(field).Type().String())
 	if reflect.TypeOf(fieldValue).String() == "string" {
-		fmt.Println(fieldValue + " is a string!")
+		fmt.Println("### Filtering a string!")
 	}
 	if t.FieldByName(field).Type().String() == "[]string" {
-		fmt.Println(fieldValue + "is a list!")
+		fmt.Println("### Filtering a list!")
 	}
 	/*
 		if reflect.TypeOf(fieldValue).String() == "[]" {
