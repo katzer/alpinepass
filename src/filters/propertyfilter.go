@@ -37,17 +37,19 @@ func filterProperty(property string, data d.Config) d.Config {
 
 	t := reflect.ValueOf(data)
 
-	fieldName := ""
+	var fieldName string
+	var field reflect.StructField
 	for i := 0; i < t.NumField(); i++ {
 		name := t.Type().Field(i).Name
 		if strings.ToLower(name) == key {
+			field = t.Type().Field(i)
 			fieldName = name
 		}
 	}
 	fmt.Println("### The field being filtered: " + fieldName)
 	fieldValue := t.FieldByName(fieldName)
 	fmt.Println(fieldValue)
-	//fmt.Println(reflect.TypeOf(fieldValue).Elem())
+	fmt.Println(field.Type)
 
 	//fmt.Print("### Type: ")
 	//fmt.Println(reflect.TypeOf(fieldValue))
