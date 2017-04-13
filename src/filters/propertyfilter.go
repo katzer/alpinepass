@@ -2,9 +2,8 @@ package filters
 
 import (
 	"reflect"
+	"regexp"
 	"strings"
-
-	"fmt"
 
 	d "github.com/appPlant/alpinepass/src/data"
 	"github.com/appPlant/alpinepass/src/util"
@@ -30,8 +29,8 @@ func (p PropertyFilter) filter(data d.Config) d.Config {
 func filterProperty(property string, data d.Config) d.Config {
 	var split = strings.Split(property, Separator)
 	var key = split[0]
-	//var value = split[1]
-	//var regex = regexp.MustCompile(value)
+	var value = split[1]
+	var regex = regexp.MustCompile(value)
 
 	//TODO check that key exists in Config field
 
@@ -45,10 +44,21 @@ func filterProperty(property string, data d.Config) d.Config {
 			break
 		}
 	}
-	fmt.Println("### The field being filtered: " + field.Name)
-	fieldValue := t.FieldByName(field.Name)
-	fmt.Println(fieldValue)
-	fmt.Println(field.Type)
+
+	if field.Type.String() == "string" {
+		if !regex.MatchString(t.FieldByName(field.Name).String()) {
+			data.IsValid = false
+		}
+	}
+	if field.Type.String() == "[]string" {
+		var values = t.FieldByName(field.Name)
+		for i := 0; i < values.Len(); i++ {
+			if !regex.MatchString(values.Index(i).String()) {
+				data.IsValid = false
+				break
+			}
+		}
+	}
 
 	//fmt.Print("### Type: ")
 	//fmt.Println(reflect.TypeOf(fieldValue))
