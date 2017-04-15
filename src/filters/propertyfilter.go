@@ -53,9 +53,13 @@ func filterProperty(property string, data d.Config) d.Config {
 	if field.Type.String() == "[]string" {
 		var values = t.FieldByName(field.Name)
 		for i := 0; i < values.Len(); i++ {
-			if !regex.MatchString(values.Index(i).String()) {
-				data.IsValid = false
+			var valid = false
+			if regex.MatchString(values.Index(i).String()) {
+				valid = true
 				break
+			}
+			if !valid {
+				data.IsValid = false
 			}
 		}
 	}
