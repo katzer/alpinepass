@@ -26,8 +26,8 @@ func (p PropertyFilter) filter(data d.Config) d.Config {
 	return data
 }
 
-func filterProperty(property string, data d.Config) d.Config {
-	var split = strings.Split(property, Separator)
+func filterProperty(filter string, data d.Config) d.Config {
+	var split = strings.Split(filter, Separator)
 	var key = split[0]
 	var value = split[1]
 	var regex = regexp.MustCompile(value)
@@ -52,37 +52,17 @@ func filterProperty(property string, data d.Config) d.Config {
 	}
 	if field.Type.String() == "[]string" {
 		var values = t.FieldByName(field.Name)
+		var valid = false
 		for i := 0; i < values.Len(); i++ {
-			var valid = false
 			if regex.MatchString(values.Index(i).String()) {
 				valid = true
 				break
 			}
-			if !valid {
-				data.IsValid = false
-			}
+		}
+		if !valid {
+			data.IsValid = false
 		}
 	}
-
-	//fmt.Print("### Type: ")
-	//fmt.Println(reflect.TypeOf(fieldValue))
-	//fmt.Println(t.FieldByName(field).Type().String())
-	//TODO Is the outer if condition necessary? Aren't all fields just strings?
-	/*
-		if reflect.TypeOf(fieldValue).String() == "string" {
-			if t.FieldByName(field).Type().String() == "[]string" {
-				//fmt.Println("### Filtering a list!")
-				for i := 0; i < fieldValue.len; i++ {
-
-				}
-			} else {
-				//fmt.Println("### Filtering a string!")
-				if !regex.MatchString(fieldValue) {
-					data.IsValid = false
-				}
-			}
-		}
-	*/
 
 	return data
 }
