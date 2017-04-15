@@ -6,7 +6,7 @@ import "github.com/appPlant/alpinepass/src/data"
 
 func TestFilterNameTrue(t *testing.T) {
 	filter := "name=Earth"
-	config := data.Config{Name: "Earth"}
+	config := data.Config{Name: "Earth", IsValid: true}
 	filteredConfig := filterProperty(filter, config)
 
 	assert.Equal(t, true, filteredConfig.IsValid,
@@ -15,7 +15,7 @@ func TestFilterNameTrue(t *testing.T) {
 
 func TestFilterNameFalse(t *testing.T) {
 	filter := "name=Earth"
-	config := data.Config{Name: "Mars"}
+	config := data.Config{Name: "Mars", IsValid: true}
 	filteredConfig := filterProperty(filter, config)
 
 	assert.Equal(t, false, filteredConfig.IsValid,
@@ -24,7 +24,7 @@ func TestFilterNameFalse(t *testing.T) {
 
 func TestFilterLocationTrue(t *testing.T) {
 	filter := "location=Earth"
-	config := data.Config{Location: []string{"Solar System", "Earth"}}
+	config := data.Config{Location: []string{"Solar System", "Earth"}, IsValid: true}
 	filteredConfig := filterProperty(filter, config)
 
 	assert.Equal(t, true, filteredConfig.IsValid,
@@ -33,7 +33,7 @@ func TestFilterLocationTrue(t *testing.T) {
 
 func TestFilterLocationFalse(t *testing.T) {
 	filter := "location=Earth"
-	config := data.Config{Location: []string{"Solar System", "Mars"}}
+	config := data.Config{Location: []string{"Solar System", "Mars"}, IsValid: true}
 	filteredConfig := filterProperty(filter, config)
 
 	assert.Equal(t, false, filteredConfig.IsValid,

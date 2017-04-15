@@ -32,7 +32,7 @@ func filterProperty(filter string, data d.Config) d.Config {
 	var value = split[1]
 	var regex = regexp.MustCompile(value)
 
-	//TODO check that key exists in Config field
+	//TODO Check that key exists in Config field?
 
 	t := reflect.ValueOf(data)
 
