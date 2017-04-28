@@ -27,7 +27,7 @@ def version_path
   "#{src_path}/version"
 end
 
-puts ENV["PATH"]
+#  puts ENV["PATH"]
 
 def get_version
 #  puts "### Getting the application version."
