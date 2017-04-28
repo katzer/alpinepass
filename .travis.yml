@@ -18,8 +18,8 @@ script:
   - scripts/bintest
 
 before_deploy:
-  - scripts/release
   - gem install os
+  - scripts/release
   - rake version
   - export BUILD_VERSION=`rake version`
   - echo $BUILD_VERSION
