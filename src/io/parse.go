@@ -3,30 +3,30 @@ package io
 import (
 	yaml "gopkg.in/yaml.v2"
 
-	d "github.com/appPlant/alpinepass/src/data"
+	"github.com/appPlant/alpinepass/src/data"
 	"github.com/appPlant/alpinepass/src/util"
 )
 
 //Separator is the character used for separating the parts of a generated ID.
 const Separator string = "_"
 
-func parseYaml(data string) d.YamlData {
-	yamlData := d.YamlData{}
-	err := yaml.Unmarshal([]byte(data), &yamlData)
+func parseYaml(yamlString string) data.YamlData {
+	yamlData := data.YamlData{}
+	err := yaml.Unmarshal([]byte(yamlString), &yamlData)
 	util.CheckError(err, "Parsing YAML failed!")
 	return yamlData
 }
 
-func createID(definition d.Definition) string {
+func createID(def data.Definition) string {
 	//TODO find a way to generate an ID
 	id := ""
-	id = id + util.CleanString(definition.Env) + Separator
-	id = id + util.CleanString(definition.Type) + Separator
+	id = id + util.CleanString(def.Env) + Separator
+	id = id + util.CleanString(def.Type) + Separator
 	return id
 }
 
-func createConfig(def d.Definition) d.Config {
-	config := d.Config{}
+func createConfig(def data.Definition) data.Config {
+	config := data.Config{}
 
 	if def.ID != "" {
 		config.ID = def.ID
@@ -55,10 +55,10 @@ func createConfig(def d.Definition) d.Config {
 }
 
 //ReadConfigs reads the input file and creates Config objects to work with.
-func ReadConfigs(path string) []d.Config {
-	data := readFile(path)
-	yamlData := parseYaml(data)
-	configs := []d.Config{}
+func ReadConfigs(path string) []data.Config {
+	fileData := readFile(path)
+	yamlData := parseYaml(fileData)
+	configs := []data.Config{}
 
 	for _, definition := range yamlData.Defs {
 		config := createConfig(definition)
