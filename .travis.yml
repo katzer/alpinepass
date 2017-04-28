@@ -28,9 +28,9 @@ before_deploy:
   - ls -la releases
   - cd releases
   - ls -la
-  - echo v$BUILD_VERSION
-  - echo v${BUILD_VERSION}
-  - cd v$BUILD_VERSION
+  - echo "v$BUILD_VERSION"
+  - echo "v${BUILD_VERSION}"
+  - cd "v$BUILD_VERSION"
   - ls -ls
 
 deploy:
