@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	d "github.com/appPlant/alpinepass/src/data"
+	"github.com/appPlant/alpinepass/src/data"
 	"github.com/appPlant/alpinepass/src/util"
 	"github.com/fatih/structs"
 )
@@ -18,15 +18,15 @@ type PropertyFilter struct {
 	Slices []string
 }
 
-func (p PropertyFilter) filter(data d.Config) d.Config {
+func (p PropertyFilter) filter(config data.Config) data.Config {
 	verifyFlags(p.Slices) //TODO verify only once and not for every Config
 	for i := 0; i < len(p.Slices); i++ {
-		data = filterProperty(p.Slices[i], data)
+		config = filterProperty(p.Slices[i], config)
 	}
-	return data
+	return config
 }
 
-func filterProperty(filter string, data d.Config) d.Config {
+func filterProperty(filter string, config data.Config) data.Config {
 	var split = strings.Split(filter, Separator)
 	var key = split[0]
 	var value = split[1]
@@ -34,7 +34,7 @@ func filterProperty(filter string, data d.Config) d.Config {
 
 	//TODO Check that key exists in Config field?
 
-	t := reflect.ValueOf(data)
+	t := reflect.ValueOf(config)
 
 	var field reflect.StructField
 
@@ -47,7 +47,7 @@ func filterProperty(filter string, data d.Config) d.Config {
 
 	if field.Type.String() == "string" {
 		if !regex.MatchString(t.FieldByName(field.Name).String()) {
-			data.IsValid = false
+			config.IsValid = false
 		}
 	}
 	if field.Type.String() == "[]string" {
@@ -60,11 +60,11 @@ func filterProperty(filter string, data d.Config) d.Config {
 			}
 		}
 		if !valid {
-			data.IsValid = false
+			config.IsValid = false
 		}
 	}
 
-	return data
+	return config
 }
 
 //verifyFlags checks that the input flags are valid.
@@ -81,8 +81,8 @@ func verifyFlags(flags []string) {
 		}
 
 		//Check that the key part of a flag matches the fields available in struct Config.
-		data := d.Config{}
-		fieldNames := structs.Names(data)
+		config := data.Config{}
+		fieldNames := structs.Names(config)
 		key := strings.ToLower(strings.Split(flag, Separator)[0])
 		isContained := false
 		for j := 0; j < len(fieldNames); j++ {
