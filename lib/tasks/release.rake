@@ -3,7 +3,7 @@ require 'os'
 
 desc 'generate a release tarball'
 task release: [:compile] do
-  release_dir = "#{release_path}#{APP_VERSION}"
+  release_dir = "#{release_path}/#{APP_VERSION}"
   latest_dir  = "#{release_path}/latest"
 
   mkdir_p(release_dir)
