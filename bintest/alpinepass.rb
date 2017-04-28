@@ -5,24 +5,31 @@ BIN  = ARGV.fetch(0).freeze
 PATH = { 'PATH' => "#{File.expand_path('tools', __dir__)}:#{ENV['PATH']}"  }
 
 class TestAlpinepass < Test::Unit::TestCase
-	def test_run_without_arguments_and_input
+	def test_run
 		output, error, status = Open3.capture3(PATH, BIN)
 
-		expect_error(output, error, 'Run without arguments and input.')
-		assert_true status.success?, 'Process did not exit cleanly!'
+
+    puts "### STATUS: "
+    puts status
+    puts status.success?
+		expect_error(output, error, 'Run the application.')
+		assert_false status.success?, 'Process should fail!'
     assert_include output, 'The file input.yml does not exist!', 'The error message is not correct!'
 	end
 
   def test_run_input_valid
 		output, error, status = Open3.capture3(PATH, BIN, '-i=valid.yml')
 
+    puts "### STATUS: "
+    puts status
+    puts status.success?
 		expect_no_error(output, error, 'Use valid.yml.')
 		assert_true status.success?, 'Process did not exit cleanly!'
 	end
 
   def test_show_the_version
 		output, error, status = Open3.capture3(PATH, BIN, '-v')
-    puts "***--- OUTPUT: #{output}"
+
 		expect_no_error(output, error, 'Show the version.')
 		assert_true status.success?, 'Process did not exit cleanly!'
 	end
