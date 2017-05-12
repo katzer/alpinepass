@@ -3,37 +3,32 @@ require 'test/unit'
 
 BIN  = ARGV.fetch(0).freeze
 PATH = { 'PATH' => "#{File.expand_path('tools', __dir__)}:#{ENV['PATH']}"  }
+LOCATION = BIN.gsub('alpinepass', '') #The path used for input and output files.
 
 class TestAlpinepass < Test::Unit::TestCase
 	def test_run
-    return
-		output, error, status = Open3.capture3(PATH, BIN, '')
+		output, error, status = Open3.capture3(PATH, BIN)
 
+    puts output
     puts "### STATUS: "
     puts status
     puts status.success?
-		expect_error(output, error, 'Run the application.')
 		assert_false status.success?, 'Process should fail!'
+		expect_error(output, error, 'Run the application.')
     assert_include output, 'The file input.yml does not exist!', 'The error message is not correct!'
 	end
 
   def test_run_input_valid
-		output, error, status = Open3.capture3(PATH, BIN, '-i=valid.yml')
-
-    puts "### STATUS: "
-    puts status
-    puts status.success?
-		expect_no_error(output, error, 'Use valid.yml.')
+		output, error, status = Open3.capture3(PATH, BIN, "-i=#{LOCATION}valid.yml")
 		assert_true status.success?, 'Process did not exit cleanly!'
+		expect_no_error(output, error, 'Use valid.yml.')
 	end
 
   def test_show_the_version
-    return
-
 		output, error, status = Open3.capture3(PATH, BIN, '-v')
-
-		expect_no_error(output, error, 'Show the version.')
 		assert_true status.success?, 'Process did not exit cleanly!'
+		expect_no_error(output, error, 'Show the version.')
+    assert_include output, 'alpinepass version'
 	end
 end
 
