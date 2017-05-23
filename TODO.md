@@ -23,6 +23,7 @@
 * !!! https://github.com/stretchr/testify
 
 ## Plugin
+* https://en.wikipedia.org/wiki/Foreign_function_interface
 * https://appliedgo.net/plugins/
 
 ### External process, RPC
