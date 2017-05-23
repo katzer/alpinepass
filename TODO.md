@@ -37,5 +37,9 @@
 * Must compile whole application
 
 ### Embedded scripting language
+* https://github.com/yuin/gopher-lua, Lua
+* https://github.com/Shopify/go-lua, Lua
+* https://github.com/robertkrimen/otto, JS
+* https://github.com/sbinet/go-python, Python
 * In-process
 * Performance overhead, negligible
