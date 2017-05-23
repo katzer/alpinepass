@@ -21,3 +21,21 @@
 * http://agouti.org/
 * http://onsi.github.io/gomega/
 * !!! https://github.com/stretchr/testify
+
+## Plugin
+* https://appliedgo.net/plugins/
+
+### External process, RPC
+* https://npf.io/2015/05/pie/, Go
+* https://github.com/hashicorp/go-plugin, Go
+* Plugin does not crash app
+* Any language
+* Must be compiled, depending on language
+
+### Compile-time plugins
+* Must be compiled
+* Must compile whole application
+
+### Embedded scripting language
+* In-process
+* Performance overhead, negligible

@@ -4,6 +4,7 @@
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/8uavdsappvon3gjh?svg=true)](https://ci.appveyor.com/project/EightBitBoy/alpinepass)
 [![Code Climate](https://codeclimate.com/github/appPlant/alpinepass/badges/gpa.svg)](https://codeclimate.com/github/appPlant/alpinepass)
 [![codebeat badge](https://codebeat.co/badges/35499bc6-3480-4e21-9e9e-29bb7d394bab)](https://codebeat.co/projects/github-com-appplant-alpinepass)
+[![Go Report Card](https://goreportcard.com/badge/github.com/appPlant/alpinepass)](https://goreportcard.com/report/github.com/appPlant/alpinepass)
 
 A tool for managing system environments.
 
