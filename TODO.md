@@ -33,6 +33,8 @@
 ## Plugin
 * https://en.wikipedia.org/wiki/Foreign_function_interface
 * https://appliedgo.net/plugins/
+* Plugin as shared library?
+* C-plugin
 
 ### External process, RPC
 * https://npf.io/2015/05/pie/, Go
