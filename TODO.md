@@ -1,6 +1,7 @@
 # TODO
 
 ## Development
+* Use some kind of enum for config types.
 * Show improved error message when input file is a directory! Currently the error is about a file which cannot be read.
 * Adjust validation rules.
 * Change to Version 1.42.

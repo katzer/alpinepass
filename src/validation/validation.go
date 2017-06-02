@@ -41,7 +41,7 @@ func Validate(configs []data.Config) {
 }
 
 func verifyType(config data.Config) string {
-	if !util.StringInArray(config.Type, []string{data.DB, data.SERVER, data.WEB}) {
+	if !util.StringInArray(config.Type, []string{data.DB, data.SERVER, data.TOOL, data.WEB}) {
 		return "The Config has an invalid type!"
 	}
 	return ""
@@ -51,9 +51,6 @@ func verifyType(config data.Config) string {
 func verifyCommonFields(config data.Config) string {
 	if config.ID == "" {
 		return "The Config has no ID!"
-	}
-	if config.Env == "" {
-		return "The Config has no Env!"
 	}
 	if config.Type == "" {
 		return "The Config has no Type!"
@@ -65,6 +62,9 @@ func verifyCommonFields(config data.Config) string {
 }
 
 func verifyDbFields(config data.Config) string {
+	if config.Env == "" {
+		return "The Config has no Env!"
+	}
 	if config.User == "" {
 		return "The Config has no User!"
 	}
@@ -91,6 +91,9 @@ func verifyToolFields(config data.Config) string {
 }
 
 func verifyServerFields(config data.Config) string {
+	if config.Env == "" {
+		return "The Config has no Env!"
+	}
 	if config.User == "" {
 		return "The Config has no User!"
 	}
@@ -98,6 +101,9 @@ func verifyServerFields(config data.Config) string {
 }
 
 func verifyWebFields(config data.Config) string {
+	if config.Env == "" {
+		return "The Config has no Env!"
+	}
 	return ""
 }
 
