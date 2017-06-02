@@ -1,5 +1,8 @@
 # TODO
 
+## Development
+* Show improved error message when input file is a directory! Currently the error is about a file which cannot be read.
+
 ## Links
 * https://github.com/golang/go/wiki/GithubCodeLayout
 * https://github.com/tcnksm-sample/travis-golang/blob/master/.travis.yml

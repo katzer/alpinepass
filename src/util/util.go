@@ -32,9 +32,9 @@ func CleanString(s string) string {
 
 //ThrowError prints the error information and exits the application.
 func ThrowError(message string) {
-	os.Stderr.WriteString("### ERROR ###\n")
+	os.Stderr.WriteString("\n##### ERROR #####\n")
 	os.Stderr.WriteString(message + "\n")
-	os.Stderr.WriteString("### END ERROR ###\n\n")
+	os.Stderr.WriteString("#################\n\n")
 	cli.ShowAppHelp(GlobalContext)
 	os.Exit(-1)
 }
