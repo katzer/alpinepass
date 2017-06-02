@@ -1,6 +1,6 @@
 # alpinepass
 
-## 0.1.1 - UNRELEASED
+## 1.4.2 - UNRELEASED
 
 1. Adjust the release script.
 
