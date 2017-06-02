@@ -6,6 +6,9 @@ const DB = "db"
 //SERVER is used for referencing server type systems.
 const SERVER = "server"
 
+//TOOL is used for referencing tool type systems.
+const TOOL = "tool"
+
 //WEB is used for referencing web type systems.
 const WEB = "web"
 

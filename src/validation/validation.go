@@ -27,6 +27,11 @@ func Validate(configs []data.Config) {
 			handleMessage(config, message)
 		}
 
+		if config.Type == data.TOOL {
+			message = verifyToolFields(config)
+			handleMessage(config, message)
+		}
+
 		if config.Type == data.WEB {
 			message = verifyWebFields(config)
 			handleMessage(config, message)
@@ -78,6 +83,10 @@ func verifyDbFields(config data.Config) string {
 	if config.Port == "" {
 		return "The Config has no Port!"
 	}
+	return ""
+}
+
+func verifyToolFields(config data.Config) string {
 	return ""
 }
 

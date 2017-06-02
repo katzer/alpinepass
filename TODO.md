@@ -7,6 +7,7 @@
 * Update changelog.
 * Make sure "-v" output matches the other application's output!
 * Use Go 1.8! Make sure to update docker images and stuff!
+* Improve validation code.
 
 ## Links
 * https://github.com/golang/go/wiki/GithubCodeLayout
