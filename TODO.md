@@ -6,6 +6,7 @@
 * Change to Version 1.42.
 * Update changelog.
 * Make sure "-v" output matches the other application's output!
+* Use Go 1.8! Make sure to update docker images and stuff!
 
 ## Links
 * https://github.com/golang/go/wiki/GithubCodeLayout
