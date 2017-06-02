@@ -8,13 +8,17 @@ import "strings"
 import "github.com/urfave/cli"
 import "github.com/appPlant/alpinepass/src/data"
 
+//GlobalContext holds a reference to the application context. It can be used for accessing flags.
 var GlobalContext *cli.Context
+
+//Debug defines if the application runs in debug mode.
 var Debug = false
 
 //CheckError throws an exception if an error exists. If an error message exists, it is shown.
 func CheckError(err error, message string) {
 	if err != nil {
 		if message == "" || Debug {
+			os.Stdout.WriteString("\n")
 			panic(err)
 		} else {
 			ThrowError(message)
