@@ -6,6 +6,7 @@ import (
 )
 
 //Filter declares all methods used for implementing filters.
+//A Filter takes a Config, modifies its properties and returns it.
 type Filter interface {
 	filter(config data.Config) data.Config
 }
@@ -23,13 +24,14 @@ func FilterConfigs(configs []data.Config, context *cli.Context) []data.Config {
 	return configs
 }
 
+//applyFilter
 func applyFilter(configs []data.Config, filter Filter) []data.Config {
 	cleanedConfigs := []data.Config{}
 
 	for i := 0; i < len(configs); i++ {
-		configs[i] = filter.filter(configs[i])
-		if configs[i].IsValid {
-			cleanedConfigs = append(cleanedConfigs, configs[i])
+		config := filter.filter(configs[i])
+		if config.IsValid {
+			cleanedConfigs = append(cleanedConfigs, config)
 		}
 	}
 

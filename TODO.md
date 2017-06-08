@@ -1,6 +1,7 @@
 # TODO
 
 ## Development
+* Implement "-f foo:bar" filter logic.
 * Use some kind of enum for config types.
 * Show improved error message when input file is a directory! Currently the error is about a file which cannot be read.
 * Adjust validation rules.
@@ -16,6 +17,9 @@
 * [waffle.io](https://waffle.io/)
 
 ## Libraries
+* https://github.com/asaskevich/govalidator
+* https://github.com/go-playground/validator
+* https://github.com/avelino/awesome-go
 * [spew](https://github.com/davecgh/go-spew)
 * [logrus](github.com/Sirupsen/logrus)
 
@@ -23,6 +27,7 @@
 * [gox](github.com/mitchellh/gox)
 
 ## Other
+* https://github.com/mattn
 * Plugin-System: https://awesome-go.com/#embeddable-scripting-languages
 * Add a "debug" flag for showing stack traces!
 * binary stripping?
