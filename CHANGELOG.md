@@ -5,7 +5,7 @@
 1. Adjust the release script.
 2. Introduce the "tool" configuration type.
 3. Improved error messages. When an error occurs an error message is shown which indicates the error reason followed by the help text.
-4. Add the "--debug" flag which prints the stacktrace when an error occurs.
+4. Add the "--debug" flag which prints the stacktrace when an error occurs. No help text is shown.
 
 ## 1.0.0 - 2017-03-20
 

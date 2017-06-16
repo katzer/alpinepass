@@ -10,8 +10,11 @@ import (
 	"github.com/fatih/structs"
 )
 
-//Separator is tha character used for separating filter keys and values.
-const Separator string = "="
+//ExactSeparator is tha character used for separating filter keys and values for 'exact' matches.
+const ExactSeparator string = "="
+
+//ContainsSeparator is tha character used for separating filter keys and values for 'contains' matches.
+const ContainsSeparator string = ":"
 
 //PropertyFilter allows filtering a Config for the content of its properties.
 type PropertyFilter struct {
@@ -27,7 +30,7 @@ func (p PropertyFilter) filter(config data.Config) data.Config {
 }
 
 func filterProperty(filter string, config data.Config) data.Config {
-	var split = strings.Split(filter, Separator)
+	var split = strings.Split(filter, ExactSeparator)
 	var key = split[0]
 	var value = split[1]
 	var regex = regexp.MustCompile(value)
@@ -73,17 +76,17 @@ func verifyFlags(flags []string) {
 		flag := flags[i]
 
 		//Do some simple checks.
-		if !strings.Contains(flag, Separator) {
-			util.ThrowError("The filter does not contain '" + Separator + "'! Flag: " + flag)
+		if !strings.Contains(flag, ExactSeparator) {
+			util.ThrowError("The filter does not contain '" + ExactSeparator + "'! Flag: " + flag)
 		}
-		if strings.Count(flag, Separator) > 1 {
-			util.ThrowError("The filter contains too many '" + Separator + "'! Flag: " + flag)
+		if strings.Count(flag, ExactSeparator) > 1 {
+			util.ThrowError("The filter contains too many '" + ExactSeparator + "'! Flag: " + flag)
 		}
 
 		//Check that the key part of a flag matches the fields available in struct Config.
 		config := data.Config{}
 		fieldNames := structs.Names(config)
-		key := strings.ToLower(strings.Split(flag, Separator)[0])
+		key := strings.ToLower(strings.Split(flag, ExactSeparator)[0])
 		isContained := false
 		for j := 0; j < len(fieldNames); j++ {
 			if key == strings.ToLower(fieldNames[j]) {
