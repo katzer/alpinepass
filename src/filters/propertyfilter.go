@@ -22,7 +22,7 @@ type PropertyFilter struct {
 }
 
 func (p PropertyFilter) filter(config data.Config) data.Config {
-	verifyFlags(p.Slices) //TODO verify only once and not for every Config
+	validateFlags(p.Slices) //TODO verify only once and not for every Config
 	for i := 0; i < len(p.Slices); i++ {
 		config = filterProperty(p.Slices[i], config)
 	}
@@ -70,8 +70,8 @@ func filterProperty(filter string, config data.Config) data.Config {
 	return config
 }
 
-//verifyFlags checks that the input flags are valid.
-func verifyFlags(flags []string) {
+//validateFlags checks that the input flags are valid.
+func validateFlags(flags []string) {
 	for i := 0; i < len(flags); i++ {
 		flag := flags[i]
 
