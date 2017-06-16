@@ -12,9 +12,11 @@ import (
 
 //ExactSeparator is tha character used for separating filter keys and values for 'exact' matches.
 const ExactSeparator string = "="
+const ExactRegexTemplate = "/^%s$/"
 
 //ContainsSeparator is tha character used for separating filter keys and values for 'contains' matches.
 const ContainsSeparator string = ":"
+const ContainsRegexTemplate = "/%s/"
 
 //PropertyFilter allows filtering a Config for the content of its properties.
 type PropertyFilter struct {
