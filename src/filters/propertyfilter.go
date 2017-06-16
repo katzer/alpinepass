@@ -78,16 +78,25 @@ func validateFlags(flags []string) {
 		//Check that the filter contains a separator.
 		//The "!=" is a hack to emulate XOR which does not exist in
 		if !(strings.Contains(flag, ExactSeparator) != strings.Contains(flag, ContainsSeparator)) {
-			util.ThrowError("The filter does not contain a correct separator: '" + ExactSeparator + "' or '" + ContainsSeparator + "' \nFaulty flag: " + flag)
+			util.ThrowError("The filter does not contain a correct separator: '" + ExactSeparator + "' or '" + ContainsSeparator + "'\nFaulty flag: " + flag)
 		}
 		if (strings.Count(flag, ExactSeparator) > 1) != (strings.Count(flag, ContainsSeparator) > 1) {
 			util.ThrowError("The filter contains too many '" + ExactSeparator + "'! Flag: " + flag)
 		}
 
+		//Get the flag's separator.
+		var separator string
+		if strings.Contains(flag, ExactSeparator) {
+			separator = ExactSeparator
+		}
+		if strings.Contains(flag, ContainsSeparator) {
+			separator = ContainsSeparator
+		}
+
 		//Check that the key part of a flag matches the fields available in struct Config.
 		config := data.Config{}
 		fieldNames := structs.Names(config)
-		key := strings.ToLower(strings.Split(flag, ExactSeparator)[0])
+		key := strings.ToLower(strings.Split(flag, separator)[0])
 		isContained := false
 		for j := 0; j < len(fieldNames); j++ {
 			if key == strings.ToLower(fieldNames[j]) {
@@ -95,7 +104,7 @@ func validateFlags(flags []string) {
 			}
 		}
 		if !isContained {
-			util.ThrowError("The filter type is not valid! Flag: " + flag)
+			util.ThrowError("The filter type is not valid!\nFaulty flag: " + flag)
 		}
 	}
 }

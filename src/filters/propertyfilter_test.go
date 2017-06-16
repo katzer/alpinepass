@@ -42,12 +42,12 @@ func TestFilterLocationFalse(t *testing.T) {
 
 func TestVerifyFlags(t *testing.T) {
 	flags := []string{"location=Earth", "location:Earth"}
-	assert.NotPanics(t, func() { verifyFlags(flags) })
+	assert.NotPanics(t, func() { validateFlags(flags) })
 }
 
 func TestVerifyFlagsError(t *testing.T) {
 	/*
 		flags := []string{"location==Earth", "location::Earth"}
-		assert.Panics(t, func() { verifyFlags(flags) })
+		assert.Panics(t, func() { validateFlags(flags) })
 	*/
 }
