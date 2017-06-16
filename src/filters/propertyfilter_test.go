@@ -39,3 +39,15 @@ func TestFilterLocationFalse(t *testing.T) {
 	assert.Equal(t, false, filteredConfig.IsValid,
 		"The Config should not match the filter.")
 }
+
+func TestVerifyFlags(t *testing.T) {
+	flags := []string{"location=Earth", "location:Earth"}
+	assert.NotPanics(t, func() { verifyFlags(flags) })
+}
+
+func TestVerifyFlagsError(t *testing.T) {
+	/*
+		flags := []string{"location==Earth", "location::Earth"}
+		assert.Panics(t, func() { verifyFlags(flags) })
+	*/
+}

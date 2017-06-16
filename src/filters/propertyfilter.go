@@ -75,11 +75,12 @@ func verifyFlags(flags []string) {
 	for i := 0; i < len(flags); i++ {
 		flag := flags[i]
 
-		//Do some simple checks.
-		if !strings.Contains(flag, ExactSeparator) {
-			util.ThrowError("The filter does not contain '" + ExactSeparator + "'! Flag: " + flag)
+		//Check that the filter contains a separator.
+		//The "!=" is a hack to emulate XOR which does not exist in
+		if !(strings.Contains(flag, ExactSeparator) != strings.Contains(flag, ContainsSeparator)) {
+			util.ThrowError("The filter does not contain a correct separator: '" + ExactSeparator + "' or '" + ContainsSeparator + "' \nFaulty flag: " + flag)
 		}
-		if strings.Count(flag, ExactSeparator) > 1 {
+		if (strings.Count(flag, ExactSeparator) > 1) != (strings.Count(flag, ContainsSeparator) > 1) {
 			util.ThrowError("The filter contains too many '" + ExactSeparator + "'! Flag: " + flag)
 		}
 
