@@ -1,6 +1,7 @@
 package filters
 
 import (
+	"fmt"
 	"reflect"
 	"regexp"
 	"strings"
@@ -36,10 +37,11 @@ func (p PropertyFilter) filter(config data.Config) data.Config {
 }
 
 func filterProperty(filter string, config data.Config) data.Config {
-	var split = strings.Split(filter, ExactSeparator)
+	var separator = getSeparator(filter)
+	var split = strings.Split(filter, separator)
 	var key = split[0]
 	var value = split[1]
-	var regex = regexp.MustCompile(value)
+	var regex = regexp.MustCompile(fmt.Sprintf(getRegex(separator), value))
 
 	//TODO Check that key exists in Config field?
 
@@ -90,16 +92,8 @@ func validateFlags(flags []string) {
 			util.ThrowError("The filter contains too many '" + ExactSeparator + "'! Flag: " + flag)
 		}
 
-		//Get the flag's separator.
-		var separator string
-		if strings.Contains(flag, ExactSeparator) {
-			separator = ExactSeparator
-		}
-		if strings.Contains(flag, ContainsSeparator) {
-			separator = ContainsSeparator
-		}
-
 		//Check that the key part of a flag matches the fields available in struct Config.
+		separator := getSeparator(flag)
 		config := data.Config{}
 		fieldNames := structs.Names(config)
 		key := strings.ToLower(strings.Split(flag, separator)[0])
@@ -113,4 +107,35 @@ func validateFlags(flags []string) {
 			util.ThrowError("The filter type is not valid!\nFaulty flag: " + flag)
 		}
 	}
+}
+
+func getSeparator(filter string) string {
+	var separator = ""
+
+	if strings.Contains(filter, ExactSeparator) {
+		separator = ExactSeparator
+	}
+	if strings.Contains(filter, ContainsSeparator) {
+		separator = ContainsSeparator
+	}
+
+	if separator == "" {
+		util.ThrowError("The filter does not contain a valid separator!\nFaulty filter: " + filter)
+	}
+
+	return separator
+}
+
+// The function does not feel right, maybe a map could be used!
+func getRegex(separator string) string {
+	if separator == ContainsSeparator {
+		return ContainsRegexTemplate
+	}
+	if separator == ExactSeparator {
+		return ExactRegexTemplate
+	}
+
+	//TODO Code smell!
+	util.ThrowError("There is no regular expression tempate for the given separator!")
+	return ""
 }
