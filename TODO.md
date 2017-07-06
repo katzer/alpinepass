@@ -2,8 +2,6 @@
 
 ## Development
 * Implement "-f foo:bar" filter logic.
-  * id=foo ==> id =~ /^foo$/
-  * id:foo ==> id =~ /foo/
   * Adjust the help text!
 * Use some kind of enum for config types.
 * Show improved error message when input file is a directory! Currently the error is about a file which cannot be read.
