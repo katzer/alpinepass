@@ -31,9 +31,6 @@ Options:
 
 -v Print the application's version.
 ```
-## Requirements
-
-The application [kpcli](http://kpcli.sourceforge.net/) must be installed for KeePass support.
 
 ## Installation
 
@@ -76,6 +73,7 @@ Create a YAML output file ```/home/admin/endor_test.yml``` containing all test s
 ## Dependencies
 
 * [cli](https://github.com/urfave/cli)
+* [testify](https://github.com/stretchr/testify)
 * [yaml](github.com/ghodss/yaml)
 
 ## License
@@ -84,4 +82,4 @@ The code is available as open source under the terms of the [Apache 2.0 License]
 
 Made with :heart: and :coffee: in Leipzig!
 
-© 2016 [appPlant GmbH](http://www.appplant.de)
+© 2017 [appPlant GmbH](http://www.appplant.de)
