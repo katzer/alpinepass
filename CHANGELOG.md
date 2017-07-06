@@ -6,6 +6,9 @@
 2. Introduce the "tool" configuration type.
 3. Improved error messages. When an error occurs an error message is shown which indicates the error reason followed by the help text.
 4. Add the "--debug" flag which prints the stacktrace when an error occurs. No help text is shown.
+5. New filter logic:
+    * "Exact" filters "key=value" match when the key's content matches exactly the filter value. "Earth" matches "Earth" but not "Earths".
+    * "Contains" filters "key:value" match then the filter value is contained anywhere in the key's content. "Bar" matches "FooBar" and "BarFoo" but not "BazFoo".
 
 ## 1.0.0 - 2017-03-20
 
