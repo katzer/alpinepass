@@ -44,7 +44,6 @@ func filterProperty(filter string, config data.Config) data.Config {
 	var regex = regexp.MustCompile(fmt.Sprintf(getRegex(separator), value))
 
 	//TODO Check that key exists in Config field?
-
 	t := reflect.ValueOf(config)
 
 	var field reflect.StructField

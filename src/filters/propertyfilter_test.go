@@ -4,7 +4,7 @@ import "testing"
 import "github.com/stretchr/testify/assert"
 import "github.com/appPlant/alpinepass/src/data"
 
-func TestFilterNameTrue(t *testing.T) {
+func TestFilterNameExactMatchTrue(t *testing.T) {
 	filter := "name=Earth"
 	config := data.Config{Name: "Earth", IsValid: true}
 	filteredConfig := filterProperty(filter, config)
@@ -13,7 +13,7 @@ func TestFilterNameTrue(t *testing.T) {
 		"The Config should match the filter.")
 }
 
-func TestFilterNameFalse(t *testing.T) {
+func TestFilterNameExactMatchFalse(t *testing.T) {
 	filter := "name=Earth"
 	config := data.Config{Name: "Mars", IsValid: true}
 	filteredConfig := filterProperty(filter, config)
@@ -46,8 +46,6 @@ func TestVerifyFlags(t *testing.T) {
 }
 
 func TestVerifyFlagsError(t *testing.T) {
-	/*
-		flags := []string{"location==Earth", "location::Earth"}
-		assert.Panics(t, func() { validateFlags(flags) })
-	*/
+	flags := []string{"location==Earth", "location::Earth"}
+	assert.Panics(t, func() { validateFlags(flags) })
 }
