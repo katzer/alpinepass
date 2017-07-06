@@ -23,7 +23,7 @@ func TestFilterNameExactMatchFalse(t *testing.T) {
 }
 
 //TODO
-func TestFilterNameStartsWithMatchTrue(t *testing.T) {
+func TestFilterNameContainsMatchTrue(t *testing.T) {
 	filter := "name:Ear"
 	config := data.Config{Name: "Earth", IsValid: true}
 	filteredConfig := filterProperty(filter, config)
@@ -33,7 +33,7 @@ func TestFilterNameStartsWithMatchTrue(t *testing.T) {
 }
 
 //TODO
-func TestFilterNameStartsWithMatchFalse(t *testing.T) {
+func TestFilterNameContainsMatchFalse(t *testing.T) {
 	filter := "name=Ear"
 	config := data.Config{Name: "Mars", IsValid: true}
 	filteredConfig := filterProperty(filter, config)
