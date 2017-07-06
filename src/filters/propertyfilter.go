@@ -15,13 +15,13 @@ import (
 const ExactSeparator string = "="
 
 //ExactRegexTemplate is the regular expression used in combination with ExactSeparator.
-const ExactRegexTemplate = "/^%s$/"
+const ExactRegexTemplate = "^%s$"
 
 //ContainsSeparator is tha character used for separating filter keys and values for 'contains' matches.
 const ContainsSeparator string = ":"
 
 //ContainsRegexTemplate is the regular expression used in combination with ContainsSeparator.
-const ContainsRegexTemplate = "/%s/"
+const ContainsRegexTemplate = "%s"
 
 //PropertyFilter allows filtering a Config for the content of its properties.
 type PropertyFilter struct {

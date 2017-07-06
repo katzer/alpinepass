@@ -22,6 +22,26 @@ func TestFilterNameExactMatchFalse(t *testing.T) {
 		"The Config should not match the filter.")
 }
 
+//TODO
+func TestFilterNameStartsWithMatchTrue(t *testing.T) {
+	filter := "name:Ear"
+	config := data.Config{Name: "Earth", IsValid: true}
+	filteredConfig := filterProperty(filter, config)
+
+	assert.Equal(t, true, filteredConfig.IsValid,
+		"The Config should match the filter.")
+}
+
+//TODO
+func TestFilterNameStartsWithMatchFalse(t *testing.T) {
+	filter := "name=Ear"
+	config := data.Config{Name: "Mars", IsValid: true}
+	filteredConfig := filterProperty(filter, config)
+
+	assert.Equal(t, false, filteredConfig.IsValid,
+		"The Config should not match the filter.")
+}
+
 func TestFilterLocationTrue(t *testing.T) {
 	filter := "location=Earth"
 	config := data.Config{Location: []string{"Solar System", "Earth"}, IsValid: true}
