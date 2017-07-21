@@ -6,7 +6,11 @@ environment:
   GOPATH: c:\GoDev
 
 install:
+  - cd src
   - go get -v
+
+test_script:
+  - go test ./...
 
 build_script:
   - go version
