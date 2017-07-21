@@ -7,7 +7,8 @@ environment:
 
 install:
   - cd src
-  - go get -v -t
+  - go get -v
+  - go get github.com/stretchr/testify/assert
 
 build_script:
   - go version
