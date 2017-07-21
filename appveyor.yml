@@ -12,7 +12,7 @@ install:
 build_script:
   - go version
   - go env
+  - go build -o alpinepass
 
 test_script:
   - go test ./...
-
