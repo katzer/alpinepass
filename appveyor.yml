@@ -9,10 +9,10 @@ install:
   - cd src
   - go get -v
 
-test_script:
-  - go test ./...
-
 build_script:
   - go version
   - go env
-  - go test
+
+test_script:
+  - go test ./...
+
