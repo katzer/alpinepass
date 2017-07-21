@@ -19,7 +19,18 @@ func execute(context *cli.Context) error {
 	configs = filters.FilterConfigs(configs, context)
 
 	validate(context, configs)
+	output(context, configs)
 
+	return nil
+}
+
+func validate(context *cli.Context, configs []data.Config) {
+	if !context.GlobalBool(FlagSkip) {
+		validation.Validate(configs)
+	}
+}
+
+func output(context *cli.Context, configs []data.Config) {
 	if context.GlobalBool(FlagDisplay) {
 		var configsJSON []byte
 		var err error
@@ -32,13 +43,5 @@ func execute(context *cli.Context) error {
 		fmt.Println(string(configsJSON))
 	} else {
 		io.WriteJSON(context.GlobalString(FlagOutput), configs, context.GlobalBool(FlagReadable))
-	}
-
-	return nil
-}
-
-func validate(context *cli.Context, configs []data.Config) {
-	if !context.GlobalBool(FlagSkip) {
-		validation.Validate(configs)
 	}
 }
