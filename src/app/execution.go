@@ -6,6 +6,7 @@ import (
 
 	"github.com/urfave/cli"
 
+	"github.com/appPlant/alpinepass/src/data"
 	"github.com/appPlant/alpinepass/src/filters"
 	"github.com/appPlant/alpinepass/src/io"
 	"github.com/appPlant/alpinepass/src/util"
@@ -17,9 +18,7 @@ func execute(context *cli.Context) error {
 	configs := io.ReadConfigs(context.GlobalString(FlagInput))
 	configs = filters.FilterConfigs(configs, context)
 
-	if !context.GlobalBool(FlagSkip) {
-		validation.Validate(configs)
-	}
+	validate(context, configs)
 
 	if context.GlobalBool(FlagDisplay) {
 		var configsJSON []byte
@@ -36,4 +35,10 @@ func execute(context *cli.Context) error {
 	}
 
 	return nil
+}
+
+func validate(context *cli.Context, configs []data.Config) {
+	if !context.GlobalBool(FlagSkip) {
+		validation.Validate(configs)
+	}
 }
