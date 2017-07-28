@@ -15,7 +15,7 @@ import (
 
 var context *cli.Context
 
-//execute reads the input, filters it and writes the output.
+//execute reads the input, filters it, validates it and writes the output.
 func execute(appContext *cli.Context) error {
 	context = appContext
 
@@ -42,10 +42,6 @@ func output(configs []data.Config) {
 	}
 }
 
-func outputToFile(configs []data.Config) {
-	io.WriteJSON(context.GlobalString(FlagOutput), configs, context.GlobalBool(FlagReadable))
-}
-
 func outputToConsole(configs []data.Config) {
 	var configsJSON []byte
 	var err error
@@ -58,4 +54,8 @@ func outputToConsole(configs []data.Config) {
 
 	util.CheckError(err, "Marshalling JSON failed!")
 	fmt.Println(string(configsJSON))
+}
+
+func outputToFile(configs []data.Config) {
+	io.WriteJSON(context.GlobalString(FlagOutput), configs, context.GlobalBool(FlagReadable))
 }
