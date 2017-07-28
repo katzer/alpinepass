@@ -36,24 +36,24 @@ func validate(configs []data.Config) {
 
 func output(configs []data.Config) {
 	if context.GlobalBool(FlagDisplay) {
-		var configsJSON []byte
-		var err error
-		if context.GlobalBool(FlagReadable) {
-			configsJSON, err = json.MarshalIndent(configs, "", "    ")
-		} else {
-			configsJSON, err = json.Marshal(configs)
-		}
-		util.CheckError(err, "Marshalling JSON failed!")
-		fmt.Println(string(configsJSON))
+		outputToConsole(configs)
 	} else {
-		io.WriteJSON(context.GlobalString(FlagOutput), configs, context.GlobalBool(FlagReadable))
+		outputToFile(configs)
 	}
 }
 
-func outputToFile() {
-
+func outputToFile(configs []data.Config) {
+	io.WriteJSON(context.GlobalString(FlagOutput), configs, context.GlobalBool(FlagReadable))
 }
 
-func outputToConsole() {
-
+func outputToConsole(configs []data.Config) {
+	var configsJSON []byte
+	var err error
+	if context.GlobalBool(FlagReadable) {
+		configsJSON, err = json.MarshalIndent(configs, "", "    ")
+	} else {
+		configsJSON, err = json.Marshal(configs)
+	}
+	util.CheckError(err, "Marshalling JSON failed!")
+	fmt.Println(string(configsJSON))
 }
