@@ -13,24 +13,28 @@ import (
 	"github.com/appPlant/alpinepass/src/validation"
 )
 
+var context *cli.Context
+
 //execute reads the input, filters it and writes the output.
-func execute(context *cli.Context) error {
+func execute(appContext *cli.Context) error {
+	context = appContext
+
 	configs := io.ReadConfigs(context.GlobalString(FlagInput))
 	configs = filters.FilterConfigs(configs, context)
 
-	validate(context, configs)
-	output(context, configs)
+	validate(configs)
+	output(configs)
 
 	return nil
 }
 
-func validate(context *cli.Context, configs []data.Config) {
+func validate(configs []data.Config) {
 	if !context.GlobalBool(FlagSkip) {
 		validation.Validate(configs)
 	}
 }
 
-func output(context *cli.Context, configs []data.Config) {
+func output(configs []data.Config) {
 	if context.GlobalBool(FlagDisplay) {
 		var configsJSON []byte
 		var err error
@@ -44,4 +48,12 @@ func output(context *cli.Context, configs []data.Config) {
 	} else {
 		io.WriteJSON(context.GlobalString(FlagOutput), configs, context.GlobalBool(FlagReadable))
 	}
+}
+
+func outputToFile() {
+
+}
+
+func outputToConsole() {
+
 }
