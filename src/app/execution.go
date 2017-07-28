@@ -49,11 +49,13 @@ func outputToFile(configs []data.Config) {
 func outputToConsole(configs []data.Config) {
 	var configsJSON []byte
 	var err error
+
 	if context.GlobalBool(FlagReadable) {
 		configsJSON, err = json.MarshalIndent(configs, "", "    ")
 	} else {
 		configsJSON, err = json.Marshal(configs)
 	}
+
 	util.CheckError(err, "Marshalling JSON failed!")
 	fmt.Println(string(configsJSON))
 }
