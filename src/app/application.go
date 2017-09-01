@@ -15,8 +15,19 @@ func RunApp() {
 	app.Version = util.Version
 	app.Author = "appPlant GmbH"
 	app.Usage = "Manage system environment information."
+	app.Flags = setupFlags()
 
-	app.Flags = []cli.Flag{
+	app.Action = func(context *cli.Context) error {
+		util.GlobalContext = context
+		util.Debug = context.GlobalBool(FlagDebug)
+		return execute(context)
+	}
+
+	app.Run(os.Args)
+}
+
+func setupFlags() []cli.Flag {
+	return []cli.Flag{
 		cli.BoolFlag{
 			Name:  FlagDebug,
 			Usage: "Print the stack trace when an error occurs.",
@@ -50,13 +61,4 @@ func RunApp() {
 			Usage: "Skip the input validation.",
 		},
 	}
-
-	app.Action = func(context *cli.Context) error {
-		util.GlobalContext = context
-		util.Debug = context.GlobalBool(FlagDebug)
-
-		return execute(context)
-	}
-
-	app.Run(os.Args)
 }
