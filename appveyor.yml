@@ -7,7 +7,10 @@ environment:
 
 install:
   - cd src
-#  - go get -v
+  - go get github.com/urfave/cli
+  - go get github.com/fatih/structs
+  - go get gopkg.in/yaml.v2
+  - go get github.com/stretchr/testify/assert
   - go get github.com/stretchr/testify/assert
 
 build_script:
