@@ -16,6 +16,4 @@ build_script:
   - go build -o alpinepass
 
 test_script:
-  - cd src
-  - dir
   - go test ./...
