@@ -12,7 +12,7 @@ const TOOL = "tool"
 //WEB is used for referencing web type systems.
 const WEB = "web"
 
-// Definition stores information about a system, used for importing data.
+// Definition stores information about a system, used for importing data only.
 type Definition struct {
 	ID          string
 	Name        string
@@ -31,12 +31,12 @@ type Definition struct {
 	Notes       []string
 }
 
-// YamlData stores information about all systems, used for importing data.
+// YamlData stores information about all systems, used for importing data only.
 type YamlData struct {
 	Defs []Definition
 }
 
-// Config stores data about a system, used for exporting data.
+// Config stores data about a system, used for managing and exporting data.
 type Config struct {
 	ID          string   `json:"id"`
 	Name        string   `json:"name"`
