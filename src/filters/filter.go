@@ -30,7 +30,7 @@ func applyFilter(configs []data.Config, filter Filter) []data.Config {
 
 	for i := 0; i < len(configs); i++ {
 		config := filter.filter(configs[i])
-		if config.IsValid {
+		if config.Meta.IsValid {
 			cleanedConfigs = append(cleanedConfigs, config)
 		}
 	}

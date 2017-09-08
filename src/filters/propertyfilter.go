@@ -57,7 +57,7 @@ func filterProperty(filter string, config data.Config) data.Config {
 
 	if field.Type.String() == "string" {
 		if !regex.MatchString(t.FieldByName(field.Name).String()) {
-			config.IsValid = false
+			config.Meta.IsValid = false
 		}
 	}
 	if field.Type.String() == "[]string" {
@@ -70,7 +70,7 @@ func filterProperty(filter string, config data.Config) data.Config {
 			}
 		}
 		if !valid {
-			config.IsValid = false
+			config.Meta.IsValid = false
 		}
 	}
 

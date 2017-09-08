@@ -49,7 +49,7 @@ func createConfig(def data.Definition) data.Config {
 	config.Responsible = def.Responsible
 	config.Notes = def.Notes
 
-	config.IsValid = true
+	config.Meta.IsValid = true
 
 	return config
 }

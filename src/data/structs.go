@@ -36,23 +36,27 @@ type YamlData struct {
 	Defs []Definition
 }
 
+//ConfigMeta contains properties which are not part of the system information, for internal use.
+type ConfigMeta struct {
+	IsValid bool
+}
+
 // Config stores data about a system, used for managing and exporting data.
 type Config struct {
-	ID          string   `json:"id"`
-	Name        string   `json:"name"`
-	Type        string   `json:"type"`
-	User        string   `json:"user"`
-	Password    string   `json:"password,omitempty"`
-	URL         string   `json:"url"`
-	Server      string   `json:"server,omitempty"`
-	DB          string   `json:"db,omitempty"`
-	Host        string   `json:"host,omitempty"`
-	Port        string   `json:"port,omitempty"`
-	SID         string   `json:"sid,omitempty"`
-	Env         string   `json:"env"`
-	Location    []string `json:"location,omitempty"`
-	Responsible []string `json:"responsible,omitempty"`
-	Notes       []string `json:"notes,omitempty"`
-
-	IsValid bool `json:"-"`
+	ID          string     `json:"id"`
+	Name        string     `json:"name"`
+	Type        string     `json:"type"`
+	User        string     `json:"user"`
+	Password    string     `json:"password,omitempty"`
+	URL         string     `json:"url"`
+	Server      string     `json:"server,omitempty"`
+	DB          string     `json:"db,omitempty"`
+	Host        string     `json:"host,omitempty"`
+	Port        string     `json:"port,omitempty"`
+	SID         string     `json:"sid,omitempty"`
+	Env         string     `json:"env"`
+	Location    []string   `json:"location,omitempty"`
+	Responsible []string   `json:"responsible,omitempty"`
+	Notes       []string   `json:"notes,omitempty"`
+	Meta        ConfigMeta `json:"-"`
 }
