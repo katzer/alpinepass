@@ -17,4 +17,5 @@ build_script:
 
 test_script:
   - cd src
+  - dir
   - go test ./...
