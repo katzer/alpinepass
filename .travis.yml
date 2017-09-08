@@ -13,10 +13,10 @@ services:
 
 before_script:
   - chmod u+x scripts/*
-  - go version
 
 script:
-  - go test ./src/...
+  - go version
+  - go ./buildLocal.sh
   - gem install os
   - rake version
   - scripts/bintest
