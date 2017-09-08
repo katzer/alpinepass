@@ -10,6 +10,7 @@ services:
 
 before_script:
   - chmod u+x scripts/*
+  - go version
 
 script:
   - go test ./src/...
