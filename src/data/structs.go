@@ -41,6 +41,13 @@ type ConfigMeta struct {
 	IsValid bool
 }
 
+//User contains information about login credentials.
+type User struct {
+	Name     string `json:"name"`
+	User     string `json:"user"`
+	Password string `json:"password"`
+}
+
 // Config stores data about a system, used for managing and exporting data.
 type Config struct {
 	ID          string     `json:"id"`
