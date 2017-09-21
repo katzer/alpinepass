@@ -53,7 +53,7 @@ type Config struct {
 	ID          string     `json:"id"`
 	Name        string     `json:"name"`
 	Type        string     `json:"type"`
-	User        string     `json:"user"`
+	User        string     `json:"user,omitempty"`
 	Password    string     `json:"password,omitempty"`
 	URL         string     `json:"url"`
 	Server      string     `json:"server,omitempty"`
@@ -61,7 +61,7 @@ type Config struct {
 	Host        string     `json:"host,omitempty"`
 	Port        string     `json:"port,omitempty"`
 	SID         string     `json:"sid,omitempty"`
-	Env         string     `json:"env"`
+	Env         string     `json:"env,omitempty"`
 	Location    []string   `json:"location,omitempty"`
 	Responsible []string   `json:"responsible,omitempty"`
 	Notes       []string   `json:"notes,omitempty"`
