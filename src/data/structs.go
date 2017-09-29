@@ -65,5 +65,6 @@ type Config struct {
 	Location    []string   `json:"location,omitempty"`
 	Responsible []string   `json:"responsible,omitempty"`
 	Notes       []string   `json:"notes,omitempty"`
+	Users       []User     `json:"users,omitempty"`
 	Meta        ConfigMeta `json:"-"`
 }
