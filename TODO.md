@@ -1,6 +1,9 @@
 # TODO
 
 ## Development
+* Do not show help when errors occur.
+* Get the line number of the YAML parsing error.
+* Hint to a YAML validation site.
 * Implement "-f foo:bar" filter logic.
   * Adjust the help text!
 * Use some kind of enum for config types.
