@@ -48,6 +48,12 @@ func createConfig(def data.Definition) data.Config {
 	config.Location = def.Location
 	config.Responsible = def.Responsible
 	config.Notes = def.Notes
+	if len(def.Users) > 0 {
+		for _, u := range def.Users {
+			var user = data.User{Name: u.Name, User: u.User, Password: u.Password}
+			config.Users = append(config.Users, user)
+		}
+	}
 
 	config.Meta.IsValid = true
 

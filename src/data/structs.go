@@ -29,6 +29,11 @@ type Definition struct {
 	Location    []string
 	Responsible []string
 	Notes       []string
+	Users       []struct {
+		Name     string
+		User     string
+		Password string
+	}
 }
 
 // YamlData stores information about all systems, used for importing data only.
