@@ -48,10 +48,8 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    condition:
-      - "$TRAVIS_OS_NAME == linux"
 
-#    repo: appPlant/alpinepass
+repo: appPlant/alpinepass
 
 branches:
   only:
