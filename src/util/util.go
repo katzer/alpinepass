@@ -36,10 +36,9 @@ func CleanString(s string) string {
 
 //ThrowError prints the error information and exits the application.
 func ThrowError(message string) {
-	os.Stderr.WriteString("\n##### ERROR #####\n")
-	os.Stderr.WriteString(message + "\n")
-	os.Stderr.WriteString("#################\n\n")
-	cli.ShowAppHelp(GlobalContext)
+	os.Stderr.WriteString("\n### ERROR:\n")
+	os.Stderr.WriteString("### " + message + "\n")
+	os.Stderr.WriteString("### Add the \"--debug\" flag to show the full stacktrace!\n\n")
 	os.Exit(-1)
 }
 
