@@ -2,7 +2,10 @@
 
 ## 1.4.3 - UNRELEASED
 
-## 1.4.2 - UNRELEASED
+1. Support multiple users for each system configuration.
+2. Improve error messages, do not show the help text when an error occurs.
+
+## 1.4.2 - 2017-09-29
 
 1. Adjust the release script.
 2. Introduce the "tool" configuration type.
