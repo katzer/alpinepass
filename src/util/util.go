@@ -39,8 +39,6 @@ func ThrowError(message string) {
 	os.Stderr.WriteString("\n### ERROR:\n")
 	os.Stderr.WriteString("### " + message + "\n")
 	os.Stderr.WriteString("### Add the \"--debug\" flag to show the full stacktrace!\n\n")
-	//TODO remove this obsolete line. Why does removing ist causing an error in the filter tests?
-	//cli.ShowAppHelp(GlobalContext)
 	os.Exit(-1)
 }
 
