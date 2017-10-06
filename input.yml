@@ -125,6 +125,13 @@ defs:
     notes:
       - cool
       - awesome
+    users:
+      - name: dude
+        user: dude
+        password: dude_pw
+      - name: someone
+        user: someone
+        password: someone_pw
   # - <<: *int_server
   #   location: *Berlin
   #   id: intAppB01
