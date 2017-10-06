@@ -50,7 +50,7 @@ type ConfigMeta struct {
 type User struct {
 	Name     string `json:"name"`
 	User     string `json:"user"`
-	Password string `json:"password"`
+	Password string `json:"password,omitempty"`
 }
 
 // Config stores data about a system, used for managing and exporting data.

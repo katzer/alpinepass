@@ -9,5 +9,13 @@ type PasswordFilter struct {
 
 func (p PasswordFilter) filter(config data.Config) data.Config {
 	config.Password = ""
+	for _, u := range config.Users {
+		u.Password = ""
+	}
+	for i := 0; i < len(config.Users); i++ {
+		var user = config.Users[i]
+		user.Password = ""
+		config.Users[i] = user
+	}
 	return config
 }
