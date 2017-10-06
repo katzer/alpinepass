@@ -51,11 +51,6 @@ deploy:
 
 repo: appPlant/alpinepass
 
-branches:
-  only:
-    - master
-    - dev
-
 notifications:
   slack:
     secure: BY388FDEb3kwUbz9je1V4Wut939o73fZGBTgybbKh6uqiXCfZ/1JYqoCYCmdK7iqjl8aSTDTj3wNskW335Xa5zCYIQv0vbG/erJUQUffjXjIdLNvhJjwllkQmxm3CuI+L+HUzg63wkj/IOBO+WVxCdk2o/1z+xbjnVgkJM0VCTwUeEE85cHAelniO6ugVKsrvRq3n1rx7xfpRsheZb0OnDCONn9QunZMHMuNFvShXwawJJmEm28Ugdtsja2hUVW0zhnq2tC61vM7sfsqp3EVnDtrQOUIjzPCJT83/pvCEITHEYUhGdcs96tvrxjyq4i0hE34LYEgwYdmhbHSzhNx38x0wC9wn9cDIzM5/IXVV1l1ADOnY6EWbayJ9VrwNMuYkK6reY5qIhzTxQdxeFxx0pyQgLpl+RyuRTHUssU2feme30gQ+A4tSk0jbprF1wb+7EqMa6wzZeGQd80EE7wF81Hd2MxRBpTUGQyWtD3YpG7vOpVv58mwgjDMAzswdhMBpyAqF4bmpqQ+9uScjCxEf5SVRO/axvQWW1jbXux/MpIZ5w1SzVrzJu+dbBMZHVEyQ9RdEjotBJhK+MpWsDOhWwQfL25mYE9mMlrKfsY6moaLAWjpn8kQrAMl/lD3gWjVmDrYYgghBqtgf6lJtiB8k/T9La+RWovlZPVPe6oxxc4=
