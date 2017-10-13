@@ -1,6 +1,8 @@
 # alpinepass
 
-## 1.4.3 - UNRELEASED
+## 1.4.4 - UNRELEASED
+
+## 1.4.3 - 2017-10-06
 
 1. Support multiple users for each system configuration.
 2. Improve error messages, do not show the help text when an error occurs.
