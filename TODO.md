@@ -50,6 +50,9 @@
 ### External process, RPC
 * https://npf.io/2015/05/pie/, Go
 * https://github.com/hashicorp/go-plugin, Go
+* https://github.com/grpc/grpc-go
+* https://grpc.io/
+* https://golang.org/pkg/net/rpc/
 * Plugin does not crash app
 * Any language
 * Must be compiled, depending on language
