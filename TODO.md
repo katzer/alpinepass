@@ -1,7 +1,6 @@
 # TODO
 
 ## Development
-* Do not show help when errors occur.
 * Get the line number of the YAML parsing error.
 * Hint to a YAML validation site.
 * Implement "-f foo:bar" filter logic.
@@ -9,7 +8,6 @@
 * Use some kind of enum for config types.
 * Show improved error message when input file is a directory! Currently the error is about a file which cannot be read.
 * Adjust validation rules.
-* Update changelog.
 * Make sure "-v" output matches the other application's output!
 * Use Go 1.8! Make sure to update docker images and stuff!
 * Improve validation code.
@@ -29,12 +27,11 @@
 * [logrus](github.com/Sirupsen/logrus)
 
 ## Tools
-* [gox](github.com/mitchellh/gox)
+* [gox](https://github.com/mitchellh/gox)
 
 ## Other
 * https://github.com/mattn
 * Plugin-System: https://awesome-go.com/#embeddable-scripting-languages
-* Add a "debug" flag for showing stack traces!
 * binary stripping?
 * https://onsi.github.io/ginkgo/
 * http://agouti.org/

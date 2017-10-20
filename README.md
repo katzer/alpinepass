@@ -9,26 +9,32 @@ A tool for managing system environments.
 
 ```
 $ alpinepass -h
+NAME:
+   alpinepass - Manage system environment information.
 
-usage: alpinepass [options...]
+USAGE:
+   alpinepass [global options] command [command options] [arguments...]
 
-Options:
+VERSION:
+   1.4.3
 
--f [filter|key:value] Apply a filter. The falg can be used multiple to allow advanced filtering.
+AUTHOR:
+   appPlant GmbH
 
--h Display this help message.
+COMMANDS:
+     help, h  Shows a list of commands or help for one command
 
--i [filepath] Define the input file. The file content must be YAML.
-
--o [filepath] Specify the output file. The file content will be JSON.
-
--p Include passwords in the output.
-
--r Format the output for better readability.
-
--s Show the output in the console. An output file will not be written.
-
--v Print the application's version.
+GLOBAL OPTIONS:
+   --debug                   Print the stack trace when an error occurs.
+   --display, -d             Display the output in the console. An output file will not be written. Use this for previewing the generated file.
+   --filter value, -f value  Filter configurations by name, type and more. Syntax: -f "[property]:[regex]"
+   --input value, -i value   Specify the input file, absolute or relative path.
+   --output value, -o value  Specify the output file, absolute or relative path. An existing file will be overwritten.
+   --passwords, -p           Include passwords in the output.
+   --readable, -r            Make the output more readable.
+   --skip, -s                Skip the input validation.
+   --help, -h                show help
+   --version, -v             print the version
 ```
 
 ## Installation
@@ -73,7 +79,8 @@ Create a YAML output file ```/home/admin/endor_test.yml``` containing all test s
 
 * [cli](https://github.com/urfave/cli)
 * [testify](https://github.com/stretchr/testify)
-* [yaml](github.com/ghodss/yaml)
+* [yaml](https://github.com/go-yaml/yaml)
+* [structs](https://github.com/fatih/structs)
 
 ## License
 
