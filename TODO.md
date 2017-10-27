@@ -39,10 +39,9 @@
 * !!! https://github.com/stretchr/testify
 
 ## Plugin
-* https://en.wikipedia.org/wiki/Foreign_function_interface
 * https://appliedgo.net/plugins/
-* Plugin as shared library?
-* C-plugin
+* https://github.com/natefinch/pie
+* https://en.wikipedia.org/wiki/Foreign_function_interface
 
 ### External process, RPC
 * https://npf.io/2015/05/pie/, Go
