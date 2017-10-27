@@ -11,7 +11,7 @@ import (
 func ExecutePlugin() {
 	fmt.Println("Executing plugin: plugin.py")
 
-	process := exec.Command("python ./plugin.py")
+	process := exec.Command("python", "./plugin.py")
 	process.Stdout = os.Stdout
 	process.Stderr = os.Stderr
 
