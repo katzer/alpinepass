@@ -1,6 +1,6 @@
 # Apache 2.0 License
 #
-# Copyright (c) 2018 Sebastian Katzer, appPlant GmbH
+# Copyright (c) 2016 Sebastian Katzer, appPlant GmbH
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,26 +20,30 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-def gem_config(conf)
-  conf.gem __dir__
-end
-
-MRuby::Build.new do |conf|
-  toolchain ENV.fetch('TOOLCHAIN', :clang)
-
-  conf.enable_bintest
-  conf.enable_debug
-  conf.enable_test
-
-  gem_config(conf)
-end
-
-MRuby::Build.new('x86_64-pc-linux-gnu-glibc-2.12') do |conf|
-  toolchain :clang
-
-  [conf.cc, conf.cxx, conf.linker].each do |cc|
-    cc.flags << '-Oz'
-  end
-
-  gem_config(conf)
-end
+compile: &defaults
+  image: appplant/mruby-cli:${MRUBY_CLI_TAG}
+  working_dir: /home/mruby/code
+  volumes:
+    - .:/home/mruby/code:rw
+  environment:
+    MRUBY_VERSION: ${MRUBY_VERSION}
+    MRUBY_CONFIG: build_config.${MRUBY_CLI_TAG}.rb
+  command: rake compile
+test:
+  <<: *defaults
+  command: rake test
+bintest:
+  <<: *defaults
+  command: rake test:bintest
+mtest:
+  <<: *defaults
+  command: rake test:mtest
+clean:
+  <<: *defaults
+  command: rake clean
+shell:
+  <<: *defaults
+  command: bash
+release:
+  <<: *defaults
+  command: rake release

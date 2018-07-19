@@ -20,26 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-def gem_config(conf)
-  conf.gem __dir__
-end
-
-MRuby::Build.new do |conf|
-  toolchain ENV.fetch('TOOLCHAIN', :clang)
-
-  conf.enable_bintest
-  conf.enable_debug
-  conf.enable_test
-
-  gem_config(conf)
-end
-
-MRuby::Build.new('x86_64-pc-linux-gnu-glibc-2.12') do |conf|
-  toolchain :clang
-
-  [conf.cc, conf.cxx, conf.linker].each do |cc|
-    cc.flags << '-Oz'
+module AlpinePass
+  # Base for all concrete converter classes
+  class BaseConverter < BasicObject
+    # Initializer of the converter instance.
+    #
+    # @param [ Boolean ] pretty Optional flag to indicate pretty output.
+    #                           Defaults to: false
+    #
+    # @return [ Void ]
+    def initialize(pretty = false)
+      @pretty = pretty
+    end
   end
-
-  gem_config(conf)
 end

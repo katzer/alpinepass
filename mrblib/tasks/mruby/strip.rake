@@ -20,26 +20,19 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-def gem_config(conf)
-  conf.gem __dir__
-end
-
-MRuby::Build.new do |conf|
-  toolchain ENV.fetch('TOOLCHAIN', :clang)
-
-  conf.enable_bintest
-  conf.enable_debug
-  conf.enable_test
-
-  gem_config(conf)
-end
-
-MRuby::Build.new('x86_64-pc-linux-gnu-glibc-2.12') do |conf|
-  toolchain :clang
-
-  [conf.cc, conf.cxx, conf.linker].each do |cc|
-    cc.flags << '-Oz'
+namespace :mruby do
+  desc 'strip binary'
+  task strip: 'mruby:environment' do
+    MRuby.targets.each_pair do |name, spec|
+      Dir["#{spec.build_dir}/bin/#{MRuby::Gem.current.name}*"].each do |bin|
+        if RbConfig::CONFIG['host_os'].include? 'darwin'
+          sh "strip -u -r -arch all #{bin}"
+        elsif name.include? 'darwin'
+          sh "x86_64-apple-darwin15-strip -u -r -arch all #{bin}"
+        else
+          sh "strip --strip-unneeded #{bin}"
+        end
+      end
+    end
   end
-
-  gem_config(conf)
 end

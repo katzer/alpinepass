@@ -20,26 +20,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-def gem_config(conf)
-  conf.gem __dir__
-end
+require_relative 'mrblib/alpinepass/version'
 
-MRuby::Build.new do |conf|
-  toolchain ENV.fetch('TOOLCHAIN', :clang)
+MRuby::Gem::Specification.new('alpinepass') do |spec|
+  spec.license = 'Apache 2.0'
+  spec.author  = 'Sebastián Katzer, appPlant GmbH'
+  spec.version = AlpinePass::VERSION
+  spec.bins    = ['alpinepass']
 
-  conf.enable_bintest
-  conf.enable_debug
-  conf.enable_test
-
-  gem_config(conf)
-end
-
-MRuby::Build.new('x86_64-pc-linux-gnu-glibc-2.12') do |conf|
-  toolchain :clang
-
-  [conf.cc, conf.cxx, conf.linker].each do |cc|
-    cc.flags << '-Oz'
-  end
-
-  gem_config(conf)
+  spec.add_dependency 'mruby-tiny-io',         mgem: 'mruby-tiny-io'
+  spec.add_dependency 'mruby-exit',            core: 'mruby-exit'
+  spec.add_dependency 'mruby-print',           core: 'mruby-print'
+  spec.add_dependency 'mruby-tiny-opt-parser', mgem: 'mruby-tiny-opt-parser'
+  spec.add_dependency 'mruby-ansi-colors',     mgem: 'mruby-ansi-colors'
+  spec.add_dependency 'mruby-os',              mgem: 'mruby-os'
+  spec.add_dependency 'mruby-json',            mgem: 'mruby-json'
+  spec.add_dependency 'mruby-regexp-pcre',     mgem: 'mruby-regexp-pcre'
 end

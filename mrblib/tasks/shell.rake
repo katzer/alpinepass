@@ -20,26 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-def gem_config(conf)
-  conf.gem __dir__
-end
-
-MRuby::Build.new do |conf|
-  toolchain ENV.fetch('TOOLCHAIN', :clang)
-
-  conf.enable_bintest
-  conf.enable_debug
-  conf.enable_test
-
-  gem_config(conf)
-end
-
-MRuby::Build.new('x86_64-pc-linux-gnu-glibc-2.12') do |conf|
-  toolchain :clang
-
-  [conf.cc, conf.cxx, conf.linker].each do |cc|
-    cc.flags << '-Oz'
-  end
-
-  gem_config(conf)
+unless in_a_docker_container?
+  desc 'open shell'
+  task(:shell) { docker_run 'shell', 'glibc-2.14', '1.4.1' }
 end

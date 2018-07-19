@@ -20,26 +20,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-def gem_config(conf)
-  conf.gem __dir__
-end
-
-MRuby::Build.new do |conf|
-  toolchain ENV.fetch('TOOLCHAIN', :clang)
-
-  conf.enable_bintest
-  conf.enable_debug
-  conf.enable_test
-
-  gem_config(conf)
-end
-
-MRuby::Build.new('x86_64-pc-linux-gnu-glibc-2.12') do |conf|
-  toolchain :clang
-
-  [conf.cc, conf.cxx, conf.linker].each do |cc|
-    cc.flags << '-Oz'
+namespace :test do
+  desc 'run integration tests'
+  task bintest: 'environment' do
+    if in_a_docker_container? || ENV['MRUBY_CLI_LOCAL']
+      %w[mruby:deps mruby:tuneup compile].each { |t| Rake::Task[t].invoke }
+      Dir.chdir('mruby') { MRuby.each_target { run_bintest if bintest_enabled? } }
+    else
+      docker_run 'bintest', 'glibc-2.12'
+    end
   end
-
-  gem_config(conf)
 end

@@ -20,26 +20,32 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-def gem_config(conf)
-  conf.gem __dir__
-end
+desc 'generate a release tarball'
+task release: 'environment' do
+  if in_a_docker_container? || ENV['MRUBY_CLI_LOCAL']
+    Rake::Task['compile'].invoke
 
-MRuby::Build.new do |conf|
-  toolchain ENV.fetch('TOOLCHAIN', :clang)
+    spec         = MRuby::Gem.current
+    version      = spec.version || 'unknown'
+    release_dir  = "releases/v#{version}"
+    release_path = Dir.pwd + "/#{release_dir}"
+    app_name     = "#{spec.name}-#{version}"
 
-  conf.enable_bintest
-  conf.enable_debug
-  conf.enable_test
+    FileUtils.mkdir_p(release_path)
 
-  gem_config(conf)
-end
+    MRuby.each_target do
+      bin  = "#{build_dir}/bin/#{exefile(spec.name)}"
+      arch = "#{app_name}-#{name}"
 
-MRuby::Build.new('x86_64-pc-linux-gnu-glibc-2.12') do |conf|
-  toolchain :clang
+      FileUtils.mkdir_p(name)
+      FileUtils.cp(bin, name)
 
-  [conf.cc, conf.cxx, conf.linker].each do |cc|
-    cc.flags << '-Oz'
+      puts "Writing #{release_dir}/#{arch}.tgz"
+      `tar czf #{release_path}/#{arch}.tgz #{name}`
+
+      FileUtils.rm_rf(name)
+    end
+  else
+    %w[12 14].each { |v| docker_run 'release', "glibc-2.#{v}" }
   end
-
-  gem_config(conf)
 end

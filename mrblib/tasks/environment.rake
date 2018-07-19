@@ -20,26 +20,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-def gem_config(conf)
-  conf.gem __dir__
-end
-
-MRuby::Build.new do |conf|
-  toolchain ENV.fetch('TOOLCHAIN', :clang)
-
-  conf.enable_bintest
-  conf.enable_debug
-  conf.enable_test
-
-  gem_config(conf)
-end
-
-MRuby::Build.new('x86_64-pc-linux-gnu-glibc-2.12') do |conf|
-  toolchain :clang
-
-  [conf.cc, conf.cxx, conf.linker].each do |cc|
-    cc.flags << '-Oz'
-  end
-
-  gem_config(conf)
+desc 'environment variables'
+task :environment do
+  ENV['MRUBY_VERSION'] ||= '1.4.1'
+  ENV['MRUBY_ROOT']      = File.expand_path('mruby')
+  ENV['MRUBY_CONFIG']    = File.expand_path(ENV['MRUBY_CONFIG'] || 'build_config.glibc-2.14.rb')
 end

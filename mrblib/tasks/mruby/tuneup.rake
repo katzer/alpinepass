@@ -20,26 +20,21 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-def gem_config(conf)
-  conf.gem __dir__
-end
+namespace :mruby do
+  desc 'optimize build'
+  task tuneup: 'mruby:environment' do
+    MRuby.targets.keep_if do |name, spec|
+      case "#{ARGV.join(' ')} local=#{ENV['MRUBY_CLI_LOCAL'].to_i}"
+      when /local=1/ then name == 'host'
+      when /compile/ then true
+      when /bintest/ then spec.bintest_enabled?
+      when /test/    then spec.bintest_enabled? || spec.test_enabled?
+      else                true
+      end
+    end
 
-MRuby::Build.new do |conf|
-  toolchain ENV.fetch('TOOLCHAIN', :clang)
-
-  conf.enable_bintest
-  conf.enable_debug
-  conf.enable_test
-
-  gem_config(conf)
-end
-
-MRuby::Build.new('x86_64-pc-linux-gnu-glibc-2.12') do |conf|
-  toolchain :clang
-
-  [conf.cc, conf.cxx, conf.linker].each do |cc|
-    cc.flags << '-Oz'
+    Rake::Task['mruby:all'].prerequisites.keep_if do |p|
+      MRuby.targets.any? { |n, _| p =~ %r{mruby/bin|/#{n}/} }
+    end
   end
-
-  gem_config(conf)
 end

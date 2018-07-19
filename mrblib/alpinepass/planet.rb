@@ -1,6 +1,6 @@
 # Apache 2.0 License
 #
-# Copyright (c) 2018 Sebastian Katzer, appPlant GmbH
+# Copyright (c) 2016 Sebastian Katzer, appPlant GmbH
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,26 +20,32 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-def gem_config(conf)
-  conf.gem __dir__
-end
+module AlpinePass
+  # Provides access to the content of the ORBIT_FILE.
+  class Planet < BasicObject
+    # Test if the attributes describe a valid planet.
+    #
+    # @param [ Hash ] planet The planet to validate
+    #
+    # @return [ Boolean ]
+    def self.valid?(attributes)
+      new(attributes).valid?
+    end
 
-MRuby::Build.new do |conf|
-  toolchain ENV.fetch('TOOLCHAIN', :clang)
+    # A planet is a single entry found in the ORBIT_FILE.
+    #
+    # @param [ Hash ] attributes Extracted attributes from the file.
+    #
+    # @return [ Planet ]
+    def initialize(attributes)
+      @attributes = attributes
+    end
 
-  conf.enable_bintest
-  conf.enable_debug
-  conf.enable_test
-
-  gem_config(conf)
-end
-
-MRuby::Build.new('x86_64-pc-linux-gnu-glibc-2.12') do |conf|
-  toolchain :clang
-
-  [conf.cc, conf.cxx, conf.linker].each do |cc|
-    cc.flags << '-Oz'
+    # Test if the planet is valid.
+    #
+    # @return [ Boolean ]
+    def valid?
+      true # TODO
+    end
   end
-
-  gem_config(conf)
 end

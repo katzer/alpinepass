@@ -20,26 +20,28 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-def gem_config(conf)
-  conf.gem __dir__
-end
+image: Visual Studio 2017
 
-MRuby::Build.new do |conf|
-  toolchain ENV.fetch('TOOLCHAIN', :clang)
+environment:
+  global:
+    COMPILER: C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64
+    TOOLCHAIN: gcc
+    MRUBY_CLI_LOCAL: 1
+  matrix:
+  - MRUBY_VERSION: 1.4.1
+  - MRUBY_VERSION: head
 
-  conf.enable_bintest
-  conf.enable_debug
-  conf.enable_test
+matrix:
+  allow_failures:
+  - MRUBY_VERSION: head
 
-  gem_config(conf)
-end
+init:
+- SET PATH=%COMPILER%\bin;C:\Ruby25-x64\bin;%PATH%;C:\cygwin64\bin
+- gcc --version
 
-MRuby::Build.new('x86_64-pc-linux-gnu-glibc-2.12') do |conf|
-  toolchain :clang
+build_script:
+- rake compile
 
-  [conf.cc, conf.cxx, conf.linker].each do |cc|
-    cc.flags << '-Oz'
-  end
-
-  gem_config(conf)
-end
+test_script:
+- DEL mruby\mrbgems\mruby-compiler\bintest\*.rb
+- rake test:bintest
