@@ -38,7 +38,7 @@ module AlpinePass
     #
     # @return [ Void ]
     def exec
-      write convert validate parse
+      write convert select parse
     end
 
     # Read the input file and parse JSON into planets.
@@ -56,8 +56,8 @@ module AlpinePass
     # @param [ Array<Hash> ] planets The planets to validate.
     #
     # @return [ Array<Hash> ] Subset of valid planets.
-    def validate(planets)
-      planets = planets.select { |p| Planet.valid? p } if @spec[:validate]
+    def select(planets)
+      planets = planets.select { |p| Planet.valid? p } if @spec[:check]
       planets
     end
 

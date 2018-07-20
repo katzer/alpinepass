@@ -25,8 +25,9 @@ require 'open3'
 require 'tempfile'
 require_relative '../mrblib/alpinepass/version'
 
-BINARY      = File.expand_path('../mruby/bin/alpinepass', __dir__).freeze
-VALID_INPUT = File.expand_path('../test/fixtures/valid.export', __dir__).freeze
+BINARY  = File.expand_path('../mruby/bin/alpinepass', __dir__).freeze
+VALID   = File.expand_path('../test/fixtures/valid.export', __dir__).freeze
+INVALID = File.expand_path('../test/fixtures/invalid.export', __dir__).freeze
 
 %w[-v --version].each do |flag|
   assert("version [#{flag}]") do
@@ -66,7 +67,7 @@ end
 
 [['-i'], ['-p', '-i'], ['-s', '-i']].each do |flags|
   assert("input file [#{flags.inspect}]") do
-    output, status = Open3.capture2(BINARY, *flags, VALID_INPUT)
+    output, status = Open3.capture2(BINARY, *flags, VALID)
 
     assert_true status.success?, 'Process did not exit cleanly'
 
@@ -86,7 +87,7 @@ end
 end
 
 assert('matcher [type=db]') do
-  output, status = Open3.capture2(BINARY, '-i', VALID_INPUT, 'type=db')
+  output, status = Open3.capture2(BINARY, '-i', VALID, 'type=db')
 
   assert_true status.success?, 'Process did not exit cleanly'
 
@@ -101,7 +102,7 @@ end
 
 %w[-f --format].each do |flag|
   assert("unknown format [#{flag}]") do
-    _, output, status = Open3.capture3(BINARY, '-i', VALID_INPUT, flag, ':x')
+    _, output, status = Open3.capture3(BINARY, '-i', VALID, flag, ':x')
 
     assert_false status.success?, 'Process did exit cleanly'
     assert_include output, 'unsupported format'
@@ -110,17 +111,28 @@ end
 
 %w[-o --output].each do |flag|
   assert("wrong path [#{flag}]") do
-    _, output, status = Open3.capture3(BINARY, '-i', VALID_INPUT, flag, 'b/a.d')
+    _, output, status = Open3.capture3(BINARY, '-i', VALID, flag, 'b/a.d')
 
     assert_false status.success?, 'Process did exit cleanly'
     assert_include output, 'IOError'
   end
 end
 
+%w[-c --check].each do |flag|
+  assert("invalid content [#{flag}]") do
+    output, status = Open3.capture2 BINARY, flag, '-i', INVALID
+
+    assert_true status.success?, 'Process did not exit cleanly'
+    assert_include output, 'missing values for name, user, url'
+    assert_include output, 'missing values for type'
+    assert_include output, 'unknown type'
+  end
+end
+
 [['-i'], ['-p', '-i'], ['-s', '-i']].each do |flags|
   assert("output file #{flags}") do
     file           = Tempfile.new('orbit.json')
-    output, status = Open3.capture2 BINARY, *flags, VALID_INPUT, '-o', file.path
+    output, status = Open3.capture2 BINARY, *flags, VALID, '-o', file.path
 
     assert_true status.success?, 'Process did not exit cleanly'
     assert_raise(JSON::ParserError) { JSON.parse(output) }

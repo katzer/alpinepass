@@ -26,7 +26,7 @@
   opts.add :format,   :string, 'json'
   opts.add :pretty,   :bool, false
   opts.add :secrets,  :bool, false
-  opts.add :validate, :bool, false
+  opts.add :check,    :bool, false
 end
 
 @parser.on! :help do
@@ -40,9 +40,9 @@ Options:
 -o, --output    Path to the output file
 -f, --format    Format of the output file
                 Defaults to: json
+-c, --check     Check the content of the input file
 -p, --pretty    Pretty print output
 -s, --secrets   Export secrets like passwords
--v, --validate  Validate the content of the input file
 -h, --help      This help text
 -v, --version   Show version number
 USAGE
@@ -70,7 +70,7 @@ def parse(args)
   opts = @parser.parse(args.empty? ? ['-h'] : args)
 
   tail = @parser.tail
-  tail << 'id:.' if tail.empty?
+  tail << 'id:.?' if tail.empty?
 
   opts[:matchers] = tail.map! { |m| AlpinePass::Matcher.new(m) }
 

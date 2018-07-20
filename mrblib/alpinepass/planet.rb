@@ -23,29 +23,52 @@
 module AlpinePass
   # Provides access to the content of the ORBIT_FILE.
   class Planet < BasicObject
-    # Test if the attributes describe a valid planet.
+    # Fields that have to be unique accross all planets
+    UNIQUE   = %w[id name].freeze
+    # Fields that have to be present per planet type
+    REQUIRED = {
+      'server'.freeze => %w[id name user url].freeze,
+      'db'.freeze     => %w[id name pqdb].freeze,
+      'web'.freeze    => %w[id name].freeze,
+      'log'.freeze    => %w[id name].freeze,
+      nil             => %w[type].freeze
+    }.freeze
+
+    # Test if the fields describe a valid planet.
     #
     # @param [ Hash ] planet The planet to validate
     #
     # @return [ Boolean ]
-    def self.valid?(attributes)
-      new(attributes).valid?
+    def self.valid?(fields)
+      error = new(fields).validate
+
+      Kernel.puts error if error
+
+      error.nil?
     end
 
     # A planet is a single entry found in the ORBIT_FILE.
     #
-    # @param [ Hash ] attributes Extracted attributes from the file.
+    # @param [ Hash ] fields Extracted fields from the file.
     #
     # @return [ Planet ]
-    def initialize(attributes)
-      @attributes = attributes
+    def initialize(fields)
+      @fields = fields
     end
 
     # Test if the planet is valid.
     #
-    # @return [ Boolean ]
-    def valid?
-      true # TODO
+    # @return [ String ] true if valid otherwise the error msg
+    def validate
+      type = @fields['type']
+
+      return "unknown type \"#{type}\"" unless REQUIRED.include? type
+
+      unknown = REQUIRED[type].reject { |name| @fields[name] }
+
+      return if unknown.empty?
+
+      "missing values for #{unknown.join(', ')} in #{@fields}"
     end
   end
 end

@@ -1,0 +1,22 @@
+﻿[
+  {
+    "id": "p07-int",
+    "type": "server"
+  },
+  {
+    "id": "p07-int",
+    "name": "Server",
+    "url": "url.domain",
+    "user": "user",
+    "type": "server"
+  },
+  {
+    "type": "db"
+  },
+  {
+    "type": "unknown"
+  },
+  {
+    "id": "no-type"
+  }
+]
