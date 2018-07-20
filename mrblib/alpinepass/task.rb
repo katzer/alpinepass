@@ -69,7 +69,7 @@ module AlpinePass
     def convert(planets)
       case @spec[:format]
       when 'json' then JSONConverter.new(@spec[:pretty]).convert(planets)
-      else raise "Unsupported output format: #{@spec[:format]}"
+      else raise "unsupported format: #{@spec[:format]}"
       end
     end
 
@@ -80,7 +80,7 @@ module AlpinePass
     # @return [ Void ]
     def write(content)
       if (path = @spec[:output])
-        File.open(path) { |f| f.write(content) }
+        File.open(path, 'w+') { |f| f.write(content) }
       else
         puts content
       end
