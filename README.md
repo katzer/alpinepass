@@ -1,84 +1,87 @@
-# alpinepass
+# alpinepass [![Build Status](https://travis-ci.org/appPlant/alpinepass.svg?branch=master)](https://travis-ci.org/appPlant/alpinepass) [![Build status](https://ci.appveyor.com/api/projects/status/76ytl3ycyqs0va8j/branch/master?svg=true)](https://ci.appveyor.com/project/katzer/alpinepass/branch/master) [![Maintainability](https://api.codeclimate.com/v1/badges/f5d906346be0d06ae4fc/maintainability)](https://codeclimate.com/github/appPlant/alpinepass/maintainability)
 
-[![Travis CI Build Status](https://travis-ci.org/appPlant/alpinepass.svg?branch=master)](https://travis-ci.org/appPlant/alpinepass)
-[![Code Climate](https://codeclimate.com/github/appPlant/alpinepass/badges/gpa.svg)](https://codeclimate.com/github/appPlant/alpinepass)
-[![codebeat badge](https://codebeat.co/badges/35499bc6-3480-4e21-9e9e-29bb7d394bab)](https://codebeat.co/projects/github-com-appplant-alpinepass)
-[![Go Report Card](https://goreportcard.com/badge/github.com/appPlant/alpinepass)](https://goreportcard.com/report/github.com/appPlant/alpinepass)
+The tool that exports your Orbit KeePass database into various file formats.
 
-A tool for managing system environments.
+    $ alpinepass -h
 
-```
-$ alpinepass -h
-
-usage: alpinepass [options...]
-
-Options:
-
--f [filter|key:value] Apply a filter. The falg can be used multiple to allow advanced filtering.
-
--h Display this help message.
-
--i [filepath] Define the input file. The file content must be YAML.
-
--o [filepath] Specify the output file. The file content will be JSON.
-
--p Include passwords in the output.
-
--r Format the output for better readability.
-
--s Show the output in the console. An output file will not be written.
-
--v Print the application's version.
-```
+    usage: alpinepass [options...] -i input_file [-o output_file] matchers...
+    Options:
+    -i, --input     Path to the input file
+    -o, --output    Path to the output file
+    -f, --format    Format of the output file
+                    Defaults to: fifa
+    -c, --check     Check the content of the input file
+    -p, --pretty    Pretty print output
+    -s, --secrets   Export secrets like passwords
+    -h, --help      This help text
+    -v, --version   Show version number
 
 ## Installation
 
-Download the latest version from the release page and add the executable to your ```PATH```.
+Download the latest version from the [release page][releases] and add the executable to your `PATH`.
 
-## Development setup
+## Usage
 
-* install [Go](https://golang.org/)
-* set the `$GOPATH`
-* clone the repository into `{$GOPATH}/src/github.com/appPlant/alpinepass`
-* `cd` into the repository
-* run `go get -v`
-* build the application with `go build`
-* execute the application with `./alpinepass`
+Transform the _KeePass_ file by using the `$ORBIT_HOME/config/orbit.xsl` stylesheet:
 
-## Manual
+    KPScript -c:Export "%ORBIT_HOME%\config\orbit.kdbx" -pw:MyPw -Format:"Transform using XSL Stylesheet" -XslFile:"%ORBIT_HOME%\config\orbit.xsl" -OutFile:"%ORBIT_HOME%\config\orbit.export"
 
-### Overview
+Then convert the exported data into a valid knowledge database for _fifa_:
 
-**alpinepass** is an application for managing information about computer system environments. It transforms information defined in a YAML file into different output formats like JSON and KeePass files. Filters allow creating output which matches certain creteria like information about databases or test systems only.
+    $ alpinepass -i keepass.export -f fifa -o orbit.json
 
-### Basic usage
+To create a knowledge database for _fifa_ containing production databases only:
 
-Executing the application without any options reads the file ***input.yaml*** and creates the file ***output.json***. The input file must exist in the same directory as the application, the output file is created in the same directory. The output does not contain any system passwords. No filters are applied to the input.
+    $ alpinepass -i keepass.export -f fifa -o orbit.json type=db@env=prod
 
-```$ alpinepass```
+__Note:__ See [here][keepass] for how to use KPScript with single command operations to perform simple database operations. Of course you can also use the GUI to perform the export.
 
-Create a JSON output containing all information including passwords:
+## Development
 
-```$ alpinepass -p```
+Clone the repo:
 
-Create a JSON output containing production databases only:
+    $ git clone https://github.com/appplant/alpinepass.git && cd alpinepass/
 
-```$ alpinepass -f=type:db;environment:prod```
+And then execute:
 
-Create a YAML output file ```/home/admin/endor_test.yml``` containing all test systems located on Endor:
+    $ rake compile
 
-```$ alpinepass -t=/home/admin -n=endor_test -o=yaml -f=location:Endor;environment:test```
+To compile the sources locally for the host machine only:
 
-## Dependencies
+    $ MRUBY_CLI_LOCAL=1 rake compile
 
-* [cli](https://github.com/urfave/cli)
-* [testify](https://github.com/stretchr/testify)
-* [yaml](github.com/ghodss/yaml)
+You'll be able to find the binaries in the following directories:
+
+- Linux (64-bit Musl): `mruby/build/x86_64-alpine-linux-musl/bin/alpinepass`
+- Linux (64-bit GNU): `mruby/build/x86_64-pc-linux-gnu/bin/alpinepass`
+- Linux (64-bit, for old distros): `mruby/build/x86_64-pc-linux-gnu-glibc-2.12/bin/alpinepass`
+- OS X (64-bit): `mruby/build/x86_64-apple-darwin15/bin/alpinepass`
+- Windows (64-bit): `mruby/build/x86_64-w64-mingw32/bin/alpinepass`
+- Host: `mruby/build/host2/bin/alpinepass`
+
+For the complete list of build tasks:
+
+    $ rake -T
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/appplant/alpinepass.
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
 ## License
 
-The code is available as open source under the terms of the [Apache 2.0 License](http://opensource.org/licenses/Apache-2.0).
+The code is available as open source under the terms of the [Apache 2.0 License][license].
 
-Made with :heart: and :coffee: in Leipzig!
+Made with :yum: from Leipzig
 
-© 2017 [appPlant GmbH](http://www.appplant.de)
+© 2017 [appPlant GmbH][appplant]
+
+[releases]: https://github.com/appplant/alpinepass/releases
+[keepass]: https://keepass.info/help/v2_dev/scr_sc_index.html#export
+[license]: http://opensource.org/licenses/Apache-2.0
+[appplant]: www.appplant.de
