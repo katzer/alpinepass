@@ -4,8 +4,22 @@
     "type": "server"
   },
   {
-    "id": "p07-int",
+    "id": "valid-planet",
     "name": "Server",
+    "url": "url.domain",
+    "user": "user",
+    "type": "server"
+  },
+  {
+    "id": "duplicated-planet",
+    "name": "Duplicate",
+    "url": "url.domain",
+    "user": "user",
+    "type": "server"
+  },
+  {
+    "id": "duplicated-planet",
+    "name": "Duplicate",
     "url": "url.domain",
     "user": "user",
     "type": "server"

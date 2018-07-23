@@ -120,12 +120,21 @@ end
 
 %w[-c --check].each do |flag|
   assert("invalid content [#{flag}]") do
-    output, status = Open3.capture2 BINARY, flag, '-i', INVALID
+    file           = Tempfile.new('orbit.json')
+    output, status = Open3.capture2 BINARY, flag, '-i', INVALID, '-o', file.path
 
     assert_true status.success?, 'Process did not exit cleanly'
     assert_include output, 'missing values for name, user, url'
     assert_include output, 'missing values for type'
+    assert_include output, 'found duplicate for id:duplicated-planet'
+    assert_include output, 'found duplicate for name:Duplicate'
     assert_include output, 'unknown type'
+
+    assert_nothing_raised do
+      assert_equal 1, JSON.parse(file.read).count
+    end
+  ensure
+    file.close
   end
 end
 

@@ -23,7 +23,7 @@
 @parser = OptParser.new do |opts|
   opts.add :input,    :string
   opts.add :output,   :string
-  opts.add :format,   :string, 'json'
+  opts.add :format,   :string, 'fifa'
   opts.add :pretty,   :bool, false
   opts.add :secrets,  :bool, false
   opts.add :check,    :bool, false
@@ -34,12 +34,12 @@ end
 
 #{AlpinePass::LOGO}
 
-usage: alpinepass [options...] -i input_file -o output_file matchers...
+usage: alpinepass [options...] -i input_file [-o output_file] matchers...
 Options:
 -i, --input     Path to the input file
 -o, --output    Path to the output file
 -f, --format    Format of the output file
-                Defaults to: json
+                Defaults to: fifa
 -c, --check     Check the content of the input file
 -p, --pretty    Pretty print output
 -s, --secrets   Export secrets like passwords

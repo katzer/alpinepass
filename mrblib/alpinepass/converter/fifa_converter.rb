@@ -21,8 +21,8 @@
 # SOFTWARE.
 
 module AlpinePass
-  # Converts any content to JSON.
-  class JSONConverter < BaseConverter
+  # Converts any content to fifa database.
+  class FifaConverter < BaseConverter
     # Convert the planets into a JSON string.
     #
     # @param [ Array<Hash> ] planets The planets to convert.

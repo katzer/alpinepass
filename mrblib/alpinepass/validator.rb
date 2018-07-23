@@ -21,8 +21,9 @@
 # SOFTWARE.
 
 module AlpinePass
-  # Provides access to the content of the ORBIT_FILE.
-  class Planet < BasicObject
+  # Ensures that all required fields are present and
+  # all identifiers are uniq accross all passed planets.
+  class Validator
     # Fields that have to be unique accross all planets
     UNIQUE   = %w[id name].freeze
     # Fields that have to be present per planet type
@@ -34,41 +35,54 @@ module AlpinePass
       nil             => %w[type].freeze
     }.freeze
 
+    # Initializes the validator.
+    #
+    # @param [ Boolean ] check Flag indicates if the validator should validate.
+    #
+    # @return [ Void ]
+    def initialize(check)
+      @check = check
+    end
+
     # Test if the fields describe a valid planet.
     #
     # @param [ Hash ] planet The planet to validate
     #
-    # @return [ Boolean ]
-    def self.valid?(fields)
-      error = new(fields).validate
+    # @return [ Boolean ] true if valid
+    def validate(planet)
+      return true unless @check
 
-      Kernel.puts error if error
+      type   = planet['type']
+      fields = REQUIRED[type]
 
-      error.nil?
+      return puts("unknown type \"#{type}\"") && false unless fields
+
+      unknown = fields.reject { |name| planet[name] }
+
+      return true if unknown.empty?
+
+      puts "missing values for #{unknown.join(', ')} in #{planet}"
+
+      false
     end
 
-    # A planet is a single entry found in the ORBIT_FILE.
+    # Test if references are all valid accross the planets.
     #
-    # @param [ Hash ] fields Extracted fields from the file.
+    # @param [ Hash ]        planet The planets to validate.
+    # @param [ Array<Hash> ] planets The planets to validate against.
     #
-    # @return [ Planet ]
-    def initialize(fields)
-      @fields = fields
-    end
+    # @return [ Boolean ] true if valid
+    def cross_validate(planet, planets)
+      return true unless @check
 
-    # Test if the planet is valid.
-    #
-    # @return [ String ] true if valid otherwise the error msg
-    def validate
-      type = @fields['type']
-
-      return "unknown type \"#{type}\"" unless REQUIRED.include? type
-
-      unknown = REQUIRED[type].reject { |name| @fields[name] }
-
-      return if unknown.empty?
-
-      "missing values for #{unknown.join(', ')} in #{@fields}"
+      UNIQUE.select do |name, val = planet[name]|
+        if planets.find_all { |p| p[name] == val }.count > 1
+          puts("found duplicate for #{name}:#{val}")
+          true
+        else
+          false
+        end
+      end.empty?
     end
   end
 end

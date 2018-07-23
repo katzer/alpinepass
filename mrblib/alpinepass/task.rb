@@ -46,19 +46,24 @@ module AlpinePass
     # @return [ Array<Hash> ]
     def parse
       planets = JSON.parse(File.open(@spec[:input], &:read))
-
-      planets.each   { |p| p.delete 'password' } unless @spec[:secrets]
-      planets.select { |p| @spec[:matchers].any? { |m| m.match? p } }
+      planets.each { |p| p.delete 'password' } unless @spec[:secrets]
+      planets
     end
 
-    # Validate the planets if specified.
+    # Select a subset of the parsed planets which match and are valid.
     #
     # @param [ Array<Hash> ] planets The planets to validate.
     #
     # @return [ Array<Hash> ] Subset of valid planets.
     def select(planets)
-      planets = planets.select { |p| Planet.valid? p } if @spec[:check]
-      planets
+      validator = Validator.new(@spec[:check])
+      matchers  = @spec[:matchers]
+
+      planets = planets.select do |p|
+        matchers.any? { |m| m.match? p } && validator.validate(p)
+      end
+
+      planets.select { |p| validator.cross_validate(p, planets) }
     end
 
     # Convert the data into a string depending on the output format.
@@ -68,7 +73,7 @@ module AlpinePass
     # @return [ String ]
     def convert(planets)
       case @spec[:format]
-      when 'json' then JSONConverter.new(@spec[:pretty]).convert(planets)
+      when 'fifa' then FifaConverter.new(@spec[:pretty]).convert(planets)
       else raise "unsupported format: #{@spec[:format]}"
       end
     end
