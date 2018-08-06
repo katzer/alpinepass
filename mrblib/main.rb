@@ -34,7 +34,7 @@ end
 
 #{AlpinePass::LOGO}
 
-usage: alpinepass [options...] -i input_file [-o output_file] matchers...
+Usage: alpinepass [options...] -i input_file [-o output_file] matchers...
 Options:
 -i, --input     Path to the input file
 -o, --output    Path to the output file

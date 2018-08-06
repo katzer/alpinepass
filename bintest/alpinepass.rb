@@ -43,7 +43,7 @@ end
     output, status = Open3.capture2(BINARY, flag)
 
     assert_true status.success?, 'Process did not exit cleanly'
-    assert_include output, 'usage'
+    assert_include output, 'Usage'
   end
 end
 
@@ -167,7 +167,7 @@ assert('no flag') do
   output, status = Open3.capture2(BINARY)
 
   assert_true status.success?, 'Process did not exit cleanly'
-  assert_include output, 'usage'
+  assert_include output, 'Usage'
 end
 
 assert('unknown flag') do

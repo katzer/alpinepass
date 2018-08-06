@@ -4,7 +4,7 @@ The tool that exports your Orbit KeePass database into various file formats.
 
     $ alpinepass -h
 
-    usage: alpinepass [options...] -i input_file [-o output_file] matchers...
+    Usage: alpinepass [options...] -i input_file [-o output_file] matchers...
     Options:
     -i, --input     Path to the input file
     -o, --output    Path to the output file
