@@ -1,13 +1,45 @@
-# alpinepass
+# Release Notes: _alpinepass_
 
-## 1.4.4 - UNRELEASED
+### 1.4.6 (16.08.2018)
 
-## 1.4.3 - 2017-10-06
+__Note:__ Tool has been fully reworked.
+
+    $ alpinepass -h
+
+    Usage: alpinepass [options...] -i input_file [-o output_file] matchers...
+    Options:
+    -i, --input     Path to the input file
+    -o, --output    Path to the output file
+    -f, --format    Format of the output file
+                    Defaults to: fifa
+    -c, --check     Check the content of the input file
+    -p, --pretty    Pretty print output
+    -s, --secrets   Export secrets like passwords
+    -h, --help      This help text
+    -v, --version   Show version number
+
+## Commands
+
+Transform the _KeePass_ file by using the `$ORBIT_HOME/config/orbit.xsl` stylesheet:
+
+    KPScript -c:Export "%ORBIT_HOME%\config\orbit.kdbx" -pw:MyPw -Format:"Transform using XSL Stylesheet" -XslFile:"%ORBIT_HOME%\config\orbit.xsl" -OutFile:"%ORBIT_HOME%\config\orbit.export"
+
+Then convert the exported data into a valid knowledge database for _fifa_:
+
+    $ alpinepass -i keepass.export -f fifa -o orbit.json
+
+To create a knowledge database for _fifa_ containing production databases only:
+
+    $ alpinepass -i keepass.export -f fifa -o orbit.json type=db@env=prod
+
+__Note:__ See [here](https://keepass.info/help/v2_dev/scr_sc_index.html#export) for how to use KPScript with single command operations to perform simple database operations. Of course you can also use the GUI to perform the export.
+
+### 1.4.3 - 2017-10-06
 
 1. Support multiple users for each system configuration.
 2. Improve error messages, do not show the help text when an error occurs.
 
-## 1.4.2 - 2017-09-29
+### 1.4.2 - 2017-09-29
 
 1. Adjust the release script.
 2. Introduce the "tool" configuration type.
@@ -17,7 +49,7 @@
     * "Exact" filters "key=value" match when the key's content matches exactly the filter value. "Earth" matches "Earth" but not "Earths".
     * "Contains" filters "key:value" match then the filter value is contained anywhere in the key's content. "Bar" matches "FooBar" and "BarFoo" but not "BazFoo".
 
-## 1.0.0 - 2017-03-20
+### 1.0.0 - 2017-03-20
 
 1. Basic functionality. Read "input.yml" and write "output.json".
     ```
