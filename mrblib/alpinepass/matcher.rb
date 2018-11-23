@@ -69,7 +69,7 @@ module AlpinePass
     # @return [ Void ]
     def validate(crumbs)
       crumbs.each do |crumb|
-        raise "invalid matcher: #{crumb}" unless crumb =~ CRUMBS_PATTERN
+        Kernel.raise "invalid matcher: #{crumb}" unless crumb =~ CRUMBS_PATTERN
       end
     end
 
@@ -123,7 +123,7 @@ module AlpinePass
           @not ? (value !~ @exp) : (value =~ @exp)
         end
 
-        # private
+        private
 
         # Get the string parsed value for the given key.
         #
