@@ -24,11 +24,11 @@ module AlpinePass
   # Identify planets by regular expressions
   class Matcher < BasicObject
     # Link of crumbs
-    CRUMBS_PATTERN = /^[@%]?[^:=]*[:=]?[^@%]+(?:[@%]?[^:=]*[:=]?[^@%]+)*$/
+    CRUMBS_PATTERN = /^[@%]?[^:=]*[:=]?[^@%]+(?:[@%]?[^:=]*[:=]?[^@%]+)*$/.freeze
     # Single crumb
-    SPLIT_PATTERN  = /([@%][^@%]+)/
+    SPLIT_PATTERN  = /([@%][^@%]+)/.freeze
     # Single crumb
-    CRUMB_PATTERN  = /^(@|%)?([^:=]*)(.)?(.*)$/
+    CRUMB_PATTERN  = /^(@|%)?([^:=]*)(.)?(.*)$/.freeze
 
     # Initializes the matcher by specified crumbs.
     #
