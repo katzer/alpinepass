@@ -21,5 +21,5 @@
 # SOFTWARE.
 
 module AlpinePass
-  VERSION = '1.4.6'.freeze
+  VERSION = '1.4.7-beta'.freeze
 end
