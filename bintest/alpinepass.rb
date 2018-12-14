@@ -26,8 +26,8 @@ require 'tempfile'
 require_relative '../mrblib/alpinepass/version'
 
 BINARY  = File.expand_path('../mruby/bin/alpinepass', __dir__).freeze
-VALID   = File.expand_path('../test/fixtures/valid.export', __dir__).freeze
-INVALID = File.expand_path('../test/fixtures/invalid.export', __dir__).freeze
+VALID   = File.expand_path('fixtures/valid.export', __dir__).freeze
+INVALID = File.expand_path('fixtures/invalid.export', __dir__).freeze
 
 %w[-v --version].each do |flag|
   assert("version [#{flag}]") do
@@ -128,7 +128,7 @@ end
     assert_include output, 'missing values for type'
     assert_include output, 'found duplicate for id:duplicated-planet'
     assert_include output, 'found duplicate for name:Duplicate'
-    assert_include output, 'unknown type'
+    assert_include output, 'found unknown type'
 
     assert_nothing_raised do
       assert_equal 1, JSON.parse(file.read).count

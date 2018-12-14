@@ -27,13 +27,9 @@ module AlpinePass
     # Fields that have to be unique accross all planets
     UNIQUE   = %w[id name].freeze
     # Fields that have to be present per planet type
-    REQUIRED = {
-      'server'.freeze => %w[id name user url].freeze,
-      'db'.freeze     => %w[id name pqdb].freeze,
-      'web'.freeze    => %w[id name].freeze,
-      'log'.freeze    => %w[id name].freeze,
-      nil             => %w[type].freeze
-    }.freeze
+    REQUIRED = { 'server' => UNIQUE + %w[user url], 'db' => UNIQUE + %w[pqdb], nil => %w[type] }.freeze # rubocop:disable LineLength
+    # Unknown type name
+    UNKNOWN  = 'unknown'.freeze
 
     # Initializes the validator.
     #
@@ -52,16 +48,15 @@ module AlpinePass
     def validate(planet)
       return true unless @check
 
-      type   = planet['type']
-      fields = REQUIRED[type]
-
-      return puts("unknown type \"#{type}\"") && false unless fields
-
+      type    = planet['type']
+      fields  = REQUIRED[type] || UNIQUE
       unknown = fields.reject { |name| planet[name] }
+
+      warn "found #{UNKNOWN} type" if type == UNKNOWN
 
       return true if unknown.empty?
 
-      puts "missing values for #{unknown.join(', ')} in #{planet}"
+      error "missing values for #{unknown.join(', ')} in #{planet}"
 
       false
     end
@@ -77,12 +72,32 @@ module AlpinePass
 
       UNIQUE.select do |name, val = planet[name]|
         if planets.find_all { |p| p[name] == val }.size > 1
-          puts "found duplicate for #{name}:#{val}"
+          error "found duplicate for #{name}:#{val}"
           true
         else
           false
         end
       end.empty?
+    end
+
+    private
+
+    # Print a warning to STDOUT.
+    #
+    # @param [ String ] msg The message to print.
+    #
+    # @return [ Void ]
+    def warn(msg)
+      puts '[warn]: '.set_color(:yellow) + msg
+    end
+
+    # Print an error message to STDOUT.
+    #
+    # @param [ String ] msg The message to print.
+    #
+    # @return [ Void ]
+    def error(msg)
+      puts '[error]: '.set_color(:red) + msg
     end
   end
 end
