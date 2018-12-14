@@ -76,8 +76,8 @@ module AlpinePass
       return true unless @check
 
       UNIQUE.select do |name, val = planet[name]|
-        if planets.find_all { |p| p[name] == val }.count > 1
-          puts("found duplicate for #{name}:#{val}")
+        if planets.find_all { |p| p[name] == val }.size > 1
+          puts "found duplicate for #{name}:#{val}"
           true
         else
           false
