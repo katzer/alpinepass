@@ -1,5 +1,17 @@
 # Release Notes: _alpinepass_
 
+### 1.4.7 (02.01.2019)
+
+1. Print errors and warning to SDTOUT with colors.
+
+2. Handle unknown types as generic instead of invalid.
+
+3. Dropped compatibility with orbit v1.4.6 due to breaking changes in _fifa_.
+
+4. Removed LVAR section for non test builds.
+
+5. Upgraded to mruby 2.0.0
+
 ### 1.4.6 (16.08.2018)
 
 __Note:__ Tool has been fully reworked.
@@ -37,14 +49,19 @@ __Note:__ See [here](https://keepass.info/help/v2_dev/scr_sc_index.html#export) 
 ### 1.4.3 - 2017-10-06
 
 1. Support multiple users for each system configuration.
+
 2. Improve error messages, do not show the help text when an error occurs.
 
 ### 1.4.2 - 2017-09-29
 
 1. Adjust the release script.
+
 2. Introduce the "tool" configuration type.
+
 3. Improved error messages. When an error occurs an error message is shown which indicates the error reason followed by the help text.
+
 4. Add the "--debug" flag which prints the stacktrace when an error occurs. No help text is shown.
+
 5. New filter logic:
     * "Exact" filters "key=value" match when the key's content matches exactly the filter value. "Earth" matches "Earth" but not "Earths".
     * "Contains" filters "key:value" match then the filter value is contained anywhere in the key's content. "Bar" matches "FooBar" and "BarFoo" but not "BazFoo".
