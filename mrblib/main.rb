@@ -31,9 +31,6 @@ end
 
 @parser.on! :help do
   <<-USAGE
-
-#{AlpinePass::LOGO}
-
 Usage: alpinepass [options...] -i input_file [-o output_file] matchers...
 Options:
 -i, --input     Path to the input file
