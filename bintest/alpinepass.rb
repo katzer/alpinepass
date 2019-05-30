@@ -29,9 +29,11 @@ BINARY  = File.expand_path('../mruby/bin/alpinepass', __dir__).freeze
 VALID   = File.expand_path('fixtures/valid.export', __dir__).freeze
 INVALID = File.expand_path('fixtures/invalid.export', __dir__).freeze
 
+NO_HOME = ENV.to_h.merge('ORBIT_HOME' => nil).freeze
+
 %w[-v --version].each do |flag|
   assert("version [#{flag}]") do
-    output, status = Open3.capture2(BINARY, flag)
+    output, status = Open3.capture2(NO_HOME, BINARY, flag)
 
     assert_true status.success?, 'Process did not exit cleanly'
     assert_include output, AlpinePass::VERSION
@@ -40,7 +42,7 @@ end
 
 %w[-h --help].each do |flag|
   assert("usage [#{flag}]") do
-    output, status = Open3.capture2(BINARY, flag)
+    output, status = Open3.capture2(NO_HOME, BINARY, flag)
 
     assert_true status.success?, 'Process did not exit cleanly'
     assert_include output, 'Usage'
