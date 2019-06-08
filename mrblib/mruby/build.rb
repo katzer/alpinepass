@@ -20,22 +20,29 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-require_relative 'mrblib/alpinepass/version'
+module MRuby
+  class Build
+    # Enable compiler optimizations.
+    #
+    # @return [ Void ]
+    def enable_optimizations
+      [cc, cxx].each do |cc|
+        cc.flags << (toolchains.include?('clang') ? '-Oz' : '-Os')
+      end
+    end
 
-MRuby::Gem::Specification.new('alpinepass') do |spec|
-  spec.license = 'Apache 2.0'
-  spec.author  = 'Sebastián Katzer, appPlant GmbH'
-  spec.version = AlpinePass::VERSION
-  spec.bins    = ['alpinepass']
+    # Set the proper include headers to ensure that the binary
+    # wont depend on newer versions of glibc.
+    #
+    # param [ String ] version The maximun supported glibc version.
+    #
+    # @return [ Void ]
+    def glibc_version=(version)
+      return if !ENV['GLIBC_HEADERS'] || is_a?(MRuby::CrossBuild)
 
-  spec.rbfiles -= Dir.glob("#{spec.dir}/mrblib/mruby/**/*.rb")
-
-  spec.add_dependency 'mruby-tiny-io',         mgem: 'mruby-tiny-io'
-  spec.add_dependency 'mruby-exit',            core: 'mruby-exit'
-  spec.add_dependency 'mruby-print',           core: 'mruby-print'
-  spec.add_dependency 'mruby-tiny-opt-parser', mgem: 'mruby-tiny-opt-parser'
-  spec.add_dependency 'mruby-ansi-colors',     mgem: 'mruby-ansi-colors'
-  spec.add_dependency 'mruby-os',              mgem: 'mruby-os'
-  spec.add_dependency 'mruby-json',            mgem: 'mruby-json'
-  spec.add_dependency 'mruby-regexp-pcre',     mgem: 'mruby-regexp-pcre'
+      [cc, cxx].each do |cc|
+        cc.flags << "-include #{ENV['GLIBC_HEADERS']}/x64/force_link_glibc_#{version}.h"
+      end
+    end
+  end
 end
