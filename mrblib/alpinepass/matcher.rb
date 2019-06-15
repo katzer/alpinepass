@@ -34,7 +34,7 @@ module AlpinePass
     #
     # @param [ String ] matcher The matcher like 'env:prod'
     #
-    # @return [ FF::Matcher ]
+    # @return [ AlpinePass::Matcher ]
     def initialize(matcher)
       @string = matcher
 
@@ -69,7 +69,7 @@ module AlpinePass
     # @return [ Void ]
     def validate(crumbs)
       crumbs.each do |crumb|
-        Kernel.raise "invalid matcher: #{crumb}" unless crumb =~ CRUMBS_PATTERN
+        Kernel.raise "invalid matcher: #{crumb}" unless CRUMBS_PATTERN =~ crumb
       end
     end
 
@@ -79,7 +79,7 @@ module AlpinePass
       #
       # @param [ String ] crumbs A crumb like 'env=prod+env=int'
       #
-      # @return [ FF::Matcher::Crumbs ]
+      # @return [ AlpinePass::Matcher::Crumbs ]
       def initialize(crumbs)
         @crumbs = crumbs.split(SPLIT_PATTERN)
                         .reject(&:empty?)
@@ -101,9 +101,9 @@ module AlpinePass
         #
         # @param [ String ] crmb A crumb like '+env:prod'
         #
-        # @return [ FF::Matcher::Crumb ]
+        # @return [ AlpinePass::Matcher::Crumb ]
         def initialize(crumb)
-          match = crumb.match(CRUMB_PATTERN)
+          match = CRUMB_PATTERN.match(crumb)
           value = match[3] ? match[4] : match[2]
           value = "^#{value}$" unless match[3] == ':'
 
@@ -120,7 +120,7 @@ module AlpinePass
         def match?(map)
           value = value_for_key(map)
 
-          @not ? (value !~ @exp) : (value =~ @exp)
+          @not ? (@exp !~ value) : (@exp =~ value)
         end
 
         private
