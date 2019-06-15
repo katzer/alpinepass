@@ -28,8 +28,6 @@ MRuby::Gem::Specification.new('alpinepass') do |spec|
   spec.version = AlpinePass::VERSION
   spec.bins    = ['alpinepass']
 
-  spec.rbfiles -= Dir.glob("#{spec.dir}/mrblib/mruby/**/*.rb")
-
   spec.add_dependency 'mruby-tiny-io',         mgem: 'mruby-tiny-io'
   spec.add_dependency 'mruby-exit',            core: 'mruby-exit'
   spec.add_dependency 'mruby-print',           core: 'mruby-print'
