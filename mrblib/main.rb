@@ -69,7 +69,7 @@ def parse(args)
   tail = @parser.tail
   tail << 'id:.?' if tail.empty?
 
-  opts[:matchers] = tail.map! { |m| AlpinePass::Matcher.new(m) }
+  opts[:matchers] = tail.map! { |m| PlanetMatcher.new(m) }
 
   opts
 end
