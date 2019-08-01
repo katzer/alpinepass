@@ -42,6 +42,10 @@ Clone the repo:
 
     $ git clone https://github.com/appplant/alpinepass.git && cd alpinepass/
 
+Install the dependencies:
+
+    $ bundle
+
 And then execute:
 
     $ rake compile
