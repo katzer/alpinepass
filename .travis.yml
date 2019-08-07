@@ -20,22 +20,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-dist: xenial
+dist: bionic
 
 language: generic
-sudo: false
-
-os:
-- linux
 
 matrix:
   include:
   - env: MRUBY_VERSION=2.0.1
     services: [docker]
-    sudo: false
   - env: MRUBY_VERSION=head
     services: [docker]
-    sudo: false
   allow_failures:
   - env: MRUBY_VERSION=head
 
@@ -51,7 +45,6 @@ script:
 
 before_deploy:
 - rake release
-- mruby/build/x86_64-pc-linux-gnu-glibc-2.9/bin/alpinepass -v
 - mruby/build/x86_64-pc-linux-gnu/bin/alpinepass -v
 - sudo chmod -R 1777 releases
 - sudo chmod -R 1777 mruby/build/host/mrbgems
