@@ -58,10 +58,10 @@ You'll be able to find the binaries in the following directories:
 
 - Linux (64-bit Musl): `build/x86_64-alpine-linux-musl/bin/alpinepass`
 - Linux (64-bit GNU): `build/x86_64-pc-linux-gnu/bin/alpinepass`
-- Linux (64-bit, for old distros): `build/x86_64-pc-linux-gnu-glibc-2.12/bin/alpinepass`
+- Linux (64-bit, for old distros): `build/x86_64-pc-linux-gnu-glibc-2.9/bin/alpinepass`
 - OS X (64-bit): `build/x86_64-apple-darwin17/bin/alpinepass`
 - Windows (64-bit): `build/x86_64-w64-mingw32/bin/alpinepass`
-- Host: `build/host2/bin/alpinepass`
+- Host: `build/host/bin/alpinepass`
 
 For the complete list of build tasks:
 
