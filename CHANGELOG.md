@@ -1,6 +1,23 @@
 # Release Notes: _alpinepass_
 
-### 1.4.7 (02.01.2019)
+## 1.5.0
+
+Released at: UNRELEASED
+
+1. Compiled with `MRB_WITHOUT_FLOAT`
+
+2. Compiled binary for OSX build with MacOSX10.13 SDK (Darwin17)
+
+3. Upgraded to mruby 2.0.1
+
+[Full Changelog](https://github.com/appplant/alpinepass/compare/1.4.7...HEAD)
+
+## 1.4.7
+
+Released at: 02.01.2019
+
+<details><summary>Releasenotes</summary>
+<p>
 
 1. Print errors and warning to SDTOUT with colors.
 
@@ -12,9 +29,19 @@
 
 5. Upgraded to mruby 2.0.0
 
-### 1.4.6 (16.08.2018)
+</p>
 
-__Note:__ Tool has been fully reworked.
+[Full Changelog](https://github.com/appplant/alpinepass/compare/1.4.6...1.4.7)
+</details>
+
+## 1.4.6
+
+Released at: 16.08.2018
+
+<details><summary>Releasenotes</summary>
+<p>
+
+Tool has been fully reworked.
 
     $ alpinepass -h
 
@@ -30,8 +57,6 @@ __Note:__ Tool has been fully reworked.
     -h, --help      This help text
     -v, --version   Show version number
 
-## Commands
-
 Transform the _KeePass_ file by using the `$ORBIT_HOME/config/orbit.xsl` stylesheet:
 
     KPScript -c:Export "%ORBIT_HOME%\config\orbit.kdbx" -pw:MyPw -Format:"Transform using XSL Stylesheet" -XslFile:"%ORBIT_HOME%\config\orbit.xsl" -OutFile:"%ORBIT_HOME%\config\orbit.export"
@@ -44,15 +69,35 @@ To create a knowledge database for _fifa_ containing production databases only:
 
     $ alpinepass -i keepass.export -f fifa -o orbit.json type=db@env=prod
 
-__Note:__ See [here](https://keepass.info/help/v2_dev/scr_sc_index.html#export) for how to use KPScript with single command operations to perform simple database operations. Of course you can also use the GUI to perform the export.
+See [here](https://keepass.info/help/v2_dev/scr_sc_index.html#export) for how to use KPScript with single command operations to perform simple database operations. Of course you can also use the GUI to perform the export.
 
-### 1.4.3 - 2017-10-06
+</p>
+
+[Full Changelog](https://github.com/appplant/alpinepass/compare/1.4.3...1.4.6)
+</details>
+
+## 1.4.3
+
+Released at: 06.10.2017
+
+<details><summary>Releasenotes</summary>
+<p>
 
 1. Support multiple users for each system configuration.
 
 2. Improve error messages, do not show the help text when an error occurs.
 
-### 1.4.2 - 2017-09-29
+</p>
+
+[Full Changelog](https://github.com/appplant/alpinepass/compare/567d876072c20ade96c2de50de5c58707658311e...0224af8cbe1869f2bf9151e62ea75f827570fc04)
+</details>
+
+## 1.4.2
+
+Released at: 29.09.2017
+
+<details><summary>Releasenotes</summary>
+<p>
 
 1. Adjust the release script.
 
@@ -66,37 +111,47 @@ __Note:__ See [here](https://keepass.info/help/v2_dev/scr_sc_index.html#export) 
     * "Exact" filters "key=value" match when the key's content matches exactly the filter value. "Earth" matches "Earth" but not "Earths".
     * "Contains" filters "key:value" match then the filter value is contained anywhere in the key's content. "Bar" matches "FooBar" and "BarFoo" but not "BazFoo".
 
-### 1.0.0 - 2017-03-20
+</p>
+
+[Full Changelog](https://github.com/appplant/alpinepass/compare/0224af8cbe1869f2bf9151e62ea75f827570fc04...3051f84b40aecbb59355c22fd4dd7a79c6833c51)
+</details>
+
+## 1.0.0
+
+Released at: 20.03.2017
+
+<details><summary>Releasenotes</summary>
+<p>
 
 1. Basic functionality. Read "input.yml" and write "output.json".
     ```
-	$ ls
-	input.yml
-	$ alpinepass
-	$ ls
-	input.yml output.json
+    $ ls
+    input.yml
+    $ alpinepass
+    $ ls
+    input.yml output.json
     ```
 
 2. New "input" flag for specifying the input file.
     ```
-	$ alpinepass -i /path/to/input.yml
+    $ alpinepass -i /path/to/input.yml
     ```
 
 3. New "output" flag for specifying the output file.
     ```
-	$ alpinepass -o /path/to/output.json
+    $ alpinepass -o /path/to/output.json
     ```
 
 4. New "display" flag for previewing the output in the console. An output file will not be written.
     ```
-	$ alpinepass -d
-	[{"id": "B01.prod.server.PROD-App","title": "PROD App","location": "B01","environment": "prod","user": "prodUserB01"}]
+    $ alpinepass -d
+    [{"id": "B01.prod.server.PROD-App","title": "PROD App","location": "B01","environment": "prod","user": "prodUserB01"}]
     ```
 
 5. New "readable" flag for formatting the output. It works with both output file and console output!
     ```
-	$ alpinepass -r
-	$ cat output.yml
+    $ alpinepass -r
+    $ cat output.yml
     [
         {
             "id": "B01.prod.server.PROD-App",
@@ -105,8 +160,8 @@ __Note:__ See [here](https://keepass.info/help/v2_dev/scr_sc_index.html#export) 
             "environment": "prod",
             "user": "prodUserB01"
         }
-	]
-	$ alpinepass -d -r
+    ]
+    $ alpinepass -d -r
     [
         {
             "id": "B01.prod.server.PROD-App",
@@ -120,58 +175,58 @@ __Note:__ See [here](https://keepass.info/help/v2_dev/scr_sc_index.html#export) 
 
 6. New "passwords" flag for including passwords in the output.
     ```
-	$ alpinepass -d -p
-	[
+    $ alpinepass -d -p
+    [
         {
             "id": "B01.prod.server.PROD-App",
             "title": "PROD App",
             "location": "B01",
             "environment": "prod",
             "user": "prodUserB01",
-			"password": "prod_pw"
+            "password": "prod_pw"
         }
-	]
-	```
+    ]
+    ```
 
 7. New "filter" flag for filtering the input.
     ```
-	$ alpinepass -d -p
-	[
+    $ alpinepass -d -p
+    [
         {
             "id": "B01.prod.server.PROD-App",
             "title": "PROD App",
             "location": "B01",
             "environment": "prod",
             "user": "prodUserB01",
-			"password": "prod_pw"
+            "password": "prod_pw"
         },
-		{
+        {
             "id": "D02.prod.server.PROD-App",
             "title": "PROD App",
             "location": "D02",
             "environment": "prod",
             "user": "prodUserD02",
-			"password": "prod_pw"
+            "password": "prod_pw"
         }
-	]
-	$ alpinepass -d -p -f location:D02
-	[
-		{
+    ]
+    $ alpinepass -d -p -f location:D02
+    [
+        {
             "id": "D02.prod.server.PROD-App",
             "title": "PROD App",
             "location": "D02",
             "environment": "prod",
             "user": "prodUserD02",
-			"password": "prod_pw"
+            "password": "prod_pw"
         }
-	]
-	```
+    ]
+    ```
 
 8. Input verification checks that certain properties are present for the different configuration types.
 
 9. New "skip" flag for disabling input verification.
     ```
-	$ alpinepass -d -r -s
+    $ alpinepass -d -r -s
     [
         {
             "id": "B01.prod.server.PROD-App",
@@ -179,9 +234,14 @@ __Note:__ See [here](https://keepass.info/help/v2_dev/scr_sc_index.html#export) 
             "location": "B01",
             "environment": "prod",
             "user": "prodUserB01",
-			"host": "prodDatabase.B01"
+            "host": "prodDatabase.B01"
         }
     ]
-	$ alpinepass -d -r
+    $ alpinepass -d -r
     The host "prodDatabase.B01" does not match the naming convention "[environment]Db.[location]".
-	```
+    ```
+
+</p>
+
+[Full Changelog](https://github.com/appPlant/alpinepass/compare/ebf72cfa34e40dc418ec45b42c9a902a1abe5a20...3051f84b40aecbb59355c22fd4dd7a79c6833c51)
+</details>

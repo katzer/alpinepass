@@ -1,4 +1,4 @@
-# alpinepass [![GitHub release](https://img.shields.io/github/release/appplant/alpinepass.svg)](https://github.com/appplant/alpinepass/releases) [![Build Status](https://travis-ci.com/appPlant/alpinepass.svg?branch=master)](https://travis-ci.com/appPlant/alpinepass) [![Build status](https://ci.appveyor.com/api/projects/status/76ytl3ycyqs0va8j/branch/master?svg=true)](https://ci.appveyor.com/project/katzer/alpinepass/branch/master) [![Maintainability](https://api.codeclimate.com/v1/badges/f5d906346be0d06ae4fc/maintainability)](https://codeclimate.com/github/appPlant/alpinepass/maintainability)
+# alpinepass <br>[![GitHub release](https://img.shields.io/github/release/appPlant/alpinepass.svg)](https://github.com/appplant/alpinepass/releases) [![Build Status](https://travis-ci.com/appPlant/alpinepass.svg?branch=master)](https://travis-ci.com/appPlant/alpinepass) [![Build status](https://ci.appveyor.com/api/projects/status/76ytl3ycyqs0va8j/branch/master?svg=true)](https://ci.appveyor.com/project/katzer/alpinepass/branch/master) [![Maintainability](https://api.codeclimate.com/v1/badges/f5d906346be0d06ae4fc/maintainability)](https://codeclimate.com/github/appPlant/alpinepass/maintainability)
 
 The tool that exports your Orbit KeePass database into various file formats.
 
@@ -81,7 +81,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/apppla
 
 The code is available as open source under the terms of the [Apache 2.0 License][license].
 
-Made with :yum: in Leipzig
+Made with :heart: in Leipzig
 
 © 2017 [appPlant GmbH][appplant]
 
