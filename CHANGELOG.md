@@ -1,5 +1,7 @@
 # Release Notes: _alpinepass_
 
+The tool that exports your Orbit KeePass database into various file formats.
+
 ## 1.5.0
 
 Released at: 13.08.2019
