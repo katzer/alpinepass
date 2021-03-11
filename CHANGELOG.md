@@ -12,10 +12,10 @@ Released at:
 
 ## 1.5.1
 
+Released at: 18.03.2020
+
 <details><summary>Releasenotes</summary>
 <p>
-
-Released at: 18.03.2020
 
 1. Compiled binary for OSX build with MacOSX10.15 SDK
 
@@ -28,10 +28,10 @@ Released at: 18.03.2020
 
 ## 1.5.0
 
+Released at: 13.08.2019
+
 <details><summary>Releasenotes</summary>
 <p>
-
-Released at: 13.08.2019
 
 1. Compiled with `MRB_WITHOUT_FLOAT`
 
