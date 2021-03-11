@@ -10,7 +10,7 @@ Released at: 18.03.2020
 
 2. Upgraded to mruby 2.1.0
 
-[Full Changelog](https://github.com/appplant/alpinepass/compare/1.5.0...1.5.1)
+[Full Changelog](https://github.com/katzer/alpinepass/compare/1.5.0...1.5.1)
 
 ## 1.5.0
 
@@ -27,7 +27,7 @@ Released at: 13.08.2019
 
 </p>
 
-[Full Changelog](https://github.com/appplant/alpinepass/compare/1.4.7...1.5.0)
+[Full Changelog](https://github.com/katzer/alpinepass/compare/1.4.7...1.5.0)
 </details>
 
 ## 1.4.7
@@ -49,7 +49,7 @@ Released at: 02.01.2019
 
 </p>
 
-[Full Changelog](https://github.com/appplant/alpinepass/compare/1.4.6...1.4.7)
+[Full Changelog](https://github.com/katzer/alpinepass/compare/1.4.6...1.4.7)
 </details>
 
 ## 1.4.6
@@ -91,7 +91,7 @@ See [here](https://keepass.info/help/v2_dev/scr_sc_index.html#export) for how to
 
 </p>
 
-[Full Changelog](https://github.com/appplant/alpinepass/compare/1.4.3...1.4.6)
+[Full Changelog](https://github.com/katzer/alpinepass/compare/1.4.3...1.4.6)
 </details>
 
 ## 1.4.3
@@ -107,7 +107,7 @@ Released at: 06.10.2017
 
 </p>
 
-[Full Changelog](https://github.com/appplant/alpinepass/compare/567d876072c20ade96c2de50de5c58707658311e...0224af8cbe1869f2bf9151e62ea75f827570fc04)
+[Full Changelog](https://github.com/katzer/alpinepass/compare/567d876072c20ade96c2de50de5c58707658311e...0224af8cbe1869f2bf9151e62ea75f827570fc04)
 </details>
 
 ## 1.4.2
@@ -131,7 +131,7 @@ Released at: 29.09.2017
 
 </p>
 
-[Full Changelog](https://github.com/appplant/alpinepass/compare/0224af8cbe1869f2bf9151e62ea75f827570fc04...3051f84b40aecbb59355c22fd4dd7a79c6833c51)
+[Full Changelog](https://github.com/katzer/alpinepass/compare/0224af8cbe1869f2bf9151e62ea75f827570fc04...3051f84b40aecbb59355c22fd4dd7a79c6833c51)
 </details>
 
 ## 1.0.0
@@ -261,5 +261,5 @@ Released at: 20.03.2017
 
 </p>
 
-[Full Changelog](https://github.com/appPlant/alpinepass/compare/ebf72cfa34e40dc418ec45b42c9a902a1abe5a20...3051f84b40aecbb59355c22fd4dd7a79c6833c51)
+[Full Changelog](https://github.com/katzer/alpinepass/compare/ebf72cfa34e40dc418ec45b42c9a902a1abe5a20...3051f84b40aecbb59355c22fd4dd7a79c6833c51)
 </details>

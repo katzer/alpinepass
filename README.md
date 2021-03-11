@@ -1,4 +1,4 @@
-# alpinepass <br>[![GitHub release](https://img.shields.io/github/release/appPlant/alpinepass.svg)](https://github.com/appplant/alpinepass/releases) [![Build Status](https://travis-ci.com/appPlant/alpinepass.svg?branch=master)](https://travis-ci.com/appPlant/alpinepass) [![Build status](https://ci.appveyor.com/api/projects/status/76ytl3ycyqs0va8j/branch/master?svg=true)](https://ci.appveyor.com/project/katzer/alpinepass/branch/master) [![Maintainability](https://api.codeclimate.com/v1/badges/f5d906346be0d06ae4fc/maintainability)](https://codeclimate.com/github/appPlant/alpinepass/maintainability)
+# alpinepass <br>[![GitHub release](https://img.shields.io/github/release/katzer/alpinepass.svg)](https://github.com/katzer/alpinepass/releases) [![Build Status](https://travis-ci.com/katzer/alpinepass.svg?branch=master)](https://travis-ci.com/katzer/alpinepass) [![Build status](https://ci.appveyor.com/api/projects/status/76ytl3ycyqs0va8j/branch/master?svg=true)](https://ci.appveyor.com/project/katzer/alpinepass/branch/master) [![Maintainability](https://api.codeclimate.com/v1/badges/f5d906346be0d06ae4fc/maintainability)](https://codeclimate.com/github/katzer/alpinepass/maintainability)
 
 The tool that exports your Orbit KeePass database into various file formats.
 
@@ -40,7 +40,7 @@ __Note:__ See [here][keepass] for how to use KPScript with single command operat
 
 Clone the repo:
 
-    $ git clone https://github.com/appplant/alpinepass.git && cd alpinepass/
+    $ git clone https://github.com/katzer/alpinepass.git && cd alpinepass/
 
 Install the dependencies:
 
@@ -69,7 +69,7 @@ For the complete list of build tasks:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/appplant/alpinepass.
+Bug reports and pull requests are welcome on GitHub at https://github.com/katzer/alpinepass.
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -85,7 +85,7 @@ Made with :heart: in Leipzig
 
 © 2017 [appPlant GmbH][appplant]
 
-[releases]: https://github.com/appplant/alpinepass/releases
+[releases]: https://github.com/katzer/alpinepass/releases
 [keepass]: https://keepass.info/help/v2_dev/scr_sc_index.html#export
 [license]: http://opensource.org/licenses/Apache-2.0
 [appplant]: www.appplant.de
