@@ -22,7 +22,7 @@
 
 module AlpinePass
   # Base for all concrete converter classes
-  class BaseConverter < BasicObject
+  class BaseConverter
     # Initializer of the converter instance.
     #
     # @param [ Boolean ] pretty Optional flag to indicate pretty output.
