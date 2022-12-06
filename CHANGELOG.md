@@ -6,7 +6,7 @@ The tool that exports your Orbit KeePass database into various file formats.
 
 Released at:
 
-1. Upgraded to mruby 3.0.0
+1. Upgraded to mruby 3.1.0
 
 [Full Changelog](https://github.com/katzer/alpinepass/compare/1.5.1...master)
 
