@@ -4,7 +4,7 @@ The tool that exports your Orbit KeePass database into various file formats.
 
 ## 1.5.2
 
-Released at:
+Released at: 26.08.2024
 
 1. Upgraded to mruby 3.2.0
 
@@ -12,7 +12,7 @@ Released at:
 
 3. Added binary for `arm64-apple-darwin19` target
 
-[Full Changelog](https://github.com/katzer/alpinepass/compare/1.5.1...master)
+[Full Changelog](https://github.com/katzer/alpinepass/compare/1.5.1...1.5.2)
 
 ## 1.5.1
 
