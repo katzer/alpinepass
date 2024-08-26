@@ -56,11 +56,12 @@ To compile the sources locally for the host machine only:
 
 You'll be able to find the binaries in the following directories:
 
-- Linux (64-bit Musl): `build/x86_64-alpine-linux-musl/bin/alpinepass`
-- Linux (64-bit GNU): `build/x86_64-pc-linux-gnu/bin/alpinepass`
-- Linux (64-bit, for old distros): `build/x86_64-pc-linux-gnu-glibc-2.9/bin/alpinepass`
-- OS X (64-bit): `build/x86_64-apple-darwin17/bin/alpinepass`
-- Windows (64-bit): `build/x86_64-w64-mingw32/bin/alpinepass`
+- Linux (AMD64, Musl): `build/x86_64-alpine-linux-musl/bin/alpinepass`
+- Linux (AMD64, GNU): `build/x86_64-pc-linux-gnu/bin/alpinepass`
+- Linux (AMD64, for old distros): `build/x86_64-pc-linux-gnu-glibc-2.9/bin/alpinepass`
+- OS X (AMD64): `build/x86_64-apple-darwin19/bin/alpinepass`
+- OS X (ARM64): `build/arm64-apple-darwin19/bin/alpinepass`
+- Windows (AMD64): `build/x86_64-w64-mingw32/bin/alpinepass`
 - Host: `build/host/bin/alpinepass`
 
 For the complete list of build tasks:
