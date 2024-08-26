@@ -6,7 +6,7 @@ The tool that exports your Orbit KeePass database into various file formats.
 
 Released at:
 
-1. Upgraded to mruby 3.1.0
+1. Upgraded to mruby 3.2.0
 
 2. Compiled binary for OSX build with MacOSX11.3 SDK
 
